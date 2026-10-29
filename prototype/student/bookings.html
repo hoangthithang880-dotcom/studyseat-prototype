@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="w-full h-full overflow-hidden" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudySeat · 我的预约</title>
+<script src="vendor/tailwindcss.js"></script>
+
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+              900: '#1E3A8A'
+            },
+            ink: '#0F172A',
+            sand: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['"PingFang SC"', '"Noto Sans SC"', '"Microsoft YaHei"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    html, body {
+      font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .hide-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    .pressable {
+      transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+    }
+    .pressable:active {
+      transform: scale(0.975);
+    }
+    .booking-tab {
+      transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+    }
+    .booking-tab.is-active {
+      background: #FFFFFF;
+      color: #1D4ED8;
+      box-shadow: 0 4px 12px -9px rgba(21, 36, 32, 0.4);
+    }
+    .booking-tab.is-active .tab-count {
+      background: #DBEAFE;
+      color: #2563EB;
+    }
+    .sheet-in {
+      animation: sheetUp 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes sheetUp {
+      from { transform: translateY(36px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .fade-in {
+      animation: fadeIn 180ms ease-out both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .toast-in {
+      animation: toastUp 220ms ease-out both;
+    }
+    @keyframes toastUp {
+      from { opacity: 0; transform: translate(-50%, 8px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+    .qr-cell {
+      aspect-ratio: 1 / 1;
+      border-radius: 1px;
+    }
+    .qr-cell.on {
+      background: #1E293B;
+    }
+    .qr-cell.off {
+      background: transparent;
+    }
+  </style>
+<link rel="stylesheet" href="assets/css/studyseat.css?v=4bb9e924046e">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-[#E2E8F0] font-sans text-ink antialiased">
+<div class="relative w-full h-full max-w-[393px] max-h-[852px] overflow-hidden flex flex-col bg-sand shadow-[0_24px_80px_-24px_rgba(21,36,32,0.35)]" id="app">
+<!-- 状态栏 -->
+<div class="shrink-0 h-9 px-5 flex items-center justify-between text-[11px] font-semibold tracking-wide text-[#1E293B]">
+<span>9:41</span>
+<div class="flex items-center gap-1.5 text-[14px]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M168 72v128a8 8 0 0 1-16 0V72a8 8 0 0 1 16 0m-48 32a8 8 0 0 0-8 8v88a8 8 0 0 0 16 0v-88a8 8 0 0 0-8-8m-40 40a8 8 0 0 0-8 8v48a8 8 0 0 0 16 0v-48a8 8 0 0 0-8-8m-40 40a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M140 204a12 12 0 1 1-12-12a12 12 0 0 1 12 12m97.08-117a172 172 0 0 0-218.16 0a8 8 0 0 0 10.16 12.37a156 156 0 0 1 197.84 0A8 8 0 0 0 237.08 87M205 122.77a124 124 0 0 0-153.94 0A8 8 0 0 0 61 135.31a108 108 0 0 1 134.06 0a8 8 0 0 0 11.24-1.3a8 8 0 0 0-1.3-11.24m-32.26 35.76a76.05 76.05 0 0 0-89.42 0a8 8 0 0 0 9.42 12.94a60 60 0 0 1 70.58 0a8 8 0 1 0 9.42-12.94"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M200 56H32A24 24 0 0 0 8 80v96a24 24 0 0 0 24 24h168a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m8 120a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8V80a8 8 0 0 1 8-8h168a8 8 0 0 1 8 8Zm-24-80v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0m-40 0v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0m-40 0v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0m-40 0v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0m192 0v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0"/></svg>
+</div>
+</div>
+<!-- 页面标题 -->
+<header class="shrink-0 px-5 pt-1 pb-3 flex items-end justify-between">
+<div>
+<p class="flex items-center gap-1.5 text-[10px] text-[#64748B]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[12px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M208 32h-24v-8a8 8 0 0 0-16 0v8H88v-8a8 8 0 0 0-16 0v8H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16M72 48v8a8 8 0 0 0 16 0v-8h80v8a8 8 0 0 0 16 0v-8h24v32H48V48Zm136 160H48V96h160z"/></svg>
+          10月25日 · 周日
+          <span class="w-1 h-1 rounded-full bg-[#CBD5E1]"></span>
+          北校区
+        </p>
+<h1 class="text-[25px] leading-[1.2] font-bold tracking-[-0.03em] mt-1.5">我的预约</h1>
+</div>
+<a class="pressable h-9 px-3.5 rounded-full bg-brand-600 text-white text-[11px] font-semibold flex items-center gap-1 shadow-[0_8px_18px_-12px_rgba(13,111,95,0.9)]" href="room.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[13px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8"/></svg>
+        去预约
+      </a>
+</header>
+<!-- 主内容 -->
+<main id="ss-main" class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden hide-scrollbar px-5 pb-5">
+<!-- 月度小结 -->
+<section class="relative overflow-hidden rounded-[23px] bg-gradient-to-br from-[#1E3A8A] via-[#1D4ED8] to-[#3B82F6] px-4 py-4 text-white shadow-[0_16px_32px_-25px_rgba(8,75,64,0.9)]">
+<div class="absolute -right-9 -top-12 w-40 h-40 rounded-full border border-white/10"></div>
+<div class="absolute right-8 top-6 w-16 h-16 rounded-full bg-white/[0.04]"></div>
+<div class="relative flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-[9px] text-[#BFDBFE] tracking-wide">学习小结 · 示例数据</span>
+<span class="h-[17px] px-1.5 rounded-full bg-[#F1C65F] text-[8px] text-[#43320B] font-semibold flex items-center">连续 7 天</span>
+</div>
+<div class="flex items-baseline gap-1.5 mt-2">
+<span class="text-[33px] leading-none font-bold tracking-[-0.04em]">26.5</span>
+<span class="text-[10px] text-[#BFDBFE]">小时</span>
+</div>
+<p class="text-[9px] text-[#BFDBFE] mt-1.5">较上月多专注 4.2 小时 · 超过 86% 的同学</p>
+</div>
+<div class="shrink-0 pt-4">
+<div class="flex items-end gap-[4px] h-[43px]">
+<span class="w-[5px] h-[13px] rounded-full bg-white/20"></span>
+<span class="w-[5px] h-[22px] rounded-full bg-white/28"></span>
+<span class="w-[5px] h-[17px] rounded-full bg-white/22"></span>
+<span class="w-[5px] h-[30px] rounded-full bg-white/38"></span>
+<span class="w-[5px] h-[24px] rounded-full bg-white/30"></span>
+<span class="w-[5px] h-[39px] rounded-full bg-[#F1C65F]"></span>
+<span class="w-[5px] h-[27px] rounded-full bg-white/35"></span>
+</div>
+<div class="flex justify-between text-[7px] text-white/45 mt-1">
+<span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span class="text-[#F1C65F]">六</span><span>日</span>
+</div>
+</div>
+</div>
+<div class="relative flex items-center gap-4 mt-3.5 pt-3 border-t border-white/10">
+<span class="text-[8px] text-[#BFDBFE]">本月预约 <strong class="text-[11px] text-white font-semibold ml-0.5">18</strong> 次</span>
+<span class="text-[8px] text-[#BFDBFE]">守约率 <strong class="text-[11px] text-white font-semibold ml-0.5">100%</strong></span>
+<a class="ml-auto flex items-center gap-0.5 text-[8px] text-[#E7C77A]" href="profile.html">学习报告<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[9px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m181.66 133.66l-80 80a8 8 0 0 1-11.32-11.32L164.69 128L90.34 53.66a8 8 0 0 1 11.32-11.32l80 80a8 8 0 0 1 0 11.32"/></svg></a>
+</div>
+</section>
+<!-- 状态切换 -->
+<div id="bookingTabs" class="mt-4 grid grid-cols-4 gap-1 p-1 rounded-[15px] bg-[#E2E8F0]"></div><div id="ss-message" class="ss-notice ss-error ss-message" role="alert"></div>
+<div class="flex items-center justify-between mt-4 mb-2">
+<p class="text-[10px] font-semibold text-[#64748B]" id="listCaption">今天 · <span id="currentDateHeading">10月25日 · 周日</span></p>
+<button class="flex items-center gap-1 text-[9px] text-[#64748B]" onclick="showToast('模拟签到：预约开始前 10 分钟至开始后 15 分钟，含两个端点')">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[11px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88m16-40a8 8 0 0 1-8 8a16 16 0 0 1-16-16v-40a8 8 0 0 1 0-16a16 16 0 0 1 16 16v40a8 8 0 0 1 8 8m-32-92a12 12 0 1 1 12 12a12 12 0 0 1-12-12"/></svg>
+          签到说明
+        </button>
+</div>
+<!-- 预约卡片列表 -->
+<div class="space-y-3" id="bookingList"></div><div id="emptyBookings" class="hidden rounded-[22px] border border-[#E2E8F0] bg-white p-6 text-center"><p class="text-[13px] font-semibold">暂无此类预约</p><p class="text-[10px] text-[#64748B] mt-2">预约记录会在这里保留。</p><a href="room.html" class="ss-btn mt-3">去预约</a></div>
+</main>
+<!-- 底部导航 -->
+<nav class="shrink-0 border-t border-[#E2E8F0] bg-white/96 backdrop-blur-md px-3 pt-1.5 pb-3">
+<div class="grid grid-cols-4">
+<a class="flex flex-col items-center gap-1 py-1 text-[#94A3B8]" href="home.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m219.31 108.68l-80-80a16 16 0 0 0-22.62 0l-80 80A15.87 15.87 0 0 0 32 120v96a8 8 0 0 0 8 8h64a8 8 0 0 0 8-8v-56h32v56a8 8 0 0 0 8 8h64a8 8 0 0 0 8-8v-96a15.87 15.87 0 0 0-4.69-11.32M208 208h-48v-56a8 8 0 0 0-8-8h-48a8 8 0 0 0-8 8v56H48v-88l80-80l80 80Z"/></svg>
+<span class="text-[9px] font-medium">首页</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 text-[#94A3B8]" href="room.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M216 88.8V72a40 40 0 0 0-40-40H80a40 40 0 0 0-40 40v16.8a40 40 0 0 0 0 78.4V200a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16v-32.8a40 40 0 0 0 0-78.4M80 48h96a24 24 0 0 1 24 24v16.8a40.07 40.07 0 0 0-32 39.2H88a40.07 40.07 0 0 0-32-39.2V72a24 24 0 0 1 24-24m128.39 104H208a8 8 0 0 0-8 8v40H56v-40a8 8 0 0 0-8-8h-.39A24 24 0 1 1 72 128v40a8 8 0 0 0 16 0v-24h80v24a8 8 0 0 0 16 0v-40a24 24 0 1 1 24.39 24"/></svg>
+<span class="text-[9px] font-medium">找座</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 text-brand-600" href="bookings.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M208 32h-24v-8a8 8 0 0 0-16 0v8H88v-8a8 8 0 0 0-16 0v8H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16m-38.34 101.66l-48 48a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L116 164.69l42.34-42.35a8 8 0 0 1 11.32 11.32M48 80V48h24v8a8 8 0 0 0 16 0v-8h80v8a8 8 0 0 0 16 0v-8h24v32Z"/></svg>
+<span class="text-[9px] font-semibold">预约</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 text-[#94A3B8]" href="profile.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"/></svg>
+<span class="text-[9px] font-medium">我的</span>
+</a>
+</div>
+</nav>
+<!-- 签到弹层 -->
+<div class="hidden absolute inset-0 z-50" id="checkinModal" role="dialog" aria-modal="true" aria-label="模拟到馆签到">
+<div class="absolute inset-0 bg-[#0F172A]/45 backdrop-blur-[2px]" onclick="closeCheckin()"></div>
+<div class="sheet-in absolute inset-x-0 bottom-0 rounded-t-[28px] bg-[#F8FAFC] px-5 pt-3 pb-5">
+<div class="mx-auto w-9 h-1 rounded-full bg-[#E2E8F0]"></div>
+<div class="flex items-start justify-between mt-4">
+<div>
+<h2 class="text-[19px] font-bold tracking-[-0.02em]">到馆签到</h2>
+<p class="text-[9px] text-[#64748B] mt-1">请确认你已到达图书馆 3F静音区</p>
+</div>
+<button aria-label="关闭签到" class="w-8 h-8 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center text-[#475569]" onclick="closeCheckin()">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[15px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128L50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/></svg>
+</button>
+</div>
+<div class="mt-4 flex justify-center">
+<div class="relative w-[184px] rounded-[22px] border border-[#E2E8F0] bg-white p-4 shadow-[0_16px_34px_-26px_rgba(21,36,32,0.5)]">
+<div class="flex items-center justify-between">
+<span class="text-[8px] font-semibold tracking-[0.14em] text-[#64748B]">CHECK-IN</span>
+<span class="flex items-center gap-1 text-[8px] text-[#2563EB]"><span class="w-1 h-1 rounded-full bg-[#60A5FA]"></span>演示</span>
+</div>
+<div class="relative mt-3 mx-auto w-[136px] h-[136px] rounded-xl bg-white p-2">
+<div class="grid grid-cols-11 gap-[2px] w-full h-full" id="qrGrid"></div>
+<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-lg bg-white flex items-center justify-center shadow-sm border border-[#E2E8F0]">
+<span class="text-[9px] font-bold text-brand-700">SS</span>
+</div>
+</div>
+<p class="text-center text-[9px] text-[#64748B] mt-3">示例码 <span class="font-mono font-bold tracking-[0.18em] text-[#1E3A8A] ml-1">482 716</span></p>
+<p class="text-center text-[8px] text-[#94A3B8] mt-1" id="checkinSeatText">图书馆 3F · A3 座</p>
+</div>
+</div>
+<div class="mt-3 rounded-xl bg-[#F8FAFC] px-3 py-2.5 flex items-center gap-2">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[14px] text-brand-600 shrink-0" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27.45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55.47 105-72 118"/></svg>
+<p class="text-[9px] leading-relaxed text-[#64748B]">二维码仅供演示，请确认本人到场；未接入扫码设备或现场核验。</p>
+</div>
+<button class="pressable mt-4 w-full h-11 rounded-[15px] bg-brand-600 text-white text-[12px] font-semibold flex items-center justify-center gap-1.5 shadow-[0_10px_22px_-14px_rgba(13,111,95,0.9)]" onclick="completeCheckin()">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[16px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M224 40v40a8 8 0 0 1-16 0V48h-32a8 8 0 0 1 0-16h40a8 8 0 0 1 8 8M80 208H48v-32a8 8 0 0 0-16 0v40a8 8 0 0 0 8 8h40a8 8 0 0 0 0-16m136-40a8 8 0 0 0-8 8v32h-32a8 8 0 0 0 0 16h40a8 8 0 0 0 8-8v-40a8 8 0 0 0-8-8M40 88a8 8 0 0 0 8-8V48h32a8 8 0 0 0 0-16H40a8 8 0 0 0-8 8v40a8 8 0 0 0 8 8m40-16h96a8 8 0 0 1 8 8v96a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8V80a8 8 0 0 1 8-8m8 96h80V88H88Z"/></svg>
+          确认到场并签到
+        </button>
+</div>
+</div>
+<!-- 取消确认弹层 -->
+<div class="hidden absolute inset-0 z-50" id="cancelModal" role="dialog" aria-modal="true" aria-label="预约操作确认">
+<div class="absolute inset-0 bg-[#0F172A]/45 backdrop-blur-[2px]" onclick="closeCancel()"></div>
+<div class="fade-in absolute inset-x-4 top-1/2 -translate-y-1/2 rounded-[24px] bg-[#F8FAFC] p-5 shadow-2xl">
+<div class="mx-auto w-11 h-11 rounded-full bg-[#FFF1EA] text-[#C56A4A] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[22px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M208 32h-24v-8a8 8 0 0 0-16 0v8H88v-8a8 8 0 0 0-16 0v8H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16M72 48v8a8 8 0 0 0 16 0v-8h80v8a8 8 0 0 0 16 0v-8h24v32H48V48Zm136 160H48V96h160zm-50.34-74.34L139.31 152l18.35 18.34a8 8 0 0 1-11.32 11.32L128 163.31l-18.34 18.35a8 8 0 0 1-11.32-11.32L116.69 152l-18.35-18.34a8 8 0 0 1 11.32-11.32L128 140.69l18.34-18.35a8 8 0 0 1 11.32 11.32"/></svg>
+</div>
+<h2 class="text-[17px] font-bold text-center mt-3">取消这次预约？</h2>
+<p class="text-[10px] leading-[1.7] text-[#7F8C86] text-center mt-2">取消后座位将立即释放给其他同学。操作历史与取消原因将保留，仅待签到预约可取消。</p>
+<div class="flex gap-2 mt-5">
+<button class="pressable flex-1 h-10 rounded-xl border border-[#FCFDFD] bg-white text-[11px] font-medium text-[#475569]" onclick="closeCancel()">暂不取消</button>
+<button class="pressable flex-1 h-10 rounded-xl bg-[#C96849] text-[11px] font-semibold text-white" onclick="confirmCancel()">确认取消</button>
+</div>
+</div>
+</div>
+<!-- 轻提示 -->
+<div class="hidden pointer-events-none absolute bottom-[82px] left-1/2 z-[60] -translate-x-1/2 rounded-xl bg-[#1E293B] px-4 py-2.5 text-center text-[10px] font-medium leading-relaxed text-white shadow-xl max-w-[330px]" id="toast"></div>
+</div>
+
+<template id="booking-card-template"><article class="booking-card rounded-[22px] border border-[#BFDBFE] bg-white overflow-hidden shadow-[0_12px_28px_-24px_rgba(21,36,32,0.55)]" data-state="upcoming" data-original-id="currentBookingCard">
+<div class="h-1 bg-gradient-to-r from-[#2563EB] via-[#60A5FA] to-[#ECD08A]"></div>
+<div class="p-4">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 h-[21px] px-2 rounded-full bg-[#DBEAFE] text-[9px] font-semibold text-[#2563EB]" data-role="status">
+<span class="w-1.5 h-1.5 rounded-full bg-[#3B82F6]"></span>待签到
+              </span>
+<span class="flex items-center gap-1 text-[9px] text-[#A77723]" data-role="countdown">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[11px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M232 136.66A104.12 104.12 0 1 1 119.34 24a8 8 0 0 1 1.32 16A88.12 88.12 0 1 0 216 135.34a8 8 0 0 1 16 1.32M120 72v56a8 8 0 0 0 8 8h56a8 8 0 0 0 0-16h-48V72a8 8 0 0 0-16 0m40-24a12 12 0 1 0-12-12a12 12 0 0 0 12 12m36 24a12 12 0 1 0-12-12a12 12 0 0 0 12 12m24 36a12 12 0 1 0-12-12a12 12 0 0 0 12 12"/></svg>
+                距开始 19 分钟
+              </span>
+</div>
+<div class="flex gap-3 mt-3">
+<div class="relative w-[62px] h-[62px] shrink-0 overflow-hidden rounded-[16px] bg-gradient-to-br from-[#1D4ED8] to-[#3B82F6]">
+<div class="absolute -right-4 -top-4 w-14 h-14 rounded-full border border-white/20"></div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white/90 text-[28px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M216 88.8V72a40 40 0 0 0-40-40H80a40 40 0 0 0-40 40v16.8a40 40 0 0 0 0 78.4V200a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16v-32.8a40 40 0 0 0 0-78.4M80 48h96a24 24 0 0 1 24 24v16.8a40.07 40.07 0 0 0-32 39.2H88a40.07 40.07 0 0 0-32-39.2V72a24 24 0 0 1 24-24m128.39 104H208a8 8 0 0 0-8 8v40H56v-40a8 8 0 0 0-8-8h-.39A24 24 0 1 1 72 128v40a8 8 0 0 0 16 0v-24h80v24a8 8 0 0 0 16 0v-40a24 24 0 1 1 24.39 24"/></svg>
+<span class="absolute bottom-1.5 left-2 text-[7px] tracking-wider text-white/60">LIBRARY</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<h2 class="text-[14px] font-bold truncate tracking-[-0.01em]">图书馆 3F 自习室 A101</h2>
+<p class="flex items-center gap-1 text-[9px] text-[#64748B] mt-1.5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[11px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27.45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55.47 105-72 118"/></svg>
+<span data-original-id="currentZone">东区 A 区</span>
+<span class="w-1 h-1 rounded-full bg-[#CBD5E1]"></span>
+                      图书馆 4F
+                    </p>
+</div>
+<span class="shrink-0 h-[18px] px-1.5 rounded bg-[#F6F1E5] text-[8px] font-mono text-[#967539] flex items-center" data-original-id="currentCode">SE-20261025-0031</span>
+</div>
+<div class="flex items-end justify-between mt-2.5">
+<div>
+<p class="text-[8px] text-[#94A3B8]">使用时段</p>
+<p class="text-[12px] font-semibold mt-0.5" data-role="time" data-original-id="currentTime">14:00–18:00</p>
+</div>
+<div class="text-right">
+<p class="text-[8px] text-[#94A3B8]">座位号</p>
+<p class="text-[18px] leading-none font-bold text-brand-600 mt-1" data-role="seat">A3</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-3 rounded-xl bg-[#F8FAFC] px-3 py-2">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[15px] text-brand-600" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M104 40H56a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16m0 64H56V56h48zm0 32H56a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16v-48a16 16 0 0 0-16-16m0 64H56v-48h48zm96-160h-48a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h48a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16m0 64h-48V56h48zm-64 72v-32a8 8 0 0 1 16 0v32a8 8 0 0 1-16 0m80-16a8 8 0 0 1-8 8h-24v40a8 8 0 0 1-8 8h-32a8 8 0 0 1 0-16h24v-56a8 8 0 0 1 16 0v8h24a8 8 0 0 1 8 8m0 32v16a8 8 0 0 1-16 0v-16a8 8 0 0 1 16 0"/></svg>
+<p class="text-[9px] text-[#64748B]">到馆后扫描桌面二维码，或点击右侧按钮签到</p>
+</div>
+<p class="hidden text-[9px] leading-relaxed text-[#64748B] mt-3 rounded-xl bg-[#F8FAFC] px-3 py-2" data-role="cancel-note">座位已释放给其他同学，本次取消及原因已保留。</p>
+<div class="flex items-center gap-2 mt-3" data-role="actions">
+<button class="pressable flex-1 h-9 rounded-xl border border-[#FCFDFD] bg-white text-[10px] font-medium text-[#475569]">取消预约</button>
+<button class="pressable flex-[1.35] h-9 rounded-xl bg-brand-600 text-[10px] font-semibold text-white flex items-center justify-center gap-1.5 shadow-[0_8px_16px_-12px_rgba(13,111,95,0.9)]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[14px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M224 40v40a8 8 0 0 1-16 0V48h-32a8 8 0 0 1 0-16h40a8 8 0 0 1 8 8M80 208H48v-32a8 8 0 0 0-16 0v40a8 8 0 0 0 8 8h40a8 8 0 0 0 0-16m136-40a8 8 0 0 0-8 8v32h-32a8 8 0 0 0 0 16h40a8 8 0 0 0 8-8v-40a8 8 0 0 0-8-8M40 88a8 8 0 0 0 8-8V48h32a8 8 0 0 0 0-16H40a8 8 0 0 0-8 8v40a8 8 0 0 0 8 8m40-16h96a8 8 0 0 1 8 8v96a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8V80a8 8 0 0 1 8-8m8 96h80V88H88Z"/></svg>
+                到馆签到
+              </button>
+</div>
+</div>
+</article></template>
+<script src="assets/js/studyseat-domain.js?v=d61346dad97b"></script><script src="assets/js/studyseat-app.js?v=fa55a72797db"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+const test=require('node:test'),assert=require('node:assert/strict');
+const factory=require('../deploy/assets/js/studyseat-domain.js');
+const Admin=require('../deploy/assets/js/studyseat-admin-model.js');
+function memory(){const d=new Map();return{getItem:k=>d.has(k)?d.get(k):null,setItem:(k,v)=>d.set(k,String(v)),removeItem:k=>d.delete(k)};}
+function student(){return factory({storage:memory(),session:memory(),now:()=>Date.parse('2026-10-28T13:50:00+08:00')});}
+function book(s){const q={roomId:'lib-a101',seatId:'lib-a101:A08',startAt:s.atTime('2026-10-28','14:00'),endAt:s.atTime('2026-10-28','16:00')};return s.createReservation(q,'unified-session-test');}
+test('学生退出清除会话，重登后预约及原状态保留，学生B不可见A的记录',()=>{const s=student();s.login('832402116','123456','student');const r=book(s);s.logout();assert.equal(s.getSession(),null);assert.throws(()=>s.listMyReservations());s.login('student02','Study1234','student');assert.equal(s.listMyReservations().length,0);s.logout();s.login('832402116','123456','student');assert.equal(s.listMyReservations().length,1);assert.equal(s.listMyReservations()[0].id,r.id);assert.equal(s.listMyReservations()[0].status,'PENDING_CHECKIN');});
+test('学生原有登录角色校验与五次锁定保留',()=>{const s=student();assert.throws(()=>s.login('admin01','Admin1234','student'));for(let i=0;i<5;i++)assert.throws(()=>s.login('832402116','wrong','student'));assert.throws(()=>s.login('832402116','123456','student'),e=>e.type==='LOCKED');});
+test('退出不结束使用中预约',()=>{const s=student();s.login('832402116','123456','student');const r=book(s);s.act(r.id,'CHECKIN');s.logout();s.login('832402116','123456','student');assert.equal(s.listMyReservations()[0].status,'IN_USE');});
+test('管理规则及关闭仅改变管理模块，不影响学生规则或预约',()=>{const s=student();s.login('832402116','123456','student');book(s);const a=Admin.create();a.saveRules({...Admin.DEFAULT,leave:45});a.close({room:'a101',scope:'room',start:'2026-10-28T14:00',end:'2026-10-28T16:00',reason:'设备检修'},'unified-independent');assert.equal(a.state.version,2);assert.equal(a.state.bookings[0].status,'已取消');assert.equal(s.listMyReservations()[0].status,'PENDING_CHECKIN');assert.equal(s.loadData().rules.leaveLimitMinutes,30);});

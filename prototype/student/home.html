@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html class="w-full h-full overflow-hidden" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudySeat · 首页</title>
+<script src="vendor/tailwindcss.js"></script>
+
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+              900: '#1E3A8A'
+            },
+            ink: '#0F172A',
+            sand: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['"PingFang SC"', '"Noto Sans SC"', '"Microsoft YaHei"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    html, body {
+      font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .hide-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    .pressable {
+      transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+    }
+    .pressable:active {
+      transform: scale(0.975);
+    }
+    .category-tile.is-active {
+      background: #2563EB;
+      color: #FFFFFF;
+      box-shadow: 0 10px 24px -12px rgba(13, 111, 95, 0.65);
+    }
+    .category-tile.is-active .category-icon {
+      background: rgba(255, 255, 255, 0.16);
+      color: #FFFFFF;
+    }
+    .category-tile.is-active .category-count {
+      color: rgba(255, 255, 255, 0.72);
+    }
+    .filter-chip.is-active {
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }
+    .room-card {
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .room-card:active {
+      transform: scale(0.987);
+    }
+    .toast-in {
+      animation: toastUp 220ms ease-out both;
+    }
+    @keyframes toastUp {
+      from { opacity: 0; transform: translate(-50%, 8px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+    .drawer-in {
+      animation: drawerRight 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes drawerRight {
+      from { transform: translateX(20px); opacity: 0.5; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .hero-ring {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+  </style>
+<link rel="stylesheet" href="assets/css/studyseat.css?v=4bb9e924046e">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+</head>
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-[#E2E8F0] font-sans text-ink antialiased">
+<div class="relative w-full h-full max-w-[393px] max-h-[852px] overflow-hidden flex flex-col bg-sand shadow-[0_24px_80px_-24px_rgba(21,36,32,0.35)]" id="app">
+<!-- 状态栏 -->
+<div class="shrink-0 h-9 px-5 flex items-center justify-between text-[11px] font-semibold tracking-wide text-[#1E293B]">
+<span>9:41</span>
+<div class="flex items-center gap-1.5 text-[14px]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M168 72v128a8 8 0 0 1-16 0V72a8 8 0 0 1 16 0m-48 32a8 8 0 0 0-8 8v88a8 8 0 0 0 16 0v-88a8 8 0 0 0-8-8m-40 40a8 8 0 0 0-8 8v48a8 8 0 0 0 16 0v-48a8 8 0 0 0-8-8m-40 40a8 8 0 0 0-8 8v8a8 8 0 0 0 16 0v-8a8 8 0 0 0-8-8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M140 204a12 12 0 1 1-12-12a12 12 0 0 1 12 12m97.08-117a172 172 0 0 0-218.16 0a8 8 0 0 0 10.16 12.37a156 156 0 0 1 197.84 0A8 8 0 0 0 237.08 87M205 122.77a124 124 0 0 0-153.94 0A8 8 0 0 0 61 135.31a108 108 0 0 1 134.06 0a8 8 0 0 0 11.24-1.3a8 8 0 0 0-1.3-11.24m-32.26 35.76a76.05 76.05 0 0 0-89.42 0a8 8 0 0 0 9.42 12.94a60 60 0 0 1 70.58 0a8 8 0 1 0 9.42-12.94"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M200 56H32A24 24 0 0 0 8 80v96a24 24 0 0 0 24 24h168a24 24 0 0 0 24-24V80a24 24 0 0 0-24-24m8 120a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8V80a8 8 0 0 1 8-8h168a8 8 0 0 1 8 8Zm-24-80v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0m-40 0v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0m-40 0v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0m-40 0v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0m192 0v64a8 8 0 0 1-16 0V96a8 8 0 0 1 16 0"/></svg>
+</div>
+</div>
+<!-- 顶部区域 -->
+<header class="shrink-0 px-5 pt-1 pb-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-[11px] bg-brand-600 text-white flex items-center justify-center shadow-[0_6px_14px_-8px_rgba(13,111,95,0.9)]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[18px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M216 88.8V72a40 40 0 0 0-40-40H80a40 40 0 0 0-40 40v16.8a40 40 0 0 0 0 78.4V200a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16v-32.8a40 40 0 0 0 0-78.4M80 48h96a24 24 0 0 1 24 24v16.8a40.07 40.07 0 0 0-32 39.2H88a40.07 40.07 0 0 0-32-39.2V72a24 24 0 0 1 24-24m128.39 104H208a8 8 0 0 0-8 8v40H56v-40a8 8 0 0 0-8-8h-.39A24 24 0 1 1 72 128v40a8 8 0 0 0 16 0v-24h80v24a8 8 0 0 0 16 0v-40a24 24 0 1 1 24.39 24"/></svg>
+</div>
+<div>
+<p class="text-[15px] font-bold leading-none tracking-tight">StudySeat</p>
+<p class="text-[9px] text-[#94A3B8] mt-1 tracking-[0.18em] uppercase">Campus Focus</p>
+</div>
+<button class="ml-1 h-6 px-2 rounded-full bg-white border border-[#E2E8F0] flex items-center gap-1 text-[10px] font-medium text-[#475569]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[11px] text-brand-600" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27.45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55.47 105-72 118"/></svg>
+            北校区
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[9px] text-[#98A39F]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32"/></svg>
+</button>
+</div>
+<button aria-label="查看通知" class="pressable relative w-9 h-9 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center text-[#1E293B] shadow-[0_3px_10px_-6px_rgba(21,36,32,0.35)]" onclick="openNotify()">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[18px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M221.8 175.94c-5.55-9.56-13.8-36.61-13.8-71.94a80 80 0 1 0-160 0c0 35.34-8.26 62.38-13.81 71.94A16 16 0 0 0 48 200h40.81a40 40 0 0 0 78.38 0H208a16 16 0 0 0 13.8-24.06M128 216a24 24 0 0 1-22.62-16h45.24A24 24 0 0 1 128 216m-80-32c7.7-13.24 16-43.92 16-80a64 64 0 1 1 128 0c0 36.05 8.28 66.73 16 80Z"/></svg>
+<span class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-[#E86845] ring-2 ring-white"></span>
+</button>
+</div>
+<div class="flex items-end justify-between mt-4">
+<div>
+<p class="text-[25px] leading-[1.2] font-bold tracking-[-0.03em]">早上好，<span data-user-name>学生</span></p>
+<p class="text-[12px] text-[#64748B] mt-1.5">今天也要专注充电呀，图书馆已经开门了</p>
+</div>
+<div class="shrink-0 w-[50px] h-[53px] rounded-2xl bg-[#FCF2D7] flex flex-col items-center justify-center border border-[#F1E3BF] mb-0.5">
+<span class="text-[21px] leading-none font-bold text-[#8E671E]" data-home-day>25</span>
+<span class="text-[9px] text-[#A18043] mt-1" data-home-month>10月 · 周日</span>
+</div>
+</div>
+<div class="flex gap-2 mt-4">
+<label class="flex-1 h-11 rounded-2xl bg-white border border-[#E2E8F0] flex items-center gap-2 px-3.5 shadow-[0_4px_16px_-12px_rgba(21,36,32,0.4)]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[18px] text-[#64748B]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></svg>
+<input class="w-full bg-transparent outline-none text-[12px] placeholder:text-[#94A3B8] text-[#1E293B]" id="searchInput" oninput="applyFilters()" placeholder="搜索自习室、教学楼或座位" type="text"/>
+<button aria-label="清空搜索" class="hidden" id="clearSearchBtn" onclick="clearSearch()" type="button">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[16px] text-[#CBD5E1]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m37.66 130.34a8 8 0 0 1-11.32 11.32L128 139.31l-26.34 26.35a8 8 0 0 1-11.32-11.32L116.69 128l-26.35-26.34a8 8 0 0 1 11.32-11.32L128 116.69l26.34-26.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/></svg>
+</button>
+</label>
+<button aria-label="重置筛选" class="pressable shrink-0 w-11 h-11 rounded-2xl bg-white border border-[#E2E8F0] flex items-center justify-center text-[#334155]" onclick="resetFilters()">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[20px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M40 88h33a32 32 0 0 0 62 0h81a8 8 0 0 0 0-16h-81a32 32 0 0 0-62 0H40a8 8 0 0 0 0 16m64-24a16 16 0 1 1-16 16a16 16 0 0 1 16-16m112 104h-17a32 32 0 0 0-62 0H40a8 8 0 0 0 0 16h97a32 32 0 0 0 62 0h17a8 8 0 0 0 0-16m-48 24a16 16 0 1 1 16-16a16 16 0 0 1-16 16"/></svg>
+</button>
+</div>
+</header>
+<!-- 主内容 -->
+<main id="ss-main" class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden hide-scrollbar px-5 pb-6">
+<!-- Hero -->
+<section class="relative overflow-hidden rounded-[26px] bg-gradient-to-br from-[#1D4ED8] via-[#2563EB] to-[#3B82F6] px-5 py-5 text-white shadow-[0_18px_36px_-24px_rgba(8,75,64,0.8)]">
+<div class="absolute -right-9 -top-14 w-[178px] h-[178px] rounded-full hero-ring"></div>
+<div class="absolute -right-2 -top-5 w-[118px] h-[118px] rounded-full hero-ring"></div>
+<div class="absolute right-3 bottom-0 opacity-[0.13]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[116px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M216 88.8V72a40 40 0 0 0-40-40H80a40 40 0 0 0-40 40v16.8a40 40 0 0 0 0 78.4V200a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16v-32.8a40 40 0 0 0 0-78.4M80 48h96a24 24 0 0 1 24 24v16.8a40.07 40.07 0 0 0-32 39.2H88a40.07 40.07 0 0 0-32-39.2V72a24 24 0 0 1 24-24m128.39 104H208a8 8 0 0 0-8 8v40H56v-40a8 8 0 0 0-8-8h-.39A24 24 0 1 1 72 128v40a8 8 0 0 0 16 0v-24h80v24a8 8 0 0 0 16 0v-40a24 24 0 1 1 24.39 24"/></svg>
+</div>
+<div class="absolute right-4 top-[53px] w-2 h-2 rounded-full bg-[#F4C65F]"></div>
+<div class="relative z-10 max-w-[224px]">
+<span class="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full bg-white/12 border border-white/15 text-[10px] tracking-wide text-[#EFF6FF]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#BFDBFE] animate-pulse"></span>
+            本地模拟空位更新
+          </span>
+<h2 class="text-[21px] leading-[1.38] font-semibold mt-3 tracking-[-0.02em]">把今天的专注<br/>留在喜欢的座位</h2>
+<div class="flex items-center gap-3 mt-3">
+<span class="text-[11px] text-[#DBEAFE]">当前空闲 <strong class="text-[17px] text-white font-semibold">128</strong> 座</span>
+<span class="w-px h-3 bg-white/25"></span>
+<span class="text-[10px] text-[#DBEAFE]">按房间开放时间</span>
+</div>
+<a class="pressable mt-4 inline-flex h-9 items-center gap-1.5 rounded-full bg-[#F3C964] px-4 text-[12px] font-semibold text-[#3A2B0B] shadow-[0_8px_16px_-10px_rgba(0,0,0,0.45)]" href="room.html">
+            立即选座
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[13px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32"/></svg>
+</a>
+</div>
+</section>
+<!-- 场景分类 -->
+<section class="mt-5">
+<div class="flex items-center justify-between mb-3">
+<div>
+<h3 class="text-[16px] font-bold tracking-[-0.01em]">按场景找座</h3>
+<p class="text-[10px] text-[#64748B] mt-0.5">今天想以怎样的方式专注？</p>
+</div>
+<button class="text-[11px] font-medium text-brand-600" onclick="resetFilters()">查看全部</button>
+</div>
+<div class="grid grid-cols-4 gap-2.5">
+<button class="category-tile pressable rounded-2xl border border-[#E2E8F0] bg-white px-2 py-3 flex flex-col items-center gap-2 text-[#1E293B]" data-category="quiet" onclick="toggleCategory('quiet')">
+<span class="category-icon w-8 h-8 rounded-[11px] bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[17px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M232 48h-72a40 40 0 0 0-32 16a40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v144a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24a8 8 0 0 0 16 0a24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V56a8 8 0 0 0-8-8M96 192H32V64h64a24 24 0 0 1 24 24v112a39.8 39.8 0 0 0-24-8m128 0h-64a39.8 39.8 0 0 0-24 8V88a24 24 0 0 1 24-24h64Z"/></svg>
+</span>
+<span class="text-[11px] font-semibold leading-none">静音自习</span>
+<span class="category-count text-[9px] text-[#94A3B8] leading-none">32 间</span>
+</button>
+<button class="category-tile pressable rounded-2xl border border-[#E2E8F0] bg-white px-2 py-3 flex flex-col items-center gap-2 text-[#1E293B]" data-category="group" onclick="toggleCategory('group')">
+<span class="category-icon w-8 h-8 rounded-[11px] bg-[#FFF0DA] text-[#B77923] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[17px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M244.8 150.4a8 8 0 0 1-11.2-1.6A51.6 51.6 0 0 0 192 128a8 8 0 0 1-7.37-4.89a8 8 0 0 1 0-6.22A8 8 0 0 1 192 112a24 24 0 1 0-23.24-30a8 8 0 1 1-15.5-4A40 40 0 1 1 219 117.51a67.94 67.94 0 0 1 27.43 21.68a8 8 0 0 1-1.63 11.21M190.92 212a8 8 0 1 1-13.84 8a57 57 0 0 0-98.16 0a8 8 0 1 1-13.84-8a72.06 72.06 0 0 1 33.74-29.92a48 48 0 1 1 58.36 0A72.06 72.06 0 0 1 190.92 212M128 176a32 32 0 1 0-32-32a32 32 0 0 0 32 32m-56-56a8 8 0 0 0-8-8a24 24 0 1 1 23.24-30a8 8 0 1 0 15.5-4A40 40 0 1 0 37 117.51a67.94 67.94 0 0 0-27.4 21.68a8 8 0 1 0 12.8 9.61A51.6 51.6 0 0 1 64 128a8 8 0 0 0 8-8"/></svg>
+</span>
+<span class="text-[11px] font-semibold leading-none">小组研讨</span>
+<span class="category-count text-[9px] text-[#94A3B8] leading-none">12 间</span>
+</button>
+<button class="category-tile pressable rounded-2xl border border-[#E2E8F0] bg-white px-2 py-3 flex flex-col items-center gap-2 text-[#1E293B]" data-category="night" onclick="toggleCategory('night')">
+<span class="category-icon w-8 h-8 rounded-[11px] bg-[#E9EDFA] text-[#5168A7] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[17px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M240 96a8 8 0 0 1-8 8h-16v16a8 8 0 0 1-16 0v-16h-16a8 8 0 0 1 0-16h16V72a8 8 0 0 1 16 0v16h16a8 8 0 0 1 8 8m-96-40h8v8a8 8 0 0 0 16 0v-8h8a8 8 0 0 0 0-16h-8v-8a8 8 0 0 0-16 0v8h-8a8 8 0 0 0 0 16m72.77 97a8 8 0 0 1 1.43 8A96 96 0 1 1 95.07 37.8a8 8 0 0 1 10.6 9.06a88.07 88.07 0 0 0 103.47 103.47a8 8 0 0 1 7.63 2.67m-19.39 14.88c-1.79.09-3.59.14-5.38.14A104.11 104.11 0 0 1 88 64c0-1.79 0-3.59.14-5.38a80 80 0 1 0 109.24 109.24Z"/></svg>
+</span>
+<span class="text-[11px] font-semibold leading-none">24小时</span>
+<span class="category-count text-[9px] text-[#94A3B8] leading-none">4 间</span>
+</button>
+<button class="category-tile pressable rounded-2xl border border-[#E2E8F0] bg-white px-2 py-3 flex flex-col items-center gap-2 text-[#1E293B]" data-category="laptop" onclick="toggleCategory('laptop')">
+<span class="category-icon w-8 h-8 rounded-[11px] bg-[#E7F0F6] text-[#397391] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[17px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M232 168h-8V72a24 24 0 0 0-24-24H56a24 24 0 0 0-24 24v96h-8a8 8 0 0 0-8 8v16a24 24 0 0 0 24 24h176a24 24 0 0 0 24-24v-16a8 8 0 0 0-8-8M48 72a8 8 0 0 1 8-8h144a8 8 0 0 1 8 8v96H48Zm176 120a8 8 0 0 1-8 8H40a8 8 0 0 1-8-8v-8h192ZM152 88a8 8 0 0 1-8 8h-32a8 8 0 0 1 0-16h32a8 8 0 0 1 8 8"/></svg>
+</span>
+<span class="text-[11px] font-semibold leading-none">电脑工位</span>
+<span class="category-count text-[9px] text-[#94A3B8] leading-none">8 间</span>
+</button>
+</div>
+</section>
+<!-- 推荐列表 -->
+<section class="mt-6">
+<div class="flex items-center justify-between">
+<div class="flex items-baseline gap-2">
+<h3 class="text-[16px] font-bold">为你推荐</h3>
+<span class="text-[10px] text-[#64748B]" id="resultCount">共 4 间</span>
+</div>
+<div class="flex items-center gap-1 text-[10px] text-[#7F8C87]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#3B82F6]"></span>
+            实时空位
+          </div>
+</div>
+<div class="flex gap-2 mt-3 overflow-x-auto hide-scrollbar pb-1">
+<button class="filter-chip is-active shrink-0 h-7 px-3 rounded-full border border-[#FCFDFD] bg-white text-[10px] font-medium text-[#475569]" data-filter="all" onclick="setAvailabilityFilter('all')">全部</button>
+<button class="filter-chip shrink-0 h-7 px-3 rounded-full border border-[#FCFDFD] bg-white text-[10px] font-medium text-[#475569]" data-filter="available" onclick="setAvailabilityFilter('available')">有空位</button>
+<button class="filter-chip shrink-0 h-7 px-3 rounded-full border border-[#FCFDFD] bg-white text-[10px] font-medium text-[#475569]" data-filter="near" onclick="setAvailabilityFilter('near')">步行 5 分钟</button>
+<button class="filter-chip shrink-0 h-7 px-3 rounded-full border border-[#FCFDFD] bg-white text-[10px] font-medium text-[#475569]" data-filter="night" onclick="setAvailabilityFilter('night')">24 小时</button>
+</div>
+<details class="ss-query-details mt-3" id="home-conditions"><summary>调整查询日期与时段 <span id="home-query-summary"></span></summary><div id="home-query-fields"></div></details><div id="ss-message" class="ss-notice ss-error ss-message" role="alert"></div>
+<div class="mt-3 space-y-3" id="roomList">
+<a class="room-card block bg-white rounded-[22px] border border-[#E2E8F0] p-3 shadow-[0_8px_24px_-20px_rgba(21,36,32,0.5)]" data-available="true" data-category="quiet" data-keywords="图书馆 3F 自习室 A101 静音 插座 wifi 北校区" data-near="true" data-night="false" href="room.html?roomId=lib-a101" data-room="lib-a101">
+<div class="flex gap-3">
+<div class="relative w-[88px] h-[88px] shrink-0 overflow-hidden rounded-[17px] bg-gradient-to-br from-[#1D4ED8] to-[#3B82F6]">
+<div class="absolute -right-5 -top-5 w-16 h-16 rounded-full border border-white/15"></div>
+<div class="absolute left-2.5 top-2.5 h-4 px-1.5 rounded-md bg-white/14 border border-white/15 flex items-center text-[8px] text-white/90">3F</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white/90 text-[37px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M216 88.8V72a40 40 0 0 0-40-40H80a40 40 0 0 0-40 40v16.8a40 40 0 0 0 0 78.4V200a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16v-32.8a40 40 0 0 0 0-78.4M80 48h96a24 24 0 0 1 24 24v16.8a40.07 40.07 0 0 0-32 39.2H88a40.07 40.07 0 0 0-32-39.2V72a24 24 0 0 1 24-24m128.39 104H208a8 8 0 0 0-8 8v40H56v-40a8 8 0 0 0-8-8h-.39A24 24 0 1 1 72 128v40a8 8 0 0 0 16 0v-24h80v24a8 8 0 0 0 16 0v-40a24 24 0 1 1 24.39 24"/></svg>
+<div class="absolute bottom-2 left-2.5 right-2.5 h-[1px] bg-white/20"></div>
+<div class="absolute bottom-2.5 left-2.5 text-[8px] text-white/65 tracking-wider">QUIET ZONE</div>
+</div>
+<div class="min-w-0 flex-1 pt-0.5">
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1 h-[19px] px-1.5 rounded-md bg-[#DBEAFE] text-[9px] font-semibold text-[#2563EB]">
+<span class="w-1 h-1 rounded-full bg-[#3B82F6]"></span>静音区
+                  </span>
+<span class="flex items-center gap-0.5 text-[10px] font-medium text-[#8B6A27]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[10px] text-[#E6B44C]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>4.9
+                  </span>
+</div>
+<h4 class="text-[14px] font-bold mt-1.5 truncate tracking-[-0.01em]">图书馆 3F 自习室 A101</h4>
+<p class="flex items-center gap-1 text-[10px] text-[#64748B] mt-1.5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[11px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27.45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55.47 105-72 118"/></svg>
+                  图书馆 3F · 距你 280m
+                </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">插座</span>
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">WiFi</span>
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">护眼灯</span>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-[#F1F5F9] flex items-center gap-3">
+<span class="text-[10px] text-[#64748B] whitespace-nowrap"><strong class="text-[15px] font-bold text-brand-600">28</strong> / 120 空位</span>
+<div class="flex-1 h-1.5 rounded-full bg-[#F1F5F9] overflow-hidden">
+<div class="h-full w-[23%] rounded-full bg-[#3B82F6]"></div>
+</div>
+<span class="text-[10px] text-brand-600 font-medium flex items-center gap-0.5">查看座位<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[10px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m181.66 133.66l-80 80a8 8 0 0 1-11.32-11.32L164.69 128L90.34 53.66a8 8 0 0 1 11.32-11.32l80 80a8 8 0 0 1 0 11.32"/></svg></span>
+</div>
+</a>
+<a class="room-card block bg-white rounded-[22px] border border-[#E2E8F0] p-3 shadow-[0_8px_24px_-20px_rgba(21,36,32,0.5)]" data-available="true" data-category="group" data-keywords="东区教学楼 B203 研讨 自习室 白板 投影" data-near="true" data-night="false" href="room.html?roomId=east-b203" data-room="east-b203">
+<div class="flex gap-3">
+<div class="relative w-[88px] h-[88px] shrink-0 overflow-hidden rounded-[17px] bg-gradient-to-br from-[#D9A445] to-[#F1CB83]">
+<div class="absolute -left-4 -bottom-6 w-20 h-20 rounded-full bg-white/15"></div>
+<div class="absolute right-2.5 top-2.5 h-4 px-1.5 rounded-md bg-white/30 flex items-center text-[8px] text-[#694E17] font-medium">2F</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[#71511A]/75 text-[38px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M244.8 150.4a8 8 0 0 1-11.2-1.6A51.6 51.6 0 0 0 192 128a8 8 0 0 1-7.37-4.89a8 8 0 0 1 0-6.22A8 8 0 0 1 192 112a24 24 0 1 0-23.24-30a8 8 0 1 1-15.5-4A40 40 0 1 1 219 117.51a67.94 67.94 0 0 1 27.43 21.68a8 8 0 0 1-1.63 11.21M190.92 212a8 8 0 1 1-13.84 8a57 57 0 0 0-98.16 0a8 8 0 1 1-13.84-8a72.06 72.06 0 0 1 33.74-29.92a48 48 0 1 1 58.36 0A72.06 72.06 0 0 1 190.92 212M128 176a32 32 0 1 0-32-32a32 32 0 0 0 32 32m-56-56a8 8 0 0 0-8-8a24 24 0 1 1 23.24-30a8 8 0 1 0 15.5-4A40 40 0 1 0 37 117.51a67.94 67.94 0 0 0-27.4 21.68a8 8 0 1 0 12.8 9.61A51.6 51.6 0 0 1 64 128a8 8 0 0 0 8-8"/></svg>
+<div class="absolute bottom-2.5 left-2.5 text-[8px] text-[#74551F]/65 tracking-wider">GROUP ROOM</div>
+</div>
+<div class="min-w-0 flex-1 pt-0.5">
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1 h-[19px] px-1.5 rounded-md bg-[#FFF5E4] text-[9px] font-semibold text-[#A56F18]">
+<span class="w-1 h-1 rounded-full bg-[#D9A445]"></span>可讨论
+                  </span>
+<span class="flex items-center gap-0.5 text-[10px] font-medium text-[#8B6A27]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[10px] text-[#E6B44C]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>4.8
+                  </span>
+</div>
+<h4 class="text-[14px] font-bold mt-1.5 truncate tracking-[-0.01em]">东区教学楼 B203 · 研讨室</h4>
+<p class="flex items-center gap-1 text-[10px] text-[#64748B] mt-1.5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[11px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27.45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55.47 105-72 118"/></svg>
+                  东区 B 栋 · 距你 350m
+                </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">白板</span>
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">投屏</span>
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">6人桌</span>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-[#F1F5F9] flex items-center gap-3">
+<span class="text-[10px] text-[#64748B] whitespace-nowrap"><strong class="text-[15px] font-bold text-brand-600">12</strong> / 48 空位</span>
+<div class="flex-1 h-1.5 rounded-full bg-[#F1F5F9] overflow-hidden">
+<div class="h-full w-[25%] rounded-full bg-[#E0AC51]"></div>
+</div>
+<span class="text-[10px] text-brand-600 font-medium flex items-center gap-0.5">查看座位<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[10px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m181.66 133.66l-80 80a8 8 0 0 1-11.32-11.32L164.69 128L90.34 53.66a8 8 0 0 1 11.32-11.32l80 80a8 8 0 0 1 0 11.32"/></svg></span>
+</div>
+</a>
+<a class="room-card block bg-white rounded-[22px] border border-[#E2E8F0] p-3 shadow-[0_8px_24px_-20px_rgba(21,36,32,0.5)]" data-available="true" data-category="night" data-keywords="学生活动中心 24小时 通宵 自习 咖啡 西区" data-near="false" data-night="true" href="room.html?roomId=activity-24" data-room="activity-24">
+<div class="flex gap-3">
+<div class="relative w-[88px] h-[88px] shrink-0 overflow-hidden rounded-[17px] bg-gradient-to-br from-[#293A58] to-[#4E6587]">
+<div class="absolute -right-2 -top-4 w-16 h-16 rounded-full border border-white/10"></div>
+<div class="absolute left-2.5 top-2.5 h-4 px-1.5 rounded-md bg-white/14 border border-white/10 flex items-center text-[8px] text-white/90">1F</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white/85 text-[35px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M240 96a8 8 0 0 1-8 8h-16v16a8 8 0 0 1-16 0v-16h-16a8 8 0 0 1 0-16h16V72a8 8 0 0 1 16 0v16h16a8 8 0 0 1 8 8m-96-40h8v8a8 8 0 0 0 16 0v-8h8a8 8 0 0 0 0-16h-8v-8a8 8 0 0 0-16 0v8h-8a8 8 0 0 0 0 16m72.77 97a8 8 0 0 1 1.43 8A96 96 0 1 1 95.07 37.8a8 8 0 0 1 10.6 9.06a88.07 88.07 0 0 0 103.47 103.47a8 8 0 0 1 7.63 2.67m-19.39 14.88c-1.79.09-3.59.14-5.38.14A104.11 104.11 0 0 1 88 64c0-1.79 0-3.59.14-5.38a80 80 0 1 0 109.24 109.24Z"/></svg>
+<div class="absolute bottom-2.5 left-2.5 text-[8px] text-white/60 tracking-wider">24H OPEN</div>
+</div>
+<div class="min-w-0 flex-1 pt-0.5">
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1 h-[19px] px-1.5 rounded-md bg-[#EBEFF8] text-[9px] font-semibold text-[#536A9A]">
+<span class="w-1 h-1 rounded-full bg-[#7188B8]"></span>24小时
+                  </span>
+<span class="flex items-center gap-0.5 text-[10px] font-medium text-[#8B6A27]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[10px] text-[#E6B44C]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>4.7
+                  </span>
+</div>
+<h4 class="text-[14px] font-bold mt-1.5 truncate tracking-[-0.01em]">24h 自习空间 · 学生活动中心</h4>
+<p class="flex items-center gap-1 text-[10px] text-[#64748B] mt-1.5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[11px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27.45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55.47 105-72 118"/></svg>
+                  西区 1F · 距你 720m
+                </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">咖啡</span>
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">空调</span>
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">沙发座</span>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-[#F1F5F9] flex items-center gap-3">
+<span class="text-[10px] text-[#64748B] whitespace-nowrap"><strong class="text-[15px] font-bold text-brand-600">9</strong> / 64 空位</span>
+<div class="flex-1 h-1.5 rounded-full bg-[#F1F5F9] overflow-hidden">
+<div class="h-full w-[14%] rounded-full bg-[#7188B8]"></div>
+</div>
+<span class="text-[10px] text-brand-600 font-medium flex items-center gap-0.5">查看座位<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[10px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m181.66 133.66l-80 80a8 8 0 0 1-11.32-11.32L164.69 128L90.34 53.66a8 8 0 0 1 11.32-11.32l80 80a8 8 0 0 1 0 11.32"/></svg></span>
+</div>
+</a>
+<a class="room-card block bg-white rounded-[22px] border border-[#E2E8F0] p-3 shadow-[0_8px_24px_-20px_rgba(21,36,32,0.5)]" data-available="true" data-category="quiet" data-keywords="图书馆 2F 临窗 阅览区 静音 护眼灯" data-near="true" data-night="false" href="room.html?roomId=lib-window" data-room="lib-window">
+<div class="flex gap-3">
+<div class="relative w-[88px] h-[88px] shrink-0 overflow-hidden rounded-[17px] bg-gradient-to-br from-[#93C5FD] to-[#BFDBFE]">
+<div class="absolute right-3 top-3 w-9 h-10 rounded-t-full border border-white/55"></div>
+<div class="absolute right-5 top-3 w-[1px] h-10 bg-white/55"></div>
+<div class="absolute right-7 top-3 w-[1px] h-10 bg-white/35"></div>
+<div class="absolute left-2.5 top-2.5 h-4 px-1.5 rounded-md bg-white/40 flex items-center text-[8px] text-[#1E3A8A] font-medium">2F</div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="absolute left-3 bottom-2 text-[#2563EB]/70 text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M247.63 47.89a8 8 0 0 0-7.52-7.52c-51.76-3-93.32 12.74-111.18 42.22c-11.8 19.49-11.78 43.16-.16 65.74a71.3 71.3 0 0 0-14.17 27L98.33 159c7.82-16.33 7.52-33.35-1-47.49c-13.2-21.79-43.67-33.47-81.5-31.25a8 8 0 0 0-7.52 7.52c-2.23 37.83 9.46 68.3 31.25 81.5A45.8 45.8 0 0 0 63.44 176A54.6 54.6 0 0 0 87 170.33l25 25V224a8 8 0 0 0 16 0v-29.49a55.6 55.6 0 0 1 12.27-35a73.9 73.9 0 0 0 33.31 8.4a60.9 60.9 0 0 0 31.83-8.86c29.48-17.84 45.26-59.4 42.22-111.16M47.81 155.6C32.47 146.31 23.79 124.32 24 96c28.32-.24 50.31 8.47 59.6 23.81c4.85 8 5.64 17.33 2.46 26.94l-24.41-24.41a8 8 0 0 0-11.31 11.31l24.41 24.41c-9.61 3.18-18.93 2.39-26.94-2.46m149.31-10.22c-13.4 8.11-29.15 8.73-45.15 2l53.69-53.7a8 8 0 0 0-11.31-11.31L140.65 136c-6.76-16-6.15-31.76 2-45.15c13.94-23 47-35.82 89.33-34.83c.96 42.32-11.84 75.42-34.86 89.36"/></svg>
+<div class="absolute bottom-2.5 right-2.5 text-[8px] text-[#1E3A8A]/60 tracking-wider">WINDOW</div>
+</div>
+<div class="min-w-0 flex-1 pt-0.5">
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1 h-[19px] px-1.5 rounded-md bg-[#DBEAFE] text-[9px] font-semibold text-[#2563EB]">
+<span class="w-1 h-1 rounded-full bg-[#3B82F6]"></span>临窗
+                  </span>
+<span class="flex items-center gap-0.5 text-[10px] font-medium text-[#8B6A27]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[10px] text-[#E6B44C]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m234.29 114.85l-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07l-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76l22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08l59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg>4.9
+                  </span>
+</div>
+<h4 class="text-[14px] font-bold mt-1.5 truncate tracking-[-0.01em]">图书馆 2F · 临窗阅览区</h4>
+<p class="flex items-center gap-1 text-[10px] text-[#64748B] mt-1.5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[11px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27.45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55.47 105-72 118"/></svg>
+                  图书馆 2F · 距你 260m
+                </p>
+<div class="flex items-center gap-1 mt-2">
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">临窗位</span>
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">护眼灯</span>
+<span class="h-[18px] px-1.5 rounded bg-[#F8FAFC] text-[8px] text-[#475569] flex items-center">绿植</span>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-2.5 border-t border-[#F1F5F9] flex items-center gap-3">
+<span class="text-[10px] text-[#64748B] whitespace-nowrap"><strong class="text-[15px] font-bold text-brand-600">5</strong> / 80 空位</span>
+<div class="flex-1 h-1.5 rounded-full bg-[#F1F5F9] overflow-hidden">
+<div class="h-full w-[8%] rounded-full bg-[#93C5FD]"></div>
+</div>
+<span class="text-[10px] text-brand-600 font-medium flex items-center gap-0.5">查看座位<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[10px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m181.66 133.66l-80 80a8 8 0 0 1-11.32-11.32L164.69 128L90.34 53.66a8 8 0 0 1 11.32-11.32l80 80a8 8 0 0 1 0 11.32"/></svg></span>
+</div>
+</a>
+</div>
+<div class="hidden mt-3 rounded-[22px] border border-dashed border-[#CBD5E1] bg-white/70 px-5 py-9 text-center" id="emptyState">
+<div class="mx-auto w-12 h-12 rounded-full bg-[#F6F8F9] flex items-center justify-center text-[#64748B]">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[22px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="m229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32M40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72"/></svg>
+</div>
+<p class="text-[13px] font-semibold mt-3">暂时没有匹配的自习室</p>
+<p class="text-[10px] text-[#64748B] mt-1">换个关键词，或重置筛选条件试试</p>
+<button class="mt-4 h-8 px-4 rounded-full bg-brand-600 text-white text-[11px] font-medium" onclick="resetFilters()">重置筛选</button>
+</div>
+</section>
+<div class="mt-4 flex items-start gap-2.5 rounded-2xl bg-[#F5F8F9] border border-[#EFF6FF] px-3.5 py-3">
+<div class="w-6 h-6 shrink-0 rounded-full bg-white text-[#7397CB] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[14px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88m16-40a8 8 0 0 1-8 8a16 16 0 0 1-16-16v-40a8 8 0 0 1 0-16a16 16 0 0 1 16 16v40a8 8 0 0 1 8 8m-32-92a12 12 0 1 1 12 12a12 12 0 0 1-12-12"/></svg>
+</div>
+<p class="text-[10px] leading-[1.65] text-[#ABB2B8]">演示规则：开始前 10 分钟至开始后 15 分钟可签到；暂离上限 30 分钟。</p>
+</div>
+</main>
+<!-- 底部导航 -->
+<nav class="shrink-0 border-t border-[#E2E8F0] bg-white/96 backdrop-blur-md px-3 pt-1.5 pb-3">
+<div class="grid grid-cols-4">
+<a class="flex flex-col items-center gap-1 py-1 text-brand-600" href="home.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M224 120v96a8 8 0 0 1-8 8h-56a8 8 0 0 1-8-8v-52a4 4 0 0 0-4-4h-40a4 4 0 0 0-4 4v52a8 8 0 0 1-8 8H40a8 8 0 0 1-8-8v-96a16 16 0 0 1 4.69-11.31l80-80a16 16 0 0 1 22.62 0l80 80A16 16 0 0 1 224 120"/></svg>
+<span class="text-[9px] font-semibold">首页</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 text-[#94A3B8]" href="room.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M216 88.8V72a40 40 0 0 0-40-40H80a40 40 0 0 0-40 40v16.8a40 40 0 0 0 0 78.4V200a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16v-32.8a40 40 0 0 0 0-78.4M80 48h96a24 24 0 0 1 24 24v16.8a40.07 40.07 0 0 0-32 39.2H88a40.07 40.07 0 0 0-32-39.2V72a24 24 0 0 1 24-24m128.39 104H208a8 8 0 0 0-8 8v40H56v-40a8 8 0 0 0-8-8h-.39A24 24 0 1 1 72 128v40a8 8 0 0 0 16 0v-24h80v24a8 8 0 0 0 16 0v-40a24 24 0 1 1 24.39 24"/></svg>
+<span class="text-[9px] font-medium">找座</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 text-[#94A3B8]" href="bookings.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M208 32h-24v-8a8 8 0 0 0-16 0v8H88v-8a8 8 0 0 0-16 0v8H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16M72 48v8a8 8 0 0 0 16 0v-8h80v8a8 8 0 0 0 16 0v-8h24v32H48V48Zm136 160H48V96h160zm-38.34-85.66a8 8 0 0 1 0 11.32l-48 48a8 8 0 0 1-11.32 0l-24-24a8 8 0 0 1 11.32-11.32L116 164.69l42.34-42.35a8 8 0 0 1 11.32 0"/></svg>
+<span class="text-[9px] font-medium">预约</span>
+</a>
+<a class="flex flex-col items-center gap-1 py-1 text-[#94A3B8]" href="profile.html">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[21px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"/></svg>
+<span class="text-[9px] font-medium">我的</span>
+</a>
+</div>
+</nav>
+<!-- 通知抽屉 -->
+<div class="hidden absolute inset-0 z-40" id="notifyOverlay">
+<div class="absolute inset-0 bg-[#0F172A]/35 backdrop-blur-[2px]" onclick="closeNotify()"></div>
+<aside class="drawer-in absolute right-0 top-0 h-full w-[86%] max-w-[330px] bg-[#F8FAFC] shadow-2xl flex flex-col">
+<div class="shrink-0 px-5 pt-4 pb-3 flex items-center justify-between border-b border-[#E2E8F0]">
+<div>
+<p class="text-[18px] font-bold">消息通知</p>
+<p class="text-[10px] text-[#64748B] mt-0.5" id="notifyUnreadText">2 条未读 · 刚刚更新</p>
+</div>
+<button aria-label="关闭通知" class="w-8 h-8 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center text-[#475569]" onclick="closeNotify()">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[16px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128L50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/></svg>
+</button>
+</div>
+<div class="flex-1 min-h-0 overflow-y-auto hide-scrollbar px-4 py-4 space-y-2.5">
+<button class="w-full text-left bg-[#EFF6FF] border border-[#DBEAFE] rounded-2xl p-3.5" onclick="markAllRead()">
+<div class="flex gap-3">
+<div class="w-8 h-8 shrink-0 rounded-xl bg-white text-[#2563EB] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[17px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M216 88.8V72a40 40 0 0 0-40-40H80a40 40 0 0 0-40 40v16.8a40 40 0 0 0 0 78.4V200a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16v-32.8a40 40 0 0 0 0-78.4M80 48h96a24 24 0 0 1 24 24v16.8a40.07 40.07 0 0 0-32 39.2H88a40.07 40.07 0 0 0-32-39.2V72a24 24 0 0 1 24-24m128.39 104H208a8 8 0 0 0-8 8v40H56v-40a8 8 0 0 0-8-8h-.39A24 24 0 1 1 72 128v40a8 8 0 0 0 16 0v-24h80v24a8 8 0 0 0 16 0v-40a24 24 0 1 1 24.39 24"/></svg>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<p class="text-[12px] font-semibold">你常坐的 A3 空出来了</p>
+<span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#E86845]" data-unread-dot=""></span>
+</div>
+<p class="text-[10px] leading-relaxed text-[#475569] mt-1">图书馆 3F静音区现有 28 个空位，去预定今天的专注座位吧。</p>
+<p class="text-[9px] text-[#94A3B8] mt-2">8 分钟前</p>
+</div>
+</div>
+</button>
+<button class="w-full text-left bg-white border border-[#E2E8F0] rounded-2xl p-3.5" onclick="markAllRead()">
+<div class="flex gap-3">
+<div class="w-8 h-8 shrink-0 rounded-xl bg-[#FFF3DC] text-[#AE7721] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[17px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88m64-88a8 8 0 0 1-8 8h-56a8 8 0 0 1-8-8V72a8 8 0 0 1 16 0v48h48a8 8 0 0 1 8 8"/></svg>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<p class="text-[12px] font-semibold">签到提醒</p>
+<span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#E86845]" data-unread-dot=""></span>
+</div>
+<p class="text-[10px] leading-relaxed text-[#475569] mt-1">今天 10:00 的预约将在 19 分钟后开始，请提前到馆签到。</p>
+<p class="text-[9px] text-[#94A3B8] mt-2">1 小时前</p>
+</div>
+</div>
+</button>
+<div class="bg-white border border-[#E2E8F0] rounded-2xl p-3.5">
+<div class="flex gap-3">
+<div class="w-8 h-8 shrink-0 rounded-xl bg-[#EDF0F7] text-[#5D7097] flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" class="text-[17px]" style="display:inline-block;vertical-align:middle" fill="currentColor"><path fill="currentColor" d="M216 96a88 88 0 1 0-144 67.83V240a8 8 0 0 0 11.58 7.16L128 225l44.43 22.21a8.1 8.1 0 0 0 3.57.79a8 8 0 0 0 8-8v-76.17A87.85 87.85 0 0 0 216 96M56 96a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72m112 131.06l-36.43-18.21a8 8 0 0 0-7.16 0L88 227.06v-52.69a87.89 87.89 0 0 0 80 0ZM128 152a56 56 0 1 0-56-56a56.06 56.06 0 0 0 56 56m0-96a40 40 0 1 1-40 40a40 40 0 0 1 40-40"/></svg>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<p class="text-[12px] font-semibold">解锁「连续专注 7 天」</p>
+<span class="text-[9px] text-[#94A3B8]">昨天</span>
+</div>
+<p class="text-[10px] leading-relaxed text-[#475569] mt-1">本周累计专注 12.5 小时，你已超过 86% 的同学。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="shrink-0 px-4 py-3 border-t border-[#E2E8F0]">
+<button class="w-full h-10 rounded-xl bg-[#EFF6FF] text-[12px] font-semibold text-brand-700" onclick="markAllRead()">全部标为已读</button>
+</div>
+</aside>
+</div>
+<!-- 轻提示 -->
+<div class="hidden pointer-events-none absolute bottom-[84px] left-1/2 z-50 -translate-x-1/2 rounded-xl bg-[#1E293B] px-4 py-2.5 text-[11px] font-medium text-white shadow-xl whitespace-nowrap" id="toast"></div>
+</div>
+<script>
+    const categoryNames = {
+      quiet: '静音自习',
+      group: '小组研讨',
+      night: '24小时',
+      laptop: '电脑工位'
+    };
+    let activeCategory = null;
+    let availabilityFilter = 'all';
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.remove('toast-in');
+      void toast.offsetWidth;
+      toast.classList.add('toast-in');
+      window.clearTimeout(window.__toastTimer);
+      window.__toastTimer = window.setTimeout(function () {
+        toast.classList.add('hidden');
+      }, 1900);
+    }
+
+    function toggleCategory(category) {
+      activeCategory = activeCategory === category ? null : category;
+      document.querySelectorAll('.category-tile').forEach(function (tile) {
+        tile.classList.toggle('is-active', tile.dataset.category === activeCategory);
+      });
+      applyFilters();
+      if (activeCategory) {
+        showToast('已筛选：' + categoryNames[activeCategory]);
+      }
+    }
+
+    function setAvailabilityFilter(filter) {
+      availabilityFilter = filter;
+      document.querySelectorAll('.filter-chip').forEach(function (chip) {
+        chip.classList.toggle('is-active', chip.dataset.filter === filter);
+      });
+      applyFilters();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      applyFilters();
+    }
+
+    function resetFilters() {
+      activeCategory = null;
+      availabilityFilter = 'all';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      document.querySelectorAll('.category-tile').forEach(function (tile) {
+        tile.classList.remove('is-active');
+      });
+      document.querySelectorAll('.filter-chip').forEach(function (chip) {
+        chip.classList.toggle('is-active', chip.dataset.filter === 'all');
+      });
+      applyFilters();
+      showToast('筛选条件已重置');
+    }
+
+    function applyFilters() {
+      const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+      const clearButton = document.getElementById('clearSearchBtn');
+      clearButton.classList.toggle('hidden', keyword.length === 0);
+
+      let visibleCount = 0;
+      document.querySelectorAll('#roomList [data-category]').forEach(function (card) {
+        const matchesCategory = !activeCategory || card.dataset.category === activeCategory;
+        const matchesKeyword = keyword.length === 0 || card.dataset.keywords.toLowerCase().includes(keyword);
+        let matchesAvailability = true;
+        if (availabilityFilter === 'available') {
+          matchesAvailability = card.dataset.available === 'true';
+        } else if (availabilityFilter === 'near') {
+          matchesAvailability = card.dataset.near === 'true';
+        } else if (availabilityFilter === 'night') {
+          matchesAvailability = card.dataset.night === 'true';
+        }
+        const isVisible = matchesCategory && matchesKeyword && matchesAvailability;
+        card.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount += 1;
+      });
+
+      document.getElementById('resultCount').textContent = '共 ' + visibleCount + ' 间';
+      document.getElementById('emptyState').classList.toggle('hidden', visibleCount !== 0);
+    }
+
+    function openNotify() {
+      document.getElementById('notifyOverlay').classList.remove('hidden');
+    }
+
+    function closeNotify() {
+      document.getElementById('notifyOverlay').classList.add('hidden');
+    }
+
+    function markAllRead() {
+      document.querySelectorAll('#notifyOverlay [data-unread-dot]').forEach(function (dot) {
+        dot.classList.add('hidden');
+      });
+      const unreadText = document.getElementById('notifyUnreadText');
+      if (unreadText) unreadText.textContent = '全部已读 · 刚刚更新';
+      showToast('通知已全部标为已读');
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeNotify();
+      }
+    });
+  </script>
+<script src="assets/js/studyseat-domain.js?v=d61346dad97b"></script><script src="assets/js/studyseat-app.js?v=fa55a72797db"></script>
+</body>
+</html>

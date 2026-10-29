@@ -1,0 +1,351 @@
+{
+  "project": "Study Seat",
+  "scope": "current prototype assignment only",
+  "source": {
+    "commit": "ce5514b2348b293e4b05ad4c9cbb7a361702e1d0",
+    "workingTreeClean": true
+  },
+  "prototypeRelease": "0b2c9b4b3438",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 88,
+      "sha256": "23df315ef37fe77e85d484b1b811b23d897ea80bb0244b1e9214b208fc5f37f4"
+    },
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6343,
+      "sha256": "38f64b1e486942c81ebaa81188c083e46bfabf0c657fbd1b63a5041a1eb9578a"
+    },
+    {
+      "path": "deploy/assets/css/studyseat-prototype.css",
+      "bytes": 4729,
+      "sha256": "6d0b4bb021ee174694a7ac1f30098ddfad314d9aa25fa0b1736e6782d9aab20d"
+    },
+    {
+      "path": "deploy/assets/css/studyseat.css",
+      "bytes": 6209,
+      "sha256": "4bb9e924046ec372ccdb8f7b7ab70c181ede4ab70511815e8a5f53b81cde502b"
+    },
+    {
+      "path": "deploy/assets/icon.svg",
+      "bytes": 284,
+      "sha256": "da2b2220f495e2db13f1787334a800ef24a61f2f8992339c4051fcc18ccd487a"
+    },
+    {
+      "path": "deploy/assets/js/studyseat-admin-model.js",
+      "bytes": 8002,
+      "sha256": "c08240cf7c78db75d65f3d88f56a408dac6fb7ee7257d9f8d20f29adf9d20616"
+    },
+    {
+      "path": "deploy/assets/js/studyseat-admin-ui.js",
+      "bytes": 25832,
+      "sha256": "83ec724eca534191d68a5680be0781bbb9fc89f2201d6fc3eb69e80c405ab140"
+    },
+    {
+      "path": "deploy/assets/js/studyseat-domain.js",
+      "bytes": 18079,
+      "sha256": "d61346dad97b6dd943a1827b1662017694bf74a22550b01ff8c38d5eb6535b83"
+    },
+    {
+      "path": "deploy/assets/js/studyseat-frames.js",
+      "bytes": 2195985,
+      "sha256": "cf96e7fda5e42c523e5d2c338394c71e8fa0fadd979e5cbb0ff9133d6d426d60"
+    },
+    {
+      "path": "deploy/assets/js/studyseat-prototype.js",
+      "bytes": 5318,
+      "sha256": "558db0b142574e1c8f9d576c614c420d539aa9c1a7a742b5d14f550a9bcc5e1b"
+    },
+    {
+      "path": "deploy/bookings.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/confirm.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/home.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/index.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/login.html",
+      "bytes": 1320,
+      "sha256": "027a8f3cee6532c591f8eec229164b98e8febce544762a35d909eb659c441679"
+    },
+    {
+      "path": "deploy/profile.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/records.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/resources.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/room.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/rules.html",
+      "bytes": 470,
+      "sha256": "42e6b337b16f8a4f33e025e491b1b88db7908cce6adb40194bdbc9a344773af7"
+    },
+    {
+      "path": "deploy/vendor/echarts.min.js",
+      "bytes": 1024695,
+      "sha256": "987554a0014ad7be585eccc91c4329d050b40c2c0ebd2e8ec84adca82c0eb843"
+    },
+    {
+      "path": "deploy/vendor/tailwindcss.js",
+      "bytes": 410707,
+      "sha256": "0cf16cbf40af80098e59fd3b7b2d952ad9d8f5a6afa3982df68911e2a4976648"
+    },
+    {
+      "path": "docs/GitHub资料说明.md",
+      "bytes": 2091,
+      "sha256": "4315b27a0fdb0825bcc713e7f75a4f4aef314119aa650181333e7bf210f15bc6"
+    },
+    {
+      "path": "docs/prototype-browser-results.json",
+      "bytes": 6211,
+      "sha256": "67db4ef29a3352f75821c794ee96d72140ff8b88a9643d071888dcc6742618ae"
+    },
+    {
+      "path": "docs/prototype-release.json",
+      "bytes": 320,
+      "sha256": "6fae7a315e429d2fe920a173555304e5f4c0e12bc8cd855fecc1c59791b3bf0a"
+    },
+    {
+      "path": "docs/prototype-unit-results.txt",
+      "bytes": 6327,
+      "sha256": "fcf76e69c93e5d6f06aeb51e4e1b095d4f60540f53610e66a01336fea0e9d300"
+    },
+    {
+      "path": "docs/screenshots/local-admin-closure.png",
+      "bytes": 45168,
+      "sha256": "7a1133f8f7e9b84e61f9a598b022a2a10352aec3b7dd1534d6fc158cf1aec9a4"
+    },
+    {
+      "path": "docs/screenshots/local-admin-logs.png",
+      "bytes": 46397,
+      "sha256": "f1adf0c1f8eadaf57dc210b3c2a18474f0dbb690ce238f7c4f7798b2846132c8"
+    },
+    {
+      "path": "docs/screenshots/local-admin-rules.png",
+      "bytes": 41554,
+      "sha256": "238cd8dc650693bf14153bd63a2cb2bbae66a31b3acd838b25824758b248813f"
+    },
+    {
+      "path": "docs/screenshots/local-attendance.png",
+      "bytes": 46107,
+      "sha256": "51e9cc93f0a255c3eeee24047580066ac1ce234f8c0d580dfa7b3d511f642910"
+    },
+    {
+      "path": "docs/screenshots/local-booking.png",
+      "bytes": 46832,
+      "sha256": "2124661a8354a34f099ac8f17272a3eb2757ff9ad35f4f2655c391f9e624f867"
+    },
+    {
+      "path": "docs/screenshots/local-final-login.png",
+      "bytes": 37149,
+      "sha256": "1fb3dd78845223ecfd03544734649b55f4d15cf52c1f5d439fddda908dd65943"
+    },
+    {
+      "path": "docs/screenshots/local-profile.png",
+      "bytes": 44464,
+      "sha256": "9a6b8cc01b55b544e4dcfc2fe7a4e773011ae645217c20c7264aab8c07812c55"
+    },
+    {
+      "path": "docs/screenshots/local-room.png",
+      "bytes": 48112,
+      "sha256": "76132d0473c86b6041feacbe12170577ea0638702351fbc0a9683a25af955774"
+    },
+    {
+      "path": "docs/screenshots/modao-entry.png",
+      "bytes": 307353,
+      "sha256": "ee31f4de4a7981644991ececc1eb0d0e484b94b8b2fed3a1834a021738c36f0b"
+    },
+    {
+      "path": "docs/screenshots/modao-room.png",
+      "bytes": 333983,
+      "sha256": "3257d687132d0fa14741a05998389e532c886675afb60994f4952c234f2f0cac"
+    },
+    {
+      "path": "docs/原型设计说明.md",
+      "bytes": 3471,
+      "sha256": "8f3e8725f31e745be58abc783be74974f5d003b509809d4caecb82e6b70582a4"
+    },
+    {
+      "path": "docs/墨刀原型搭建与维护说明.md",
+      "bytes": 6615,
+      "sha256": "6dbd22fae3778f33f527a4c6ec2d76fe0785fc7a72ff5ca31263d73353b88081"
+    },
+    {
+      "path": "docs/墨刀同步记录.md",
+      "bytes": 5619,
+      "sha256": "d21433522cc2cdb0c5f366729f9ac56533d3ded9eaf4747518f9ac906cd2d8ec"
+    },
+    {
+      "path": "docs/演示与提交说明.md",
+      "bytes": 2874,
+      "sha256": "269c9157d62a03237f029abdc639819fc52d3bcb754ef1851dcc341742628ded"
+    },
+    {
+      "path": "index.html",
+      "bytes": 460,
+      "sha256": "66630651c0f43b97f6fbe520f3689c7d05b1a934b4e234bff154b27085e70c41"
+    },
+    {
+      "path": "modao/StudySeat_定版原型.html",
+      "bytes": 2206032,
+      "sha256": "4b9f40646df2edeb150561a45cbabe7a8d947a1b3df59e9a6e1a92356e417b7d"
+    },
+    {
+      "path": "package.json",
+      "bytes": 644,
+      "sha256": "5b499c8b4f2e4e886d886b38601e7eb2880ae22a6fcc42eb571ebcc8f03cb6bc"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 1011,
+      "sha256": "6a64c784a9cc689f35d00bdafc97ffbabd7c27f065e764b8e9475138c1e5d214"
+    },
+    {
+      "path": "prototype/admin-ui.js",
+      "bytes": 23238,
+      "sha256": "c6c1b8850fdbcdb9c3773d4dc9978a9d18ad258f54208798ec0c7990b5a31a57"
+    },
+    {
+      "path": "prototype/admin.css",
+      "bytes": 8389,
+      "sha256": "c238815d91fdb08ee51301d314c520560a47eee2bdfd220dd11d9f72c88ea6f7"
+    },
+    {
+      "path": "prototype/student-app.js",
+      "bytes": 42431,
+      "sha256": "fa55a72797dbaa6202c5dfa0cb18ca5a92389c3dae299279545d797d701b8074"
+    },
+    {
+      "path": "prototype/student/bookings.html",
+      "bytes": 25237,
+      "sha256": "e57cd10f4ad1750fdd123e73d9abd4cebe9b6cd4792eeeb081d6abfc7d0cc8c2"
+    },
+    {
+      "path": "prototype/student/confirm.html",
+      "bytes": 23508,
+      "sha256": "8900707f116ba21740fecdcf7f2d09dd0014478ff26a77bf1b8191eb7d0a99fe"
+    },
+    {
+      "path": "prototype/student/home.html",
+      "bytes": 51970,
+      "sha256": "4a09bc154d07249a5f11306ae7c3465b6e8436aa946d8df3d1f8145be25f2c5c"
+    },
+    {
+      "path": "prototype/student/profile.html",
+      "bytes": 47957,
+      "sha256": "ff799f9102e8917932215dd0aa4f9983e501118ded0c5c0d31dc2af72625fa05"
+    },
+    {
+      "path": "prototype/student/room.html",
+      "bytes": 30605,
+      "sha256": "11db2911dc652a46be6ae72071a739c6b81e7a19a601d60f86e46df6928ae1c1"
+    },
+    {
+      "path": "prototype/unified-admin-bridge.js",
+      "bytes": 3042,
+      "sha256": "588b4985826148a09ae3d29286845e9c621fab9eee77eaac97ac363c8c5bb2ff"
+    },
+    {
+      "path": "prototype/unified-student-runtime.js",
+      "bytes": 4805,
+      "sha256": "f7128c3449fe8275cf9972bef567325a81ccc95ed492e1e908927bf246d26fff"
+    },
+    {
+      "path": "scripts/build-prototype.py",
+      "bytes": 10774,
+      "sha256": "124753755bd45dd57b7ad464b66c27a5103087ddb5dfb5c1e1468bbbe1af62be"
+    },
+    {
+      "path": "scripts/prepare-github.py",
+      "bytes": 3897,
+      "sha256": "1d3b99b8aca4098704c15ec212717cb1e53e6dd313d6fdada65ffd58b8e6433b"
+    },
+    {
+      "path": "scripts/preview.py",
+      "bytes": 1150,
+      "sha256": "09b85cabd2101c2f4d1c0f56555ae5c13f2efc59d10cc09a9bf2741ef8ebde42"
+    },
+    {
+      "path": "scripts/version-assets.cjs",
+      "bytes": 359,
+      "sha256": "a21b208721606de63f8ee62e526009caba1ed820f52bed0a0e96dc9399f2fa8b"
+    },
+    {
+      "path": "tests/admin-model.test.cjs",
+      "bytes": 4224,
+      "sha256": "daf25277685c069344f34b4bc5a19573b40f40e989c24f55c4c60799a472e74c"
+    },
+    {
+      "path": "tests/browser.cjs",
+      "bytes": 10402,
+      "sha256": "b9b7e23ee295c454ad1dcc570d2bebcad03e1ccc52fd0c933155d3fbbd80dfd4"
+    },
+    {
+      "path": "tests/domain.test.cjs",
+      "bytes": 18162,
+      "sha256": "88202f84fe3090948109c2070efc37e347084f572cb80180dbc0720fa503f782"
+    },
+    {
+      "path": "tests/fixtures/blank-frame.html",
+      "bytes": 305,
+      "sha256": "1599b0d2f6aaa8f3b1e50208d0b286cc7a1a593ff910ba1e110097aab2331f59"
+    },
+    {
+      "path": "tests/prototype.test.cjs",
+      "bytes": 2610,
+      "sha256": "ab8177e671ea1d4526983bf20e8f28beb00b022ba0b15e8426942f291ed5fce9"
+    },
+    {
+      "path": "tests/resources.test.cjs",
+      "bytes": 3101,
+      "sha256": "93c3e13041b84858d501fd441e705f180259db88a5ee166186a9e3f00d9ac9c0"
+    },
+    {
+      "path": "tests/submission.test.cjs",
+      "bytes": 3321,
+      "sha256": "366ef042305eed8a6efce70027694a10d2542d1c330e896cdf47157118a2f1f9"
+    },
+    {
+      "path": "tests/ui-preservation.test.cjs",
+      "bytes": 2885,
+      "sha256": "fa1e7d2a01787699005465d5414863381fb001b5eeeebda609853c4c37dfebe4"
+    },
+    {
+      "path": "tests/unified-session.test.cjs",
+      "bytes": 2338,
+      "sha256": "f773b74f523ec69e69aa85364a25f1e5cee4248536f5af9e5c187a4e2402da99"
+    }
+  ]
+}
