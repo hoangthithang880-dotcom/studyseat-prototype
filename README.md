@@ -19,7 +19,7 @@
 | 入口 | 链接 | 状态 |
 | --- | --- | --- |
 | 正式原型：墨刀 | [打开 Study Seat 在线原型](https://modao.cc/proto/jojnMZTptnm0v2RS5FJnT5/sharing?view_mode=device&screen=rbpVZKhPnl9bPObwP&canvasId=rcVZMWRghgfFFxdw) | 已开放，无需登录墨刀账号 |
-| 备用网页：GitHub Pages | [GitHub Pages 备用地址（待启用）](https://hoangthithang880-dotcom.github.io/studyseat-prototype/) | **待启用，当前返回 404，请先使用墨刀链接** |
+| 备用网页：GitHub Pages | [GitHub Pages 备用地址](https://hoangthithang880-dotcom.github.io/studyseat-prototype/) | **已启用，可先使用墨刀链接** |
 | 项目资料 | [GitHub 仓库](https://github.com/hoangthithang880-dotcom/studyseat-prototype) | 已上传代码及本次原型资料 |
 
 正式墨刀起始页为“00 正式入口｜Study Seat”。进入后使用下方公开演示账号登录学生端或管理端；无需点击墨刀平台右上角的“登录”。推荐使用 Chrome。
