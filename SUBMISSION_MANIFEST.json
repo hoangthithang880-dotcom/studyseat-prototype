@@ -19,8 +19,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6343,
-      "sha256": "38f64b1e486942c81ebaa81188c083e46bfabf0c657fbd1b63a5041a1eb9578a"
+      "bytes": 13033,
+      "sha256": "6891dbd7ca306d3044d1bbb01c054cf12470e0fa4ea2f237f51b4a7eeace219d"
     },
     {
       "path": "deploy/assets/css/studyseat-prototype.css",
@@ -346,6 +346,15 @@
       "path": "tests/unified-session.test.cjs",
       "bytes": 2338,
       "sha256": "f773b74f523ec69e69aa85364a25f1e5cee4248536f5af9e5c187a4e2402da99"
+    }
+  ],
+  "updates": [
+    {
+      "date": "2026-10-29",
+      "files": [
+        "README.md"
+      ],
+      "description": "补充项目简介、演示与待启用备用地址、目录结构及周逸恒（832402129）的本轮贡献；更新仓库已上传状态。"
     }
   ]
 }

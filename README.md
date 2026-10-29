@@ -1,18 +1,41 @@
-# Study Seat 知行有座 · 与墨刀一致的交互原型
+# Study Seat 知行有座 · 智慧校园自习室预约与座位管理原型
 
-本地正式版本位于 `deploy/`，已同步 2026-10-29 确认的墨刀统一入口、学生端和管理端 MVP。纯静态、无后端、无运行时构建步骤。
+软件工程实践课程 · 原型设计作业 · 知行有座队
 
-## 启动
+## 项目简介
 
-在本目录执行：
+**Study Seat（知行有座）**是面向校园学习场景的自习室预约与座位管理交互原型。项目围绕学生“查找空位、预约座位、到场使用”和管理员“配置规则、维护资源、追溯记录”两类任务，展示从预约到结束自习的完整操作过程。
 
-```sh
-python3 scripts/preview.py --directory .
-```
+项目以团队已确认的软件需求规格说明书 V2.0 为业务基线，在同组同学已有学生端界面和项目基础上迭代，补齐管理端 MVP，并统一学生与管理员的登录、返回及退出流程。界面采用浅色背景、蓝色主色和卡片布局，保留房间插画、座位图和明确的状态反馈。
 
-打开 [本地统一入口](http://127.0.0.1:8765/deploy/)。在上一级工作区启动时，打开 [工作区入口](http://127.0.0.1:8765/studyseat-prototype-master/deploy/)。预览服务禁止缓存。建议 Chrome；请通过 HTTP 访问。
+- **学生端**：查询自习室与可用座位、选择日期和时段、提交预约、查看个人预约、签到、暂离与返回、取消预约、结束自习及个人中心。
+- **管理端**：预约规则与开放时段配置、资源关闭与影响预览、重新开放、关联预约查询、通知内容预览和操作日志。
+- **实现形式**：墨刀承载可执行 HTML/CSS/JavaScript 交互代码组件；本仓库提供对应静态网页、维护源文件、说明和验收资料。
 
-[墨刀正式演示](https://modao.cc/proto/jojnMZTptnm0v2RS5FJnT5/sharing?view_mode=device&screen=rbpVZKhPnl9bPObwP&canvasId=rcVZMWRghgfFFxdw) 可免墨刀账号访问。项目原 GitHub Pages 地址属于原仓库，尚未发布本轮本地修改；本轮没有推送或部署。
+当前交付为纯静态交互原型，无真实后端，运行时无需构建；最终本地版本位于 `deploy/`。
+
+## 在线演示
+
+| 入口 | 链接 | 状态 |
+| --- | --- | --- |
+| 正式原型：墨刀 | [打开 Study Seat 在线原型](https://modao.cc/proto/jojnMZTptnm0v2RS5FJnT5/sharing?view_mode=device&screen=rbpVZKhPnl9bPObwP&canvasId=rcVZMWRghgfFFxdw) | 已开放，无需登录墨刀账号 |
+| 备用网页：GitHub Pages | [GitHub Pages 备用地址（待启用）](https://hoangthithang880-dotcom.github.io/studyseat-prototype/) | **待启用，当前返回 404，请先使用墨刀链接** |
+| 项目资料 | [GitHub 仓库](https://github.com/hoangthithang880-dotcom/studyseat-prototype) | 已上传代码及本次原型资料 |
+
+正式墨刀起始页为“00 正式入口｜Study Seat”。进入后使用下方公开演示账号登录学生端或管理端；无需点击墨刀平台右上角的“登录”。推荐使用 Chrome。
+
+### 启用 GitHub Pages 备用演示
+
+当前仓库已具备静态网页入口 `index.html` 和 `deploy/`，可以将已上传的同一份代码发布为备用网页。上传代码本身不会自动启用 Pages。
+
+由仓库所有者在 GitHub 中完成以下设置：
+
+1. 打开仓库的 **Settings → Pages**。
+2. 在 **Build and deployment → Source** 选择 **Deploy from a branch**。
+3. 分支选择 **main**，目录选择 **/(root)**，点击 **Save**。
+4. 等待部署完成，并从 Pages 设置页打开实际发布地址。确认能进入统一登录、分别登录学生/管理员后，再把上表状态改为“已开放”。
+
+备用地址预期为 `https://hoangthithang880-dotcom.github.io/studyseat-prototype/`；启用前不能作为可用演示链接提交。发布设置参考 [GitHub Pages 官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。本机 `127.0.0.1` 地址只用于自己的电脑预览。
 
 ## 公开演示账号
 
@@ -24,7 +47,7 @@ python3 scripts/preview.py --directory .
 
 默认学生登录；点击“管理员登录”切换管理员表单，可返回统一入口。支持回车、密码显示与隐藏。凭据仅供原型使用，不接入学校真实认证。原学生五次错误锁定逻辑继续保留，锁定属于当前演示会话。
 
-## 与墨刀保持一致的行为
+## 主要功能与交互说明
 
 - 完整显示 **Study Seat**；375×812 的原型内容与墨刀一致，桌面浏览器增加居中外框。
 - 所有业务视图顶部有“退出登录”，子视图有“返回”。选座标题左侧的重复圆形返回箭头已删除。
@@ -37,6 +60,54 @@ python3 scripts/preview.py --directory .
 - 原本的学生单次最长 4 小时、提前 7 天、签到前 10 分钟至后 15 分钟、暂离上限 30 分钟均为团队演示参数。管理规则的新版本仅作用于管理端场景，既有管理预约保留创建时快照。
 
 历史 `home.html`、`room.html`、`rules.html` 等书签统一返回正式登录入口，不能进入已停用的独立页面。
+
+## 目录结构
+
+```text
+studyseat-prototype/
+├── README.md                         项目介绍、演示入口与团队贡献
+├── index.html                        网页根入口，跳转至 deploy/
+├── deploy/                           可直接运行和发布的静态原型
+│   ├── login.html                    统一登录与角色导航宿主
+│   ├── assets/css/                   公共及原型样式
+│   ├── assets/js/                    学生/管理模型、导航与生成的交互内容
+│   └── vendor/                       本地化图表与样式依赖
+├── prototype/                        可编辑的原型源文件
+│   ├── student/                      学生端页面源文件
+│   ├── student-app.js                学生业务与界面适配
+│   ├── admin-ui.js / admin.css       管理端界面与样式
+│   ├── unified-student-runtime.js    学生会话与返回逻辑
+│   └── unified-admin-bridge.js       管理端登录、导航与退出保护
+├── modao/
+│   └── StudySeat_定版原型.html        墨刀定版代码组件的独立 HTML 备份
+├── docs/                             设计、搭建、演示及验收说明
+│   └── screenshots/                  墨刀和本地原型的实际截图
+├── scripts/                          预览、生成、资源版本与资料提取脚本
+├── tests/                            业务、会话、资源及浏览器验收
+├── package.json / pnpm-lock.yaml     开发验证命令与锁定依赖
+├── SUBMISSION_MANIFEST.json          提交资料来源与文件校验清单
+├── .gitignore                        开发缓存等忽略规则
+└── .nojekyll                         静态站点发布标记
+```
+
+| 关键文件 | 用途 |
+| --- | --- |
+| `deploy/assets/js/studyseat-prototype.js` | 统一登录、角色切换、返回与退出 |
+| `deploy/assets/js/studyseat-domain.js` | 学生预约、会话和考勤业务模型 |
+| `deploy/assets/js/studyseat-admin-model.js` | 独立管理端业务模型 |
+| `deploy/assets/js/studyseat-frames.js` | 生成的两端交互内容，应通过源文件与脚本维护 |
+| `scripts/build-prototype.py` | 重新生成静态发布文件和资源版本号 |
+| `scripts/prepare-github.py` | 提取本次原型任务相关的精简资料 |
+
+## 本地运行
+
+在本仓库根目录打开终端并执行：
+
+```sh
+python3 scripts/preview.py --directory .
+```
+
+打开 [本地统一入口](http://127.0.0.1:8765/deploy/)。推荐使用 Chrome 并通过 HTTP 访问；预览服务会禁止缓存，避免加载旧文件。
 
 ## 演示建议
 
@@ -65,25 +136,43 @@ STUDYSEAT_BASE_URL=http://127.0.0.1:8765/deploy/ node tests/browser.cjs
 
 `STUDYSEAT_NODE_MODULES` 可指定已有 Playwright 模块位置，`STUDYSEAT_CHROME` 可指定已安装的 Chrome。浏览器验收脚本也导出相同检查函数，可由 Codex 的浏览器工具运行。
 
-当前说明见 [墨刀搭建与维护](docs/墨刀原型搭建与维护说明.md)、[原型设计说明](docs/原型设计说明.md)、[演示与提交](docs/演示与提交说明.md) 和 [同步记录与验收](docs/墨刀同步记录.md)。旧搭建资料已删除；历史开发证据仅保留在本地开发仓库，不随精简 GitHub 资料提交。
+当前说明见 [墨刀搭建与维护](docs/墨刀原型搭建与维护说明.md)、[原型设计说明](docs/原型设计说明.md)、[演示与提交](docs/演示与提交说明.md) 和 [同步记录与验收](docs/墨刀同步记录.md)。当前仓库保留本次原型设计相关的说明、截图和验收资料。
 
-| 路径 | 用途 |
+## 团队简介与本轮贡献
+
+**知行有座队（Study Seat Team）**是软件工程实践课程项目团队，围绕校园自习室预约与座位管理开展需求分析和原型设计。团队以前期确认的需求为基础，通过成员协作和分阶段迭代完善交互方案。
+
+### 已有基础与本轮分工
+
+| 阶段/角色 | 工作内容 |
 | --- | --- |
-| deploy/ | 可直接部署的最终静态文件 |
-| deploy/assets/js/studyseat-prototype.js | 与墨刀一致的统一登录和角色导航 |
-| deploy/assets/js/studyseat-frames.js | 自动生成的学生和管理员交互内容，不能直接手工维护 |
-| deploy/assets/js/studyseat-domain.js | 学生业务模型 |
-| deploy/assets/js/studyseat-admin-model.js | 独立管理业务模型 |
-| prototype/ | 学生页面、原始适配器、管理界面、会话桥接的可编辑源文件 |
-| scripts/build-prototype.py | 生成交互内容和静态资源版本号，提交产物后展示时无需运行 |
-| docs/ | 当前设计、搭建、演示及验收说明与截图 |
-| modao/ | 墨刀定版代码组件独立 HTML 备份 |
+| 同组同学的前期工作 | 提供原始项目、学生端界面及早期墨刀原型基础，为后续迭代提供起点 |
+| 周逸恒（学号：832402129） | 接管本轮原型完善工作，梳理与审核修改方案，结合 AI 辅助补齐管理端、统一交互，并完成本地同步与资料整理 |
+| 团队协作 | 以已确认需求作为设计基线，讨论并确认原型范围；成员实际工作量比例由团队统一记录 |
 
+### 周逸恒本轮的主要贡献
 
-不提供真实身份认证、服务端并发控制、跨设备同步、实际通知推送或后台执行。团队贡献、工时与比例应按实际工作填写。
+本轮工作是在同学已有项目基础上的补充与改进，主要包括：
 
-## 来源与 GitHub 提交资料
+1. **需求核对与方案确定**：结合需求规格说明书梳理原型缺口，确定管理端以核心功能可演示的 MVP 为目标，并审核各轮方案。
+2. **管理端补齐**：完善规则版本保存、开放时段、资源关闭与影响预览、受影响预约、重新开放、通知预览和操作日志等管理端内部流程。
+3. **统一入口与导航**：打通学生与管理员登录入口，增加全局返回和退出，补充未保存编辑提示、关闭预览返回和关联记录来源返回。
+4. **交互与显示修复**：处理品牌英文名显示不完整、选座页重复返回箭头等问题，检查返回时的草稿保留、成功回执关闭及退出重登行为。
+5. **墨刀与本地同步**：将确认后的核心交互同步到本地静态项目，修复本地内嵌加载时个人中心图表尺寸未就绪的问题。
+6. **验证与交付整理**：结合既有测试与本轮补充检查，执行并整理 69 项自动测试及主要浏览器流程的验收结果；重写当前墨刀搭建说明，清理旧材料，整理 GitHub 提交资料。
 
-本项目基于同组同学的 [studyseat-prototype](https://github.com/coisiniand/studyseat-prototype) 迭代，保留原学生界面基础，补齐管理端 MVP、统一导航及当前交互验收。团队个人贡献应据实记录。
+实现与验证过程中使用了 AI 辅助，方案确认、范围取舍和成果审核由成员参与完成。69 项测试由沿用的学生业务测试与本轮补充检查共同构成。
 
-[GitHub 资料说明](docs/GitHub资料说明.md) 提供当前文件提取范围与生成方式。当前提交资料只包含本次原型任务所需内容，不包含历史阶段代码、上次作业提取稿或旧搭建文档。此 README 是精简仓库的根说明，无需另一个上级工作区才能运行和测试。
+## 资料与项目来源
+
+本项目在同组同学的 [studyseat-prototype](https://github.com/coisiniand/studyseat-prototype) 基础上迭代，保留原学生界面基础，并补齐管理端 MVP、统一导航及当前交互验收。当前维护仓库为 [hoangthithang880-dotcom/studyseat-prototype](https://github.com/hoangthithang880-dotcom/studyseat-prototype)。
+
+设计、搭建与演示说明：
+
+- [原型设计说明](docs/原型设计说明.md)
+- [墨刀原型搭建与维护说明](docs/墨刀原型搭建与维护说明.md)
+- [演示与提交说明](docs/演示与提交说明.md)
+- [同步与验收记录](docs/墨刀同步记录.md)
+- [GitHub 资料说明](docs/GitHub资料说明.md)
+
+本项目不提供真实身份认证、服务端并发控制、跨设备同步、实际通知推送或后台执行。原型中的统计与预约示例仅用于课程演示。
