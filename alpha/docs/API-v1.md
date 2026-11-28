@@ -115,3 +115,17 @@ GET /seats 保留旧 `seats` 字段及房间、时段、权限校验。新增
 `enabled` 和 `available`。`available=false` 可能由停用、关闭、
 座位时段冲突或本人时段冲突导致。返回不包含其他预约或用户身份。
 空房间返回两个空数组。
+
+## 每周开放安排
+
+数据库 v4 新增按房间、星期存储的开放安排覆盖项。GET /rooms 追加
+`weekly_version` 与从星期一开始的七项 `weekly_hours`。每项为
+北京时间开关分钟数组，`[null,null]` 代表不开放，`[0,1440]` 代表全天。
+未设置的星期继续继承 `opens_minute` 和 `closes_minute`。
+
+管理员 POST /admin/rooms/{id}/weekly-hours 提交 `weekdays`（0 至 6，
+不可重复）、`mode`（`custom`、`all_day`、`closed`）、`base_version`
+与 `idempotency_key`。自定义另需 `opens_minute`、`closes_minute`。
+成功返回 `version` 与七日 `weekly_hours`。修改影响有效预约时返回
+RESERVATIONS_AFFECTED，版本过期时返回 RESOURCE_CHANGED。旧 /hours
+继续修改每日默认值，保留周覆盖，并在实际修改时递增周版本。

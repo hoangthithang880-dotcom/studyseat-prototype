@@ -17,7 +17,7 @@ import pytest
 import test_phase3 as base
 
 from studyseat import lifecycle, reservations
-from studyseat.db import get_db
+from studyseat.db import SCHEMA_VERSION, get_db
 
 
 @pytest.fixture
@@ -370,10 +370,10 @@ def test_v2_to_v3_migration_preserves_rows_or_rolls_back(tmp_path, monkeypatch, 
             initialize()
             initialize()
         db = get_db()
-        assert db.execute("PRAGMA user_version").fetchone()[0] == (2 if fail else 3)
+        assert db.execute("PRAGMA user_version").fetchone()[0] == (2 if fail else SCHEMA_VERSION)
         actual = tuple(db.execute("SELECT * FROM reservations").fetchone())
         assert actual == (old if fail else (*old, 0))
         assert tuple(db.execute("SELECT * FROM operation_receipts").fetchone()) == receipt
         assert db.execute("SELECT COUNT(*) FROM schema_versions").fetchone()[0] == (
-            2 if fail else 3
+            2 if fail else SCHEMA_VERSION
         )

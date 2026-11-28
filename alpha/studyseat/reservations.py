@@ -57,7 +57,7 @@ def rules(connection):
     return row["id"], settings
 
 
-def validate_policy(resource, start, end, settings, now):
+def validate_policy(resource, start, end, settings, now, weekly):
     if not resource["enabled"] or not resource["room_enabled"]:
         raise ApiError(409, "RESOURCE_UNAVAILABLE", "房间或座位未启用。")
     try:
@@ -70,19 +70,43 @@ def validate_policy(resource, start, end, settings, now):
         raise ApiError(400, "TIME_INVALID", "预约时长超过当前规则上限。")
     if (local_start.date() - now.astimezone(SHANGHAI).date()).days > settings["max_advance_days"]:
         raise ApiError(400, "TIME_INVALID", "开始日期超过可提前预约天数。")
-    # Opening hours are local daily boundaries. 24:00 is next-day midnight;
-    # a 00:00–24:00 room may span midnight without an artificial closure.
+    if not within_hours(resource, local_start, local_end, weekly):
+        raise ApiError(400, "TIME_INVALID", "预约时段不在房间开放时间内。")
+
+
+def within_hours(resource, local_start, local_end, weekly):
     day = local_start.date()
+    daily = resource["opens_minute"], resource["closes_minute"]
     while day <= local_end.date():
         midnight = datetime.combine(day, time.min, SHANGHAI)
-        next_midnight = midnight + timedelta(days=1)
-        part_start, part_end = max(local_start, midnight), min(local_end, next_midnight)
+        # Compare minutes into this day without constructing the next date
+        # at datetime.max. Touching midnight does not use the next day's hours.
+        part_start = max(0, (local_start - midnight).total_seconds())
+        part_end = min(86400, (local_end - midnight).total_seconds())
+        opens, closes = weekly.get(day.weekday(), daily)
         if part_start < part_end and (
-            part_start < midnight + timedelta(minutes=resource["opens_minute"])
-            or part_end > midnight + timedelta(minutes=resource["closes_minute"])
+            opens is None or part_start < opens * 60 or part_end > closes * 60
         ):
-            raise ApiError(400, "TIME_INVALID", "预约时段不在房间开放时间内。")
+            return False
+        if day == local_end.date():
+            break
         day += timedelta(days=1)
+    return True
+
+
+def weekly_hours(connection, room_id):
+    return {
+        row["weekday"]: (row["opens_minute"], row["closes_minute"])
+        for row in connection.execute("SELECT * FROM room_weekly_hours WHERE room_id=?", (room_id,))
+    }
+
+
+def room_summary(row):
+    room = dict(row)
+    weekly = json.loads(room.pop("weekly_json"))
+    daily = [room["opens_minute"], room["closes_minute"]]
+    room["weekly_hours"] = [weekly.get(str(day), daily) for day in range(7)]
+    return room
 
 
 def room_resource(connection, room_id):
@@ -149,10 +173,18 @@ def available(student_id, room_id, start_at, end_at):
     start, end = interval(start_at, end_at)
     sweep()
     connection = get_db()
+    connection.execute("BEGIN")
+    try:
+        return availability_snapshot(connection, student_id, room_id, start, end)
+    finally:
+        connection.rollback()
+
+
+def availability_snapshot(connection, student_id, room_id, start, end):
     _, settings = rules(connection)
     room = room_resource(connection, room_id)
     now = now_utc()
-    validate_policy(room, start, end, settings, now)
+    validate_policy(room, start, end, settings, now, weekly_hours(connection, room_id))
     if closed(connection, room_id):
         raise ApiError(409, "RESOURCE_UNAVAILABLE", "房间已关闭。")
     rows = connection.execute(
@@ -200,7 +232,9 @@ def create(student_id, seat_id, start_at, end_at, key):
         version, settings = rules(connection)
         resource = seat_resource(connection, seat_id)
         now = now_utc()
-        validate_policy(resource, start, end, settings, now)
+        validate_policy(
+            resource, start, end, settings, now, weekly_hours(connection, resource["room_id"])
+        )
         if closed(connection, resource["room_id"], seat_id):
             raise ApiError(409, "RESOURCE_UNAVAILABLE", "资源已关闭。")
         conflict = connection.execute(

@@ -4,7 +4,7 @@ from flask import Blueprint, g, jsonify, render_template, request
 
 from . import lifecycle, management, reservations
 from .auth import ApiError, activate_session, authenticate, check_csrf, new_session, require_role
-from .db import get_db, utc_now, write_transaction
+from .db import SCHEMA_VERSION, get_db, utc_now, write_transaction
 
 bp = Blueprint("api", __name__)
 
@@ -39,10 +39,12 @@ def index():
 def health():
     connection = get_db()
     version = connection.execute("PRAGMA user_version").fetchone()[0]
-    recorded = connection.execute("SELECT version FROM schema_versions WHERE version=3").fetchone()
-    if version != 3 or recorded is None:
+    recorded = connection.execute(
+        "SELECT version FROM schema_versions WHERE version=?", (SCHEMA_VERSION,)
+    ).fetchone()
+    if version != SCHEMA_VERSION or recorded is None:
         raise ApiError(503, "DATABASE_UNAVAILABLE", "数据库版本未就绪，请检查初始化。")
-    return ok({"status": "ok", "schema_version": 3, "server_time": utc_now()})
+    return ok({"status": "ok", "schema_version": SCHEMA_VERSION, "server_time": utc_now()})
 
 
 @bp.get("/api/v1/auth/session")
@@ -93,14 +95,14 @@ def me():
 @bp.get("/api/v1/rooms")
 @require_role()
 def rooms():
-    rows = (
-        get_db()
-        .execute(
-            "SELECT r.*, COUNT(s.id) AS seat_count FROM rooms r LEFT JOIN seats s ON s.room_id=r.id GROUP BY r.id ORDER BY r.id"
-        )
-        .fetchall()
+    rows = get_db().execute(
+        """SELECT r.*, COUNT(s.id) AS seat_count, (
+               SELECT json_group_object(w.weekday, json_array(w.opens_minute,w.closes_minute))
+               FROM room_weekly_hours w WHERE w.room_id=r.id
+           ) AS weekly_json FROM rooms r LEFT JOIN seats s ON s.room_id=r.id
+           GROUP BY r.id ORDER BY r.id"""
     )
-    return ok([dict(row) for row in rows])
+    return ok([reservations.room_summary(row) for row in rows])
 
 
 @bp.get("/api/v1/rules")
@@ -299,3 +301,11 @@ def admin_room_hours(room_id):
     check_csrf()
     body = json_body()
     return ok(management.save_hours(g.identity["id"], room_id, body, operation_key(body)))
+
+
+@bp.post("/api/v1/admin/rooms/<room_id>/weekly-hours")
+@require_role("admin")
+def admin_weekly_hours(room_id):
+    check_csrf()
+    body = json_body()
+    return ok(management.save_weekly_hours(g.identity["id"], room_id, body, operation_key(body)))

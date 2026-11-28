@@ -282,34 +282,89 @@ def save_hours(actor, room_id, body, key):
         now = r.now_utc()
         reconcile(connection, now)
         candidate = dict(resource, opens_minute=opens, closes_minute=closes)
-        rows = connection.execute(
-            r.SELECT + f" WHERE s.room_id=? AND r.status IN {r.ACTIVE}", (room_id,)
-        ).fetchall()
-        for row in rows:
-            from .lifecycle import instant
-
-            # Reuse daily opening validation without reapplying new booking limits
-            # to existing snapshots or rejecting a start already in the past.
-            start, end = instant(row["start_at"]), instant(row["end_at"])
-            try:
-                r.validate_policy(
-                    dict(candidate, enabled=1, room_enabled=1),
-                    start,
-                    end,
-                    {"max_duration_minutes": 1440 * 365, "max_advance_days": 36500},
-                    start,
-                )
-            except ApiError:
-                raise ApiError(
-                    409,
-                    "RESERVATIONS_AFFECTED",
-                    "新开放时间覆盖不了现有有效预约，请先处理相关预约。",
-                ) from None
+        require_covered(connection, candidate, r.weekly_hours(connection, room_id))
         if [opens, closes] != [resource["opens_minute"], resource["closes_minute"]]:
             connection.execute(
-                "UPDATE rooms SET opens_minute=?,closes_minute=? WHERE id=?",
+                "UPDATE rooms SET opens_minute=?,closes_minute=?,weekly_version=weekly_version+1 WHERE id=?",
                 (opens, closes, room_id),
             )
             event(connection, actor, "ROOM_HOURS_UPDATED", room_id, now, payload)
         remember(connection, actor, key, "save-hours", room_id, payload, now)
         return dict(r.room_resource(connection, room_id))
+
+
+def require_covered(connection, resource, weekly):
+    from .lifecycle import instant
+
+    rows = connection.execute(
+        r.SELECT + f" WHERE s.room_id=? AND r.status IN {r.ACTIVE}", (resource["id"],)
+    )
+    for row in rows:
+        start = instant(row["start_at"]).astimezone(r.SHANGHAI)
+        end = instant(row["end_at"]).astimezone(r.SHANGHAI)
+        if not r.within_hours(resource, start, end, weekly):
+            raise ApiError(
+                409,
+                "RESERVATIONS_AFFECTED",
+                "新开放时间覆盖不了现有有效预约，请先处理相关预约。",
+            )
+
+
+def save_weekly_hours(actor, room_id, body, key):
+    days, mode, version = body.get("weekdays"), body.get("mode"), body.get("base_version")
+    if (
+        not isinstance(days, list)
+        or not 1 <= len(days) <= 7
+        or any(type(day) is not int or not 0 <= day < 7 for day in days)
+        or len(days) != len(set(days))
+        or type(version) is not int
+        or version < 1
+    ):
+        raise ApiError(400, "INVALID_INPUT", "请选择有效星期并提供开放安排版本。")
+    opens, closes = body.get("opens_minute"), body.get("closes_minute")
+    if mode == "all_day":
+        opens, closes = 0, 1440
+    elif mode == "closed":
+        opens, closes = None, None
+    elif mode != "custom" or (
+        type(opens) is not int or type(closes) is not int or not 0 <= opens < closes <= 1440
+    ):
+        raise ApiError(400, "INVALID_INPUT", "请选择有效的开放模式和时间。")
+    payload = {
+        "room_id": room_id,
+        "weekdays": sorted(days),
+        "mode": mode,
+        "opens_minute": opens,
+        "closes_minute": closes,
+        "base_version": version,
+    }
+    with write_transaction() as connection:
+        receipt = replay(connection, actor, key, "save-weekly-hours", payload)
+        room = r.room_resource(connection, room_id)
+        weekly = r.weekly_hours(connection, room_id)
+        if not receipt:
+            if room["weekly_version"] != version:
+                raise ApiError(409, "RESOURCE_CHANGED", "开放安排已更新，请重新加载。")
+            now = r.now_utc()
+            reconcile(connection, now)
+            candidate = {**weekly, **dict.fromkeys(days, (opens, closes))}
+            require_covered(connection, room, candidate)
+            if candidate != weekly:
+                connection.executemany(
+                    """INSERT INTO room_weekly_hours VALUES (?,?,?,?)
+                       ON CONFLICT(room_id,weekday) DO UPDATE SET
+                       opens_minute=excluded.opens_minute,closes_minute=excluded.closes_minute""",
+                    [(room_id, day, opens, closes) for day in days],
+                )
+                connection.execute(
+                    "UPDATE rooms SET weekly_version=weekly_version+1 WHERE id=?", (room_id,)
+                )
+                event(connection, actor, "ROOM_WEEKLY_HOURS_UPDATED", room_id, now, payload)
+            remember(connection, actor, key, "save-weekly-hours", room_id, payload, now)
+            weekly = candidate
+            room = r.room_resource(connection, room_id)
+        daily = room["opens_minute"], room["closes_minute"]
+        return {
+            "version": room["weekly_version"],
+            "weekly_hours": [weekly.get(day, daily) for day in range(7)],
+        }
