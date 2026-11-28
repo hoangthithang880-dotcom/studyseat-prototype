@@ -107,3 +107,11 @@ leave/return 必须发送 `{idempotency_key, expected_version}`，expected_versi
 v1/v2 数据与历史回执升级时保留；历史 leave/return 回执不补造缺失的轮次前提。升级后刷新客户端，新的界面读取 state_version 并生成新操作键；旧客户端缺少前提会被拒绝，不能静默按最新版本替换旧请求。
 
 expire-reservations --watch 遇到 SQLITE_BUSY/SQLITE_LOCKED 会回滚、输出重试信息并有界指数退避（首次为 min(interval,30) 秒、最多 30 秒），成功后恢复正常间隔。单次模式锁忙与不可恢复数据库错误仍非零退出；不吞掉数据库损坏或审计完整性错误。
+
+## 原型座位目录
+
+GET /seats 保留旧 `seats` 字段及房间、时段、权限校验。新增
+`seat_catalog`，每项含 `id`、`room_id`、`label`、布尔值
+`enabled` 和 `available`。`available=false` 可能由停用、关闭、
+座位时段冲突或本人时段冲突导致。返回不包含其他预约或用户身份。
+空房间返回两个空数组。

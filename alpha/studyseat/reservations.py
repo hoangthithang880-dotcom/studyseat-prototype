@@ -156,14 +156,23 @@ def available(student_id, room_id, start_at, end_at):
     if closed(connection, room_id):
         raise ApiError(409, "RESOURCE_UNAVAILABLE", "房间已关闭。")
     rows = connection.execute(
-        f"""SELECT s.id, s.room_id, s.label FROM seats s WHERE s.room_id=? AND s.enabled=1
-        AND NOT EXISTS (SELECT 1 FROM resource_closures c WHERE c.seat_id=s.id AND c.reopened_at IS NULL)
+        f"""SELECT s.id, s.room_id, s.label, s.enabled,
+        s.enabled=1 AND NOT EXISTS (SELECT 1 FROM resource_closures c WHERE c.seat_id=s.id AND c.reopened_at IS NULL)
         AND NOT EXISTS (SELECT 1 FROM reservations r WHERE (r.seat_id=s.id OR r.student_id=?)
-          AND r.status IN {ACTIVE} AND r.start_at<? AND ?<r.end_at) ORDER BY s.label""",
-        (room_id, student_id, utc_text(end), utc_text(start)),
+          AND r.status IN {ACTIVE} AND r.start_at<? AND ?<r.end_at) AS available
+        FROM seats s WHERE s.room_id=? ORDER BY s.label, s.id""",
+        (student_id, utc_text(end), utc_text(start), room_id),
     ).fetchall()
     return {
-        "seats": [dict(row) for row in rows],
+        "seats": [
+            {key: row[key] for key in ("id", "room_id", "label")}
+            for row in rows
+            if row["available"]
+        ],
+        "seat_catalog": [
+            dict(row, enabled=bool(row["enabled"]), available=bool(row["available"]))
+            for row in rows
+        ],
         "server_time": utc_text(now),
         "start_at": utc_text(start),
         "end_at": utc_text(end),

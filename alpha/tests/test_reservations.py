@@ -505,3 +505,51 @@ def test_out_of_range_local_timezone_is_input_error(client):
     assert post(client, headers, **changes).status_code == 400
     assert query(client, **changes).status_code == 400
     assert client.get(BASE).json["data"] == []
+
+
+def test_full_seat_catalog_without_private_conflict_details(app, client):
+    headers = student(client)
+    key = "lib-a101:A03"
+    with app.app_context(), write_transaction() as connection:
+        connection.execute(
+            """INSERT INTO resource_closures(id,seat_id,reason,created_by,created_at)
+               VALUES ('catalog-closure',?,'检修','admin01','2026-11-23T00:00:00.000000Z')""",
+            (key,),
+        )
+    initial = query(client).json["data"]
+    catalog = initial["seat_catalog"]
+    assert len(catalog) == 120
+    assert initial["seats"] == [
+        {k: row[k] for k in ("id", "room_id", "label")} for row in catalog if row["available"]
+    ]
+    assert next(row for row in catalog if row["id"] == key) == {
+        "id": key,
+        "room_id": "lib-a101",
+        "label": "A03",
+        "enabled": True,
+        "available": False,
+    }
+    assert catalog[-1]["enabled"] is False
+    created = post(client, headers).json["data"]
+    overlapping = query(client).json["data"]
+    assert overlapping["seats"] == []
+    assert all(row["available"] is False for row in overlapping["seat_catalog"])
+    other = app.test_client()
+    student(other, "student02", "Study1234")
+    response = query(other)
+    assert response.json["data"]["seat_catalog"][0]["available"] is False
+    assert created["id"] not in response.get_data(as_text=True)
+    assert "student01" not in response.get_data(as_text=True)
+
+
+def test_empty_room_catalog(app, client):
+    student(client)
+    with app.app_context(), write_transaction() as connection:
+        connection.execute(
+            "INSERT INTO rooms(id,name,location,opens_minute,closes_minute) VALUES ('empty','空房间','',0,1440)"
+        )
+    result = client.get(
+        "/api/v1/seats",
+        query_string={"room_id": "empty", **{k: payload()[k] for k in ("start_at", "end_at")}},
+    ).json["data"]
+    assert result["seats"] == result["seat_catalog"] == []
