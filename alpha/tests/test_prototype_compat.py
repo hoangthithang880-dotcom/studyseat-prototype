@@ -1,11 +1,12 @@
 """Compatibility contracts required by the real prototype pages."""
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import pytest
 from conftest import login
 
 from studyseat import reservations
+from studyseat.db import get_db
 
 ROOM = "lib-a101"
 API = "/api/v1"
@@ -109,3 +110,77 @@ def test_weekly_all_day_and_midnight_exclusive(app, client):
     assert (
         query(client, "2026-11-23T23:00:00+08:00", "2026-11-24T00:01:00+08:00").status_code == 400
     )
+
+
+def test_scheduled_closure_half_open_interval_and_reopen(app, client):
+    student = auth(client)
+    booked = booking(client, student).json["data"]
+    admin = app.test_client()
+    headers = auth(admin, "admin01", "Admin1234")
+    closure = {
+        "seat_id": f"{ROOM}:A01",
+        "reason": "定期维护",
+        "start_at": "2026-11-24T08:30:00+08:00",
+        "end_at": "2026-11-24T09:30:00+08:00",
+    }
+    preview = admin.post(API + "/admin/closures/preview", headers=headers, json=closure).json[
+        "data"
+    ]
+    assert preview["mode"] == "scheduled"
+    assert [record["id"] for record in preview["affected"]] == [booked["id"]]
+    assert (
+        client.get(f"{API}/reservations/{booked['id']}").json["data"]["status"] == "PENDING_CHECKIN"
+    )
+    closed = admin.post(
+        API + "/admin/closures",
+        headers=headers,
+        json={"preview_token": preview["preview_token"], "idempotency_key": "scheduled"},
+    )
+    assert closed.status_code == 200
+    result = closed.json["data"]
+    assert result["start_at"] == "2026-11-24T00:30:00.000000Z"
+    assert client.get(f"{API}/reservations/{booked['id']}").json["data"]["status"] == "CANCELLED"
+    assert query(client).json["data"]["seat_catalog"][0]["available"] is False
+    assert query(client, "2026-11-24T09:30:00+08:00", "2026-11-24T10:00:00+08:00").json["data"][
+        "seat_catalog"
+    ][0]["available"]
+    assert (
+        booking(client, student, idempotency_key="blocked").json["error"]["code"]
+        == "RESOURCE_UNAVAILABLE"
+    )
+    opened = admin.post(
+        f"{API}/admin/closures/{result['id']}/reopen",
+        headers=headers,
+        json={"idempotency_key": "open"},
+    )
+    assert opened.status_code == 200
+    assert booking(client, student, idempotency_key="after-open").status_code == 201
+    assert client.get(f"{API}/reservations/{booked['id']}").json["data"]["status"] == "CANCELLED"
+
+
+def test_scheduled_preview_cannot_confirm_after_end(app, monkeypatch):
+    admin = app.test_client()
+    headers = auth(admin, "admin01", "Admin1234")
+    response = admin.post(
+        API + "/admin/closures/preview",
+        headers=headers,
+        json={
+            "room_id": ROOM,
+            "reason": "短时维护",
+            "start_at": "2026-11-23T08:00:00+08:00",
+            "end_at": "2026-11-23T08:05:00+08:00",
+        },
+    )
+    assert response.status_code == 200
+    monkeypatch.setattr(reservations, "now_utc", lambda: NOW + timedelta(minutes=5))
+    failed = admin.post(
+        API + "/admin/closures",
+        headers=headers,
+        json={
+            "preview_token": response.json["data"]["preview_token"],
+            "idempotency_key": "expired",
+        },
+    )
+    assert failed.json["error"]["code"] == "PREVIEW_STALE"
+    with app.app_context():
+        assert get_db().execute("SELECT COUNT(*) FROM resource_closures").fetchone()[0] == 0

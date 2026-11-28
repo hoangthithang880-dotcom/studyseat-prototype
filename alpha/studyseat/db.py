@@ -6,7 +6,7 @@ from pathlib import Path
 
 from flask import current_app, g
 
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 
 
 def is_busy(error):
@@ -85,7 +85,12 @@ def initialize():
         if not 0 <= version <= SCHEMA_VERSION:
             raise RuntimeError("Unsupported database schema version")
         connection.execute("INSERT OR IGNORE INTO schema_versions VALUES (1, ?)", (utc_now(),))
-        migrations = ("002_phase3.sql", "003_state_version.sql", "004_weekly_hours.sql")
+        migrations = (
+            "002_phase3.sql",
+            "003_state_version.sql",
+            "004_weekly_hours.sql",
+            "005_timed_closures.sql",
+        )
         for number, filename in enumerate(migrations, 2):
             if number <= version:
                 continue

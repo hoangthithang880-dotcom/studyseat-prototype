@@ -81,18 +81,26 @@ def scope(connection, body):
         reason.encode("utf-8")
     except UnicodeEncodeError:
         raise ApiError(400, "INVALID_INPUT", "关闭原因包含无效字符。") from None
-    return {"room_id": room_id, "seat_id": seat_id, "reason": reason.strip()}, dict(resource)
+    target = {"room_id": room_id, "seat_id": seat_id, "reason": reason.strip()}
+    if "start_at" in body or "end_at" in body:
+        start, end = r.interval(body.get("start_at"), body.get("end_at"))
+        target.update(start_at=r.utc_text(start), end_at=r.utc_text(end))
+    return target, dict(resource)
 
 
 def impact(connection, target, resource):
-    # Include every active reservation, including later dates. Closures are immediate
-    # and remain in force until explicitly reopened, never silently scheduled.
+    window_sql = ""
+    parameters = [target["room_id"] or target["seat_id"]]
+    if "start_at" in target:
+        window_sql = " AND r.start_at<? AND ?<r.end_at"
+        parameters.extend((target["end_at"], target["start_at"]))
     rows = connection.execute(
         r.SELECT
         + f" WHERE r.status IN {r.ACTIVE} AND "
         + ("s.room_id=?" if target["room_id"] else "r.seat_id=?")
+        + window_sql
         + " ORDER BY r.id",
-        (target["room_id"] or target["seat_id"],),
+        parameters,
     ).fetchall()
     records = [r.serialize(row) for row in rows]
     actual_room = target["room_id"] or resource["room_id"]
@@ -129,6 +137,9 @@ def preview(actor, body):
     connection.execute("BEGIN")
     try:
         target, resource = scope(connection, body)
+        now = r.now_utc()
+        if "end_at" in target and target["end_at"] <= r.utc_text(now):
+            raise ApiError(400, "TIME_INVALID", "关闭结束时间必须晚于当前时间。")
         result = impact(connection, target, resource)
         token = signer().dumps(
             {"actor": actor, "target": target, "fingerprint": result["fingerprint"]}
@@ -142,8 +153,8 @@ def preview(actor, body):
         "target": target,
         "preview_token": token,
         "expires_in_seconds": 300,
-        "server_time": r.utc_text(r.now_utc()),
-        "mode": "immediate_until_reopened",
+        "server_time": r.utc_text(now),
+        "mode": "scheduled" if "start_at" in target else "immediate_until_reopened",
     }
 
 
@@ -171,6 +182,8 @@ def close(actor, body, key):
             raise ApiError(403, "FORBIDDEN", "预览不属于当前管理员。")
         target, resource = scope(connection, saved["target"])
         now = r.now_utc()
+        if "end_at" in target and target["end_at"] <= r.utc_text(now):
+            raise ApiError(409, "PREVIEW_STALE", "关闭时段已结束，请调整时段后重新预览。")
         result = impact(connection, target, resource)
         if result["fingerprint"] != saved["fingerprint"]:
             raise ApiError(409, "PREVIEW_STALE", "影响范围已改变，请重新预览。")
@@ -179,7 +192,13 @@ def close(actor, body, key):
                 409, "RESOURCE_IN_USE", "存在使用中或暂离中预约，请现场处理并结束后重新预览。"
             )
         actual_room = target["room_id"] or resource["room_id"]
-        if r.closed(connection, actual_room, target["seat_id"]):
+        if r.closed(
+            connection,
+            actual_room,
+            target["seat_id"],
+            max(r.utc_text(now), target.get("start_at", r.utc_text(now))),
+            target.get("end_at"),
+        ):
             raise ApiError(409, "RESOURCE_UNAVAILABLE", "资源已关闭，请先检查关闭记录。")
         # Deadlines may have passed without changing raw rows since the preview.
         # Require a fresh preview of reconciled data rather than canceling no-shows.
@@ -189,7 +208,9 @@ def close(actor, body, key):
             raise ApiError(409, "PREVIEW_STALE", "预约已到期，请刷新管理数据后重新预览。")
         closure_id = str(uuid.uuid4())
         connection.execute(
-            "INSERT INTO resource_closures(id,room_id,seat_id,reason,created_by,created_at) VALUES (?,?,?,?,?,?)",
+            """INSERT INTO resource_closures
+               (id,room_id,seat_id,reason,created_by,created_at,start_at,end_at)
+               VALUES (?,?,?,?,?,?,?,?)""",
             (
                 closure_id,
                 target["room_id"],
@@ -197,6 +218,8 @@ def close(actor, body, key):
                 target["reason"],
                 actor,
                 r.utc_text(now),
+                target.get("start_at"),
+                target.get("end_at"),
             ),
         )
         for record in result["affected"]:

@@ -129,11 +129,17 @@ def seat_resource(connection, seat_id):
     return seat
 
 
-def closed(connection, room_id, seat_id=None):
+CLOSURE_OVERLAP = """c.reopened_at IS NULL
+    AND (? IS NULL OR c.start_at IS NULL OR c.start_at < ?)
+    AND (c.end_at IS NULL OR ? < c.end_at)"""
+
+
+def closed(connection, room_id, seat_id, start_text, end_text):
     return (
         connection.execute(
-            "SELECT 1 FROM resource_closures WHERE reopened_at IS NULL AND (room_id=? OR seat_id=?)",
-            (room_id, seat_id),
+            f"""SELECT 1 FROM resource_closures c WHERE (c.room_id=? OR c.seat_id=?)
+             AND {CLOSURE_OVERLAP} LIMIT 1""",
+            (room_id, seat_id, end_text, end_text, start_text),
         ).fetchone()
         is not None
     )
@@ -185,15 +191,16 @@ def availability_snapshot(connection, student_id, room_id, start, end):
     room = room_resource(connection, room_id)
     now = now_utc()
     validate_policy(room, start, end, settings, now, weekly_hours(connection, room_id))
-    if closed(connection, room_id):
+    start_text, end_text = utc_text(start), utc_text(end)
+    if closed(connection, room_id, None, start_text, end_text):
         raise ApiError(409, "RESOURCE_UNAVAILABLE", "房间已关闭。")
     rows = connection.execute(
         f"""SELECT s.id, s.room_id, s.label, s.enabled,
-        s.enabled=1 AND NOT EXISTS (SELECT 1 FROM resource_closures c WHERE c.seat_id=s.id AND c.reopened_at IS NULL)
+        s.enabled=1 AND NOT EXISTS (SELECT 1 FROM resource_closures c WHERE c.seat_id=s.id AND {CLOSURE_OVERLAP})
         AND NOT EXISTS (SELECT 1 FROM reservations r WHERE (r.seat_id=s.id OR r.student_id=?)
           AND r.status IN {ACTIVE} AND r.start_at<? AND ?<r.end_at) AS available
         FROM seats s WHERE s.room_id=? ORDER BY s.label, s.id""",
-        (student_id, utc_text(end), utc_text(start), room_id),
+        (end_text, end_text, start_text, student_id, end_text, start_text, room_id),
     ).fetchall()
     return {
         "seats": [
@@ -235,7 +242,7 @@ def create(student_id, seat_id, start_at, end_at, key):
         validate_policy(
             resource, start, end, settings, now, weekly_hours(connection, resource["room_id"])
         )
-        if closed(connection, resource["room_id"], seat_id):
+        if closed(connection, resource["room_id"], seat_id, start_text, end_text):
             raise ApiError(409, "RESOURCE_UNAVAILABLE", "资源已关闭。")
         conflict = connection.execute(
             f"""SELECT 1 FROM reservations WHERE (seat_id=? OR student_id=?)
