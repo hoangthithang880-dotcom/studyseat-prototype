@@ -1,0 +1,17 @@
+{
+  "result": "passed",
+  "executed_at": "2026-11-28T02:38:54.249Z",
+  "browser": "158.0.8127.37",
+  "channel": "chrome",
+  "playwright": "1.62.1",
+  "device_timezone": "America/Los_Angeles",
+  "checks": [
+    "real query/create; lost receipt retried with same key; refresh/relogin persistence; Beijing payload on Los Angeles device",
+    "desktop and 390px mobile layout without horizontal overflow",
+    "ownership read/cancel 404; occupied seat hidden; duplicate cancel stable; student B books released interval",
+    "delayed student A reservation response cannot overwrite student B list",
+    "changing query discards delayed seat availability response",
+    "failed reservation load has no prior account data; explicit refresh recovers; admin has no student controls"
+  ],
+  "errors": []
+}

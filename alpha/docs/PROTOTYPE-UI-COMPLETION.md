@@ -24,7 +24,39 @@
 
 `04e4200` 已完成完整验证：197 项后端、70 项静态原型单测、55 项旧工作台浏览器检查、87 项新版逐控件自检、16 项新版时序回归、6 条原型浏览器流程均通过；Ruff、JS 语法、真实 HTTP 重启、v1→v5 升级、独立超时进程和 HTTP 争抢检查通过。浏览器为 macOS 的 Chrome 158.0.8127.37，没有失败或跳过项。进一步加强换号和恢复会话后的断言：从页面完成新账号的真实 POST，而非由测试辅助 API 获取新的 CSRF 后创建。
 
-最终证据归档说明随本轮验证报告追加。此前独立复查的完整运行针对 `111e64cf`，不冒充本次修复提交的完整结果。
+最终整套复验在计划指定目录 `/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix` 执行，测试提交为 `519d2021fe80313c5b3e5ca560c6a2d385ef2439`，完成于北京时间 2026-11-28 10:40。结果仍为全部通过。此前独立复查的完整运行针对 `111e64cf`，不冒充本次修复提交的完整结果。
+
+| 检查 | 最终实际结果 |
+| --- | --- |
+| pytest | 197 passed，0 failed / errors / skipped；86.85 秒 |
+| 静态原型单测 | 70 passed，0 failed / skipped |
+| 新版逐控件自检 | 87 passed，0 failed / not_run |
+| 新版时序与恢复 | 16 passed，页面未捕获异常为 0；换号后从页面成功创建预约 |
+| 历史工作台浏览器 | 55 项通过，访问 `/diagnostics`，与新版分开计数 |
+| 静态原型浏览器 | 6 条流程通过 |
+| Ruff、JS 语法 | 全部通过 |
+| 真实 HTTP 重启、v1→v5 升级、独立超时进程 | 通过；双超时进程仅处理一次、仅一条超时审计 |
+| HTTP 并发 | 同座位 20 请求：1×201、19×409，数据库 1 条预约，完整性检查 ok |
+
+[本轮证据目录](../evidence/prototype-ui-completion/20261128-final) 新增保存，不覆盖历史报告。其中 [summary.json](../evidence/prototype-ui-completion/20261128-final/summary.json) 记录命令和数量，[完整验证器结果](../evidence/prototype-ui-completion/20261128-final/full/verification.json) 对应最终测试提交；[87 项控件清单](../evidence/prototype-ui-completion/20261128-final/full/prototype-integration-browser/AI-INTERACTION-AUDIT.md)、[16 项时序结果](../evidence/prototype-ui-completion/20261128-final/full/prototype-async-browser/results.json)、修复前失败记录、原始日志及新版 17 张截图一并保存。`final-source.json` 固定 48 个源文件及测试摘要，后续证据文档提交不改变这些文件。
+
+本次完整命令如下，运行目录为上述项目根目录：
+
+```sh
+STUDYSEAT_EVIDENCE_DIR=/tmp/studyseat-ui-completion-evidence/final-full \
+STUDYSEAT_BROWSER_CHANNEL=chrome \
+STUDYSEAT_NODE=/Users/zhouyiheng/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node \
+NODE_PATH=/Users/zhouyiheng/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules \
+/tmp/studyseat-phase3-venv/bin/python alpha/scripts/verify_phase4.py
+```
+
+## 本机验收及 PR
+
+当前 [5071 验收入口](http://127.0.0.1:5071/) 来自计划指定项目，使用独立持久化数据库 `alpha/instance/prototype-ui-5071.sqlite3`，会话配置位于被 Git 忽略的本机私有文件，未进入证据或提交。已同时启动独立超时轮询。原 [5068](http://127.0.0.1:5068/) 仍返回 schema v3，新实例返回 v5，新页面脚本与交付源文件摘要一致。
+
+学生 `832402116 / 123456`，另一学生 `student02 / Study1234`，管理员 `admin01 / Admin1234`。依次操作房间卡片、日期/时间、查询、选择座位、确认须知与预约、本人记录、取消；在临近开始的有效签到窗口操作签到、暂离、返回与结束。管理员可验证规则、星期开放、关闭预览与回退、确认后取消同一预约、重开保留取消状态、日志关联返回。刷新、重登和服务重启后的持久化由完整验证中的真实 HTTP 进程检查覆盖。
+
+补充分支为 `codex/prototype-ui-integration`。PR #8 来自同学的 fork `832402123wuyiming/studyseat-prototype`，在本轮核实时尚未合并；补充 PR 目标为 main，注明依赖并保持 Draft。当前比较会包含 #8 的既有变更，先合并 #8 后再复核差异；本次不合并、不部署。
 
 ## 交付限制
 

@@ -1,0 +1,12 @@
+{
+  "commit": "111e64cf5409c85527596c84899dd0a242d48265",
+  "browser": "158.0.8127.37",
+  "checks": [
+    {
+      "name": "create-receipt-preserves-new-draft",
+      "result": "failed",
+      "error": "Expected values to be strictly equal:\n\n'08:00' !== '13:00'\n"
+    }
+  ],
+  "page_errors": []
+}
