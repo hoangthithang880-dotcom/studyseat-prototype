@@ -2,7 +2,10 @@
 
 项目目录：/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix
 本地分支：codex/prototype-ui-integration
-产品基线：2c24361f0cd05f306ea9cc01c129fb0410638424，来自已复查的 PR #8。
+真实后端产品基线：2c24361f0cd05f306ea9cc01c129fb0410638424，来自已复查的 PR #8。
+原型UI与交互基线：仓库最初原型提交 2ba47d83ab5f22e8ea395b0753d54cd95e3d6e2f（2026年10月29日），不是Alpha工作台。
+正式墨刀入口：https://modao.cc/proto/jojnMZTptnm0v2RS5FJnT5/sharing?view_mode=device&screen=rbpVZKhPnl9bPObwP&canvasId=rcVZMWRghgfFFxdw
+墨刀起始页为“00 正式入口｜Study Seat”，与该原型提交的定版HTML和静态成品对应。
 该基线之后可能有计划材料提交，先核对真实 HEAD、分支、远端和 git status，不要重置已有改动。
 
 先阅读本目录的 AGENTS.md，以及 docs/handoff/prototype-ui-integration 中的 Word 实施计划书。原始依据是 /Users/zhouyiheng/Downloads/StudySeat_代码规范与冲刺计划.docx；原型以 prototype/、modao/StudySeat_定版原型.html 和 docs/screenshots/ 为准。再读 alpha/README.md，以及 alpha/docs/ 下的 API-v1.md、RULES.md、PHASE3.md、PHASE4.md、PHASE4-REVIEW-FIXES.md。

@@ -16,7 +16,10 @@ TASK = '''请直接完成 StudySeat 原型界面接入与补充 PR 开发，不�
 
 项目目录：/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix
 本地分支：codex/prototype-ui-integration
-产品基线：2c24361f0cd05f306ea9cc01c129fb0410638424，来自已复查的 PR #8。
+真实后端产品基线：2c24361f0cd05f306ea9cc01c129fb0410638424，来自已复查的 PR #8。
+原型UI与交互基线：仓库最初原型提交 2ba47d83ab5f22e8ea395b0753d54cd95e3d6e2f（2026年10月29日），不是Alpha工作台。
+正式墨刀入口：https://modao.cc/proto/jojnMZTptnm0v2RS5FJnT5/sharing?view_mode=device&screen=rbpVZKhPnl9bPObwP&canvasId=rcVZMWRghgfFFxdw
+墨刀起始页为“00 正式入口｜Study Seat”，与该原型提交的定版HTML和静态成品对应。
 该基线之后可能有计划材料提交，先核对真实 HEAD、分支、远端和 git status，不要重置已有改动。
 
 先阅读本目录的 AGENTS.md，以及 docs/handoff/prototype-ui-integration 中的 Word 实施计划书。原始依据是 /Users/zhouyiheng/Downloads/StudySeat_代码规范与冲刺计划.docx；原型以 prototype/、modao/StudySeat_定版原型.html 和 docs/screenshots/ 为准。再读 alpha/README.md，以及 alpha/docs/ 下的 API-v1.md、RULES.md、PHASE3.md、PHASE4.md、PHASE4-REVIEW-FIXES.md。
@@ -126,13 +129,14 @@ def table(headers, rows, widths):
 
 # 1
 p('StudySeat 原型界面接入\n与补充 PR 实施计划书').style = doc.styles['Title']
-p('新对话开发交接用    2026年11月28日    计划版本 1.2', size=10)
+p('新对话开发交接用    2026年11月28日    计划版本 1.3', size=10)
 p('目标是在已确认原型和已验证真实后端的基础上继续开发，尽可能保留原型 UI、页面结构和已有交互逻辑，形成学生和管理员均可实际操作的 Alpha 版本。本计划供新的开发对话直接执行；本次只制作计划与交接材料，尚未完成界面改造。')
 sub('开发位置与基线')
 table(['项目','约定'],[
 ('独立项目目录', '/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix'),
 ('本地分支', 'codex/prototype-ui-integration'),
-('产品基线', BASE),
+('原型UI与交互基线', '2ba47d83ab5f22e8ea395b0753d54cd95e3d6e2f；2026年10月29日仓库首次原型提交。'),
+('真实后端产品基线', BASE),
 ('上游依赖', 'PR #8；复查时 open、未合并。执行时重新获取最新状态，不把该状态当作永久事实。'),
 ('当前本地情况', '已建立独立目录；除本计划材料外没有 UI 修改。后续计划提交会改变 HEAD，不能重置回产品基线。'),
 ], [1.25, 5.65])
@@ -144,7 +148,7 @@ p('核心验收门槛：原型对应页面可操作、真实数据贯通、既�
 
 # Source basis
 h('一 材料基线与继承关系')
-p('本任务是在现有材料上继续开发，不重新设计一套简化产品。视觉和交互以原型原稿为依据，真实数据与安全一致性以已复查后端为基础；当前Alpha长表单不是最终界面基准。')
+p('本任务是在现有材料上继续开发，不重新设计一套简化产品。原型固定为仓库首次提交 2ba47d83ab5f22e8ea395b0753d54cd95e3d6e2f，正式墨刀起始页为“00 正式入口｜Study Seat”。视觉与交互按这套最初原型，真实数据与安全一致性按已复查后端；Alpha长表单不是原型基准。')
 p('原型原稿目录：/Users/zhouyiheng/Desktop/软件工程/studyseat原型设计/studyseat-prototype-master。开发目录与其分离；未经授权不修改原稿。下面的仓库内路径均相对本计划首页的开发目录。', size=10)
 table(['材料层级','具体材料','在本任务中的用途'],[
 ('用户本次要求', '保留原型已有交互逻辑，UI尽可能保留；任务明确、边界清楚；AI逐控件自检。', '作为本次新增验收门槛，不能用功能测试通过代替UI与交互验收。'),
@@ -154,7 +158,7 @@ table(['材料层级','具体材料','在本任务中的用途'],[
 ('冲刺与作业依据', '下载目录中的原始冲刺计划；课堂作业620611106；alpha/README及阶段记录。', '明确业务约束、阶段范围、证据、真实进度和截止；不能倒改历史计划掩盖缺口。'),
 ], [1.05, 2.85, 3.0])
 sub('已经核实的原型一致性')
-p('原稿与本项目的定版HTML、student-app.js、admin-ui.js、local-room.png、prototype-release.json五项关键材料字节一致。摘要及两侧路径见同目录 prototype-material-manifest.json。新对话先确认材料仍在，再实际打开原型走流程。')
+p('仓库首次原型提交、原稿目录与本项目的定版HTML、student-app.js、admin-ui.js、local-room.png、prototype-release.json五项关键材料字节一致；首次提交与后端基线之间，prototype、modao、deploy、docs/screenshots四个目录没有内容差异。摘要及两侧路径见同目录 prototype-material-manifest.json。新对话先确认材料仍在，再实际打开原型走流程。')
 sub('冲突处理原则')
 p('原型模拟数据必须换成真实数据，安全与服务端判定不能退化；原型已有核心交互缺接口时，列出差距并实现最小兼容支持。确实未完成的差异保留在清单中，不能悄悄删入口、换语义或宣称已经还原。')
 
@@ -323,6 +327,8 @@ for text in [
 p('上述仓库内相对路径以本计划首页项目目录为根。原始冲刺计划在 /Users/zhouyiheng/Downloads/StudySeat_代码规范与冲刺计划.docx；本计划补充前端交付门槛，不覆盖原始文件。API文档若存在历史版本说明，应以当前schema v3补充契约和实际代码核对后同步消除歧义。', size=10)
 sub('外部依据与固定产品基线')
 link('课堂作业原文 与截止和材料要求', 'https://bbs.csdn.net/topics/620611106')
+link('正式墨刀原型 00 正式入口 Study Seat', 'https://modao.cc/proto/jojnMZTptnm0v2RS5FJnT5/sharing?view_mode=device&screen=rbpVZKhPnl9bPObwP&canvasId=rcVZMWRghgfFFxdw')
+link('仓库最初原型提交 固定UI与交互依据', 'https://github.com/hoangthithang880-dotcom/studyseat-prototype/tree/2ba47d83ab5f22e8ea395b0753d54cd95e3d6e2f')
 link('PR #8 最新状态 执行前重新核实', 'https://github.com/hoangthithang880-dotcom/studyseat-prototype/pull/8')
 link('固定产品基线 源码与修复记录', f'https://github.com/832402123wuyiming/studyseat-prototype/tree/{BASE}')
 sub('新对话首次回复应报告的内容')

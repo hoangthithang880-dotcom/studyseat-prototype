@@ -88,7 +88,7 @@ class PlanTest(unittest.TestCase):
         for name in ['Title', 'Heading 1', 'Heading 2']:
             self.assertEqual(str(self.document.styles[name].font.color.rgb), '000000')
         targets = [r.get('Target') for r in self.rels if r.get('TargetMode') == 'External']
-        self.assertEqual(len(targets), 3)
+        self.assertEqual(len(targets), 5)
         self.assertIn('https://bbs.csdn.net/topics/620611106', targets)
 
     def test_original_materials_are_verified_and_ui_is_authoritative(self):
@@ -99,8 +99,21 @@ class PlanTest(unittest.TestCase):
             a, b = Path(item['original']).read_bytes(), Path(item['working']).read_bytes()
             self.assertEqual(a, b)
             self.assertEqual(hashlib.sha256(a).hexdigest(), item['sha256'])
-        for phrase in ['当前Alpha长表单不是最终界面基准', '原型已有核心交互缺接口', 'X01', 'X02', 'X03', 'U01', 'S01', 'S05', 'A01', 'A05']:
+        for phrase in ['Alpha长表单不是原型基准', '原型已有核心交互缺接口', 'X01', 'X02', 'X03', 'U01', 'S01', 'S05', 'A01', 'A05']:
             self.assertIn(phrase, self.text)
+
+    def test_original_repository_snapshot_and_modao_entry_are_pinned(self):
+        manifest = json.loads((HERE / 'prototype-material-manifest.json').read_text())
+        original = '2ba47d83ab5f22e8ea395b0753d54cd95e3d6e2f'
+        self.assertEqual(manifest['original_prototype_commit'], original)
+        self.assertIn(original, self.text)
+        self.assertIn(original, self.task)
+        self.assertIn('canvasId=rcVZMWRghgfFFxdw', manifest['official_modao_url'])
+        self.assertIn('00 正式入口｜Study Seat', self.text)
+        self.assertEqual(git('diff', '--name-only', original, BASE, '--', 'prototype', 'modao', 'deploy', 'docs/screenshots'), '')
+        for item in manifest['files']:
+            content = subprocess.check_output(['git', 'show', original + ':' + item['path']], cwd=ROOT)
+            self.assertEqual(content, Path(item['working']).read_bytes())
 
     def test_ai_interaction_audit_is_a_release_gate(self):
         for phrase in ['AI逐控件交互自检门槛', '点了没反应', 'AI-INTERACTION-AUDIT.json',
