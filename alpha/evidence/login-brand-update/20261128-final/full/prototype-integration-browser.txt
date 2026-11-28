@@ -1,0 +1,23 @@
+PASS login-roles, login-examples, login-brand, login-password, login-invalid 账号或密码错误。
+PASS login-valid, initialization-wait 加载期间不提前显示旧卡片。真实房间目录返回后进入学生首页。
+PASS home-search, home-empty, home-clear-reset, home-scenes 从四间到一间、空列表；全天开放筛出一间，然后恢复全部。
+PASS home-conditions, home-query, available-only 查询结果和余量标签可见，过滤状态可切换。
+PASS immediate-pick, room-back, room-card 选座入口、键盘打开 A101 和返回均到达对应页面。
+PASS date-picker, day-shortcuts, slot-shortcuts, start-end, search-seats 真实 API 响应含完整座位目录和有效余量，网格已显示。
+PASS seat-retry 连接错误已显示，重新查询恢复座位。
+PASS seat-zone, seat-disabled, seat-select, continue-booking 不可用座位禁用，A01 选择、时间与房间确认一致。
+PASS agreement, confirm-back, confirm-submit, booking-receipt 成功凭证和真实本人记录一致 112b5b11-53eb-43b3-ac1d-48329f2775df
+PASS booking-nav, booking-filter, booking-reload, booking-detail, new-booking 分组、详情、刷新、去预约与再进入本人列表可见。
+PASS profile-nav, profile-refresh, profile-return, profile-exit, exit-keep, exit-confirm, relogin 退出只在确认后发生，重登恢复同一预约，个人摘要来自真实数据。
+PASS student-isolation 本人视图、归属和管理员权限隔离有效。
+PASS admin-login 管理员账号和工作台显示，学生个人页不在导航中。
+PASS rule-edit, rule-reset, rule-defaults, rule-draft-guard, rule-save, rule-late-receipt, admin-refresh 规则 31 的迟到回执保留草稿 32，单独保存后重新读取 V3。
+PASS open-tab, open-room, open-days, open-mode, open-start-end, opening-reset, opening-save 用户选择的周二 06:00 至 24:00 已经持久化。
+PASS resources-nav, closure-new, closure-room-scope, closure-seat, closure-time-reason, closure-preview, closure-back, closure-confirm 预览无写入。确认后同一条预约变为已取消，关闭详情显示一条。
+PASS closure-detail, affected-reservations, return-to-closure, notification-preview, reopen 关联和详情来回可达，重开状态可见，取消记录没有复活。
+PASS records-nav, record-filters, record-reset, record-detail, records-pagination, log-tab, log-detail, log-associated 查询、重置、分页边界、日志与预约详情关联往返均可见。
+PASS cancel-dismiss, check-in, leave, return, finish 已依序观察到签到、暂离、返回与结束的服务端状态。
+PASS cancel-submit 真实取消回执与界面一致 20e70be6-de14-4ebd-8ef6-6a828ba41eb0
+PASS desktop-width 桌面预约与管理日志宽度通过。
+PASS mobile-375 触屏在 375px 宽度可进入房间并读到真实座位。
+PASS mobile-390 触屏在 390px 宽度可进入房间并读到真实座位。

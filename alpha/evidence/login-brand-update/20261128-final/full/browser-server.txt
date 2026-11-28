@@ -1,0 +1,53 @@
+ * Serving Flask app 'studyseat'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:49806
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [28/Nov/2026 12:13:16] "GET /api/v1/health HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:17] "GET /diagnostics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:17] "GET /static/app.css HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:17] "GET /static/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:17] "GET /api/v1/auth/session HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Nov/2026 12:13:17] "[31m[1mPOST /api/v1/auth/login HTTP/1.1[0m" 401 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "POST /api/v1/auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/auth/session HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/persistence-notes HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rooms HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rules HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/reservations HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "[31m[1mGET /api/v1/admin/audit-events HTTP/1.1[0m" 403 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "[35m[1mPOST /api/v1/persistence-notes HTTP/1.1[0m" 201 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/auth/session HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/persistence-notes HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rules HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rooms HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/reservations HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /diagnostics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /static/app.css HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /static/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/auth/session HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rules HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/persistence-notes HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/reservations HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rooms HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "POST /api/v1/auth/logout HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/auth/session HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "POST /api/v1/auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/auth/session HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/persistence-notes HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/reservations HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rules HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rooms HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "POST /api/v1/auth/logout HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/auth/session HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "POST /api/v1/auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/auth/session HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/persistence-notes HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rules HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:18] "GET /api/v1/rooms HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:19] "GET /api/v1/rules HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:19] "GET /api/v1/admin/reservations HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:19] "GET /api/v1/admin/audit-events HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:19] "GET /api/v1/rooms HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2026 12:13:19] "GET /api/v1/admin/resources HTTP/1.1" 200 -
