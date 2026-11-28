@@ -1,0 +1,25 @@
+{
+  "result": "passed",
+  "executed_at": "2026-11-28T04:33:42.621878+00:00",
+  "service_pids": [
+    34241,
+    34242
+  ],
+  "worker_pids": [
+    34243,
+    34244
+  ],
+  "checks": [
+    "real v1 reservation/audit migrated to v5 without loss",
+    "HTTP checkin/leave",
+    "session and leave state survive service restart",
+    "same leave key retains original deadline after restart",
+    "return/finish/replay",
+    "two independent timeout CLI processes while service stopped",
+    "one timeout and one audit"
+  ],
+  "worker_outputs": [
+    "Reconciled 0 reservations",
+    "Reconciled 1 reservations"
+  ]
+}

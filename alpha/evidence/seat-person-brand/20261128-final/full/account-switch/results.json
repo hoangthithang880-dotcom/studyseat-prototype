@@ -1,0 +1,33 @@
+{
+  "result": "passed",
+  "executed_at": "2026-11-28T04:33:56.944Z",
+  "browser": "158.0.8127.37",
+  "channel": "chrome",
+  "playwright": "1.62.1",
+  "scenarios": [
+    {
+      "name": "T1-logout-private-state",
+      "result": "passed"
+    },
+    {
+      "name": "T2-notes-failure-isolation",
+      "result": "passed"
+    },
+    {
+      "name": "T3-rules-failure-hides-admin",
+      "result": "passed"
+    },
+    {
+      "name": "T4-delayed-notes",
+      "result": "passed"
+    },
+    {
+      "name": "T4-delayed-events",
+      "result": "passed"
+    },
+    {
+      "name": "T4-delayed-session-csrf",
+      "result": "passed"
+    }
+  ]
+}

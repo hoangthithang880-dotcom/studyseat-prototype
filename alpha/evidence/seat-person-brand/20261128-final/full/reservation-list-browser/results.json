@@ -1,0 +1,70 @@
+{
+  "result": "passed",
+  "executed_at": "2026-11-28T04:34:08.996Z",
+  "browser": "158.0.8127.37",
+  "channel": "chrome",
+  "playwright": "1.62.1",
+  "scenarios": [
+    {
+      "name": "A-empty-list-after-create",
+      "result": "passed",
+      "proof": {
+        "reservation_id": "8a7895bb-5ac6-416c-8cae-c485b613fbf6",
+        "old_count": 0,
+        "server_status": "PENDING_CHECKIN"
+      }
+    },
+    {
+      "name": "B-D-cancel-new-first",
+      "result": "passed",
+      "proof": {
+        "order": "new-first",
+        "reservation_id": "ba3fc7db-4ea1-407e-a78b-259b24fc14ed",
+        "server_status": "CANCELLED"
+      }
+    },
+    {
+      "name": "B-D-cancel-old-first",
+      "result": "passed",
+      "proof": {
+        "order": "old-first",
+        "reservation_id": "d75c5ab7-6ab4-45a2-8fc0-a7e9d51abcff",
+        "server_status": "CANCELLED"
+      }
+    },
+    {
+      "name": "C-old-error-503",
+      "result": "passed",
+      "proof": {
+        "failure_mode": "503",
+        "reservation_id": "b5bc4553-a7c7-4af3-ab8a-9927a5568445",
+        "server_status": "PENDING_CHECKIN"
+      }
+    },
+    {
+      "name": "C-old-error-abort",
+      "result": "passed",
+      "proof": {
+        "failure_mode": "abort",
+        "reservation_id": "f5f9205e-2cbd-4823-a1f7-e972ffb38f22",
+        "server_status": "PENDING_CHECKIN"
+      }
+    },
+    {
+      "name": "E-current-error-remains-visible-and-retryable",
+      "result": "passed",
+      "proof": {
+        "current_error_visible": true,
+        "retry_succeeded": true
+      }
+    },
+    {
+      "name": "F-superseded-initial-list-keeps-catalog",
+      "result": "passed",
+      "proof": {
+        "room_options": 4,
+        "catalog_enabled": true
+      }
+    }
+  ]
+}
