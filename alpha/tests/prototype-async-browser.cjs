@@ -205,6 +205,21 @@ async function bookings(page) {
   await visible(page, '#list-status', '预约已更新');
 }
 
+async function createFromPage(page) {
+  await room(page, '13:00', '14:00', 'A02');
+  await confirm(page, 'A02');
+  const reply = page.waitForResponse(response => new URL(response.url()).pathname === '/api/v1/reservations'
+    && response.request().method() === 'POST');
+  await click(page, '#confirm-booking');
+  const response = await reply;
+  assert.equal(response.status(), 201, 'The current UI session and CSRF must permit a real write');
+  const saved = (await response.json()).data;
+  await visible(page, 'dialog[open]', saved.id);
+  await click(page, '#sheet-cancel');
+  await recordCard(page, saved).waitFor();
+  return saved;
+}
+
 async function seatOrder(page, order, fail = false) {
   const other = await browser.newPage();
   let occupied;
@@ -328,7 +343,7 @@ async function switchIdentity(page, csrfError = false) {
     assert.equal(await recordCard(page, saved).count(), 0);
     await click(page, '[data-nav="profile"]');
     await visible(page, 'main', 'student02');
-    const second = await reserve(page, { start: '13:00', end: '14:00', seat: 'A02' });
+    const second = await createFromPage(page);
     await cleanup(page, second.id);
   } finally {
     // The first identity's record is deliberately inaccessible to the second.
@@ -353,7 +368,7 @@ async function sessionRecovery(page) {
   await visible(page, '#list-status', '预约已更新');
   await click(page, '[data-nav="profile"]');
   await visible(page, 'main', 'student02');
-  const saved = await reserve(page, { start: '13:00', end: '14:00', seat: 'A02' });
+  const saved = await createFromPage(page);
   await cleanup(page, saved.id);
 }
 
