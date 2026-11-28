@@ -56,4 +56,6 @@ macOS 可设 `STUDYSEAT_BROWSER_CHANNEL=chrome`。设置 `STUDYSEAT_NODE`、`NOD
 
 ## PR 依赖
 
+最终送审核对及本轮重跑结果见[送审前自检](PRE-PR-SELFCHECK.md)。
+
 [PR #8](https://github.com/hoangthithang880-dotcom/studyseat-prototype/pull/8) 在 2026-11-28 核对时仍为 Open，main 为 `328a3b3d9784d33832094610610498ae14d30935`。补充 PR 应说明该依赖。此前提交 `111e64cf` 的执行限制及报告属于历史记录；本轮已在可以运行 HTTP 与 Chrome 的环境补做验收，见[补充修复和验收记录](PROTOTYPE-UI-COMPLETION.md)。测试通过表示本轮技术检查通过，不替代团队合并批准。

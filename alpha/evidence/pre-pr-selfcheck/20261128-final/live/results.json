@@ -1,0 +1,47 @@
+{
+  "browser": "158.0.8127.37",
+  "checks": [
+    {
+      "width": 1280,
+      "role": "student",
+      "examples": "示例账号\n\n学生 A：832402116 · 密码：123456\n\n学生 B：student02 · 密码：Study1234\n\n以上为公开演示账号。",
+      "brand_loaded": true,
+      "result": "passed"
+    },
+    {
+      "width": 1280,
+      "role": "admin",
+      "examples": "示例账号\n\n管理员：admin01\n密码：Admin1234\n\n以上为公开演示账号。",
+      "brand_loaded": true,
+      "result": "passed"
+    },
+    {
+      "width": 375,
+      "role": "student",
+      "examples": "示例账号\n\n学生 A：832402116 · 密码：123456\n\n学生 B：student02 · 密码：Study1234\n\n以上为公开演示账号。",
+      "brand_loaded": true,
+      "result": "passed"
+    },
+    {
+      "width": 375,
+      "role": "admin",
+      "examples": "示例账号\n\n管理员：admin01\n密码：Admin1234\n\n以上为公开演示账号。",
+      "brand_loaded": true,
+      "result": "passed"
+    },
+    {
+      "width": 390,
+      "role": "student",
+      "examples": "示例账号\n\n学生 A：832402116 · 密码：123456\n\n学生 B：student02 · 密码：Study1234\n\n以上为公开演示账号。",
+      "brand_loaded": true,
+      "result": "passed"
+    },
+    {
+      "width": 390,
+      "role": "admin",
+      "examples": "示例账号\n\n管理员：admin01\n密码：Admin1234\n\n以上为公开演示账号。",
+      "brand_loaded": true,
+      "result": "passed"
+    }
+  ]
+}

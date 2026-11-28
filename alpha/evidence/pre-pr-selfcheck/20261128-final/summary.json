@@ -1,0 +1,36 @@
+{
+  "result": "passed",
+  "reviewed_commit": "6827940b5eebbf5915fbd23084625bc85eaa0e1b",
+  "source_matches_full_tested_commit": "118f32c2f2e479ffcf3c1390bf5d9928786930e2",
+  "source_hashes_verified": 99,
+  "rerun": {
+    "prototype_unit": 71,
+    "new_ui_control_checks": 89,
+    "new_ui_async_scenarios": 16,
+    "live_login_layout_checks": 6,
+    "ruff_check": "passed",
+    "ruff_format": "passed"
+  },
+  "prior_full_regression_verified_without_rerunning": {
+    "pytest": 197,
+    "legacy_diagnostics_checks": 55,
+    "prototype_browser_flows": 6,
+    "restart_upgrade_expiry_http_competition": "passed",
+    "evidence": "../../seat-person-brand/20261128-final/full/verification.json"
+  },
+  "browser": "158.0.8127.37",
+  "findings": [],
+  "review_scope": [
+    "current implementation diff and source/evidence consistency",
+    "role-specific demo credentials and actual real-service login",
+    "seated-person mark across current UIs, favicon, build and export",
+    "create/cancel/list ordering, identity/CSRF/session isolation and draft preservation",
+    "desktop and mobile visible outcomes"
+  ],
+  "limits": [
+    "AI self-review; no team non-author approval recorded",
+    "Windows/Edge not executed"
+  ],
+  "pull_request": 9,
+  "requested_transition": "ready for review; dependency PR8 remains unmerged; do not merge"
+}

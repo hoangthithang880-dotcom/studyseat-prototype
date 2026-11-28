@@ -1,0 +1,16 @@
+PASS create-receipt-preserves-new-draft
+PASS uncertain-create-retries-same-reservation
+PASS seat-new-first
+PASS seat-old-first
+PASS seat-old-error-after-new-result
+PASS list-before-create-cannot-remove-new-record
+PASS list-cancel-new-first
+PASS list-cancel-old-first
+PASS list-old-error-after-new-result
+PASS list-old-error-during-new-load
+PASS list-current-error-retry
+PASS old-account-list-after-new-login
+PASS old-account-csrf-error-after-new-login
+PASS delayed-session-recovery-and-csrf
+PASS initialization-error-retry-and-ready-controls
+PASS mobile-admin-resets-and-discard-guard
