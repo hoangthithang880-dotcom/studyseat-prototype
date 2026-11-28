@@ -274,7 +274,7 @@ function renderLogin(note = '', error = false) {
   byId('top').hidden = byId('navigation').hidden = true;
   view.className = 'login';
   const adminLogin = loginRole === 'admin';
-  view.innerHTML = `<section class="hero"><div class="brand-icon" aria-hidden="true"><img src="/static/brand-mark.svg" width="38" height="38" alt=""></div>
+  view.innerHTML = `<section class="hero"><div class="brand-icon" aria-hidden="true"><img src="/static/brand-mark.svg?v=seat-person-20261128" width="58" height="58" alt=""></div>
     <h1>Study Seat</h1><p>智慧校园自习室预约与座位管理系统</p></section>
     <section class="login-card" aria-label="登录 Study Seat">
       <div class="tabs" aria-label="登录入口">

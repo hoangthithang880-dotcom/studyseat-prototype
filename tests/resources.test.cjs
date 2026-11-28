@@ -41,5 +41,8 @@ test('Every legacy public page resolves to the same formal entry and current rel
   assert(html.includes('location.replace('),name);
  }
  const entry=fs.readFileSync(path.join(root,'index.html'),'utf8');
- assert(entry.includes('deploy/?v='+release));assert(entry.includes('href="deploy/assets/icon.svg"'));
+ const {createHash}=require('node:crypto');
+ const iconHash=createHash('sha256').update(fs.readFileSync(path.join(deploy,'assets/icon.svg'))).digest('hex').slice(0,12);
+ assert(entry.includes('deploy/?v='+release));assert(entry.includes(`href="deploy/assets/icon.svg?v=${iconHash}"`));
+ for(const name of ['login','index','home','room','confirm','bookings','profile','rules','resources','records'])assert(fs.readFileSync(path.join(deploy,name+'.html'),'utf8').includes(`href="assets/icon.svg?v=${iconHash}"`),name+': favicon must use current version');
 });

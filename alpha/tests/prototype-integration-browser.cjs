@@ -145,7 +145,11 @@ async function studentFlow(page) {
         const image = document.querySelector('.brand-icon img');
         return image?.complete && image.naturalWidth > 0;
       });
-      assert((await page.locator('.brand-icon img').getAttribute('src')).endsWith('/brand-mark.svg'));
+      const brandURL = new URL(await page.locator('.brand-icon img').getAttribute('src'), base);
+      assert(brandURL.pathname.endsWith('/brand-mark.svg'));
+      assert.equal(brandURL.searchParams.get('v'), 'seat-person-20261128');
+      const brand = await page.request.get(brandURL.href);
+      assert(brand.ok() && (await brand.text()).includes('data-brand="seat-person"'));
       await click(page, '#admin-login');
       await page.getByLabel('管理员账号').waitFor();
       await text(page.getByLabel('管理员示例账号'), 'admin01');

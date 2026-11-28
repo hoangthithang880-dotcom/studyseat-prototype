@@ -2,7 +2,7 @@
 
 原型基线是 `2ba47d83ab5f22e8ea395b0753d54cd95e3d6e2f`，接入计划使用 v1.3。视觉和交互来自 `modao/StudySeat_定版原型.html`、`prototype/student/` 和 `prototype/admin-ui.js`。后端基线为 `2c24361f0cd05f306ea9cc01c129fb0410638424`。Alpha 首页由同源 API 提供和保存业务数据。原来的工程验证工作台仅在显式设置 `STUDYSEAT_DIAGNOSTICS_UI=1` 时从 `/diagnostics` 访问。
 
-2026-11-28 按用户确认更新书本＋座位标识，并补充学生/管理员示例账号，见[登录与标识更新](LOGIN-BRAND-UPDATE.md)。此为原型基线之后明确授权的展示调整，历史截图保留。
+2026-11-28 补充学生/管理员示例账号，见[登录与标识更新](LOGIN-BRAND-UPDATE.md)；用户随后确认蓝底白色「人像＋座位」为现用图形，见[现用标识更新](SEAT-PERSON-BRAND.md)。这些是原型基线之后明确授权的展示调整，历史截图保留。
 
 | 页面 | 原型交互 | 真实接口 | 实施核对 |
 | --- | --- | --- | --- |
