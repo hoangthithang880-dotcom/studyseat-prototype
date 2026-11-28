@@ -14,8 +14,8 @@ const groups = [
   ['S03', 'student', '确认与回执', ['agreement', 'confirm-back', 'confirm-submit', 'booking-receipt']],
   ['S04', 'student', '预约列表', ['booking-nav', 'booking-filter', 'booking-reload', 'booking-detail', 'new-booking', 'cancel-dismiss', 'cancel-submit', 'check-in', 'leave', 'return', 'finish']],
   ['S05', 'student', '个人页', ['profile-nav', 'profile-refresh', 'profile-return', 'profile-exit']],
-  ['A01', 'admin', '规则配置', ['admin-login', 'rule-edit', 'rule-defaults', 'rule-draft-guard', 'rule-save', 'rule-late-receipt', 'admin-refresh']],
-  ['A02', 'admin', '开放安排', ['open-tab', 'open-room', 'open-days', 'open-mode', 'open-start-end', 'opening-save']],
+  ['A01', 'admin', '规则配置', ['admin-login', 'rule-edit', 'rule-reset', 'rule-defaults', 'rule-draft-guard', 'rule-save', 'rule-late-receipt', 'admin-refresh']],
+  ['A02', 'admin', '开放安排', ['open-tab', 'open-room', 'open-days', 'open-mode', 'open-start-end', 'opening-reset', 'opening-save']],
   ['A03', 'admin', '关闭预览', ['resources-nav', 'closure-new', 'closure-room-scope', 'closure-seat', 'closure-time-reason', 'closure-preview', 'closure-back', 'closure-confirm']],
   ['A04', 'admin', '关闭详情与重开', ['closure-detail', 'affected-reservations', 'return-to-closure', 'notification-preview', 'reopen']],
   ['A05', 'admin', '预约及日志', ['records-nav', 'record-filters', 'record-reset', 'record-detail', 'records-pagination', 'log-tab', 'log-detail', 'log-associated']],
@@ -335,12 +335,16 @@ async function adminFlow(page, student, { day, record }) {
     assert.equal(await page.locator('[data-nav="profile"]').count(), 0);
     return success('管理员账号和工作台显示，学生个人页不在导航中。');
   });
-  await check(['rule-edit', 'rule-defaults', 'rule-draft-guard', 'rule-save', 'rule-late-receipt', 'admin-refresh'],
+  await check(['rule-edit', 'rule-reset', 'rule-defaults', 'rule-draft-guard', 'rule-save', 'rule-late-receipt', 'admin-refresh'],
     '读规则、载入默认值，修改后尝试离开，延迟首次写回执并编辑下一版，再保存',
     '离开保护有效，旧 POST 回执保留新草稿，最新值可由服务端重新读取', async () => {
+      const field = page.locator('[data-rule="leave_limit_minutes"]');
+      await field.fill('36');
+      await click(page, '#rule-reset');
+      await click(page, '#sheet-confirm');
+      assert.equal(await field.inputValue(), '30');
       await click(page, '#rule-defaults');
       await text(page.locator('#feedback'), '已填入默认值');
-      const field = page.locator('[data-rule="leave_limit_minutes"]');
       await field.fill('31');
       await click(page, '[data-nav="resources"]');
       await text(sheet(page), '有未保存内容');
@@ -374,11 +378,15 @@ async function adminFlow(page, student, { day, record }) {
       return success('规则 31 的迟到回执保留草稿 32，单独保存后重新读取 V3。',
         [await screenshot(page, 'desktop-admin-rules')]);
     });
-  await check(['open-tab', 'open-room', 'open-days', 'open-mode', 'open-start-end', 'opening-save'],
+  await check(['open-tab', 'open-room', 'open-days', 'open-mode', 'open-start-end', 'opening-reset', 'opening-save'],
     '打开开放时段，切换到 24h 房间，选择星期，切换三种模式并保存自定义安排',
     '已保存安排和真实 GET /rooms 一致', async () => {
       await click(page, '[data-admin-tab="opening"]');
       await page.locator('#open-room').selectOption('east-b203');
+      await page.locator('#open-start').fill('09:00');
+      await click(page, '#reset-opening');
+      await click(page, '#sheet-confirm');
+      assert.equal(await page.locator('#open-start').inputValue(), '08:00');
       await page.locator('#open-mode').selectOption('closed');
       assert.equal(await page.locator('#open-start').count(), 0);
       await page.locator('#open-mode').selectOption('all_day');

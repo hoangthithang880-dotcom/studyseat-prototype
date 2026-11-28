@@ -228,7 +228,7 @@ def main():
             "service_pids": [first.pid, second.pid],
             "worker_pids": [a.pid, b.pid],
             "checks": [
-                "real v1 reservation/audit migrated to v3 without loss",
+                f"real v1 reservation/audit migrated to v{SCHEMA_VERSION} without loss",
                 "HTTP checkin/leave",
                 "session and leave state survive service restart",
                 "same leave key retains original deadline after restart",

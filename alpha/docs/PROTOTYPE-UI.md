@@ -21,7 +21,7 @@ X01 追加只读座位目录，同一个查询快照返回旧 seats 和新 seat_
 
 ## 页面与原型差异
 
-| 页面 | 已接入 | 仍待浏览器验收或涉及展示取舍 |
+| 页面 | 已接入 | 展示取舍及当前边界 |
 | --- | --- | --- |
 | 登录 | 蓝白入口卡、角色选项、密码可见性、真实退出 | 角色选项仅改变表单提示，服务端会话决定权限 |
 | 首页 | 房间卡、搜索、清空与恢复、时段余量与全天开放筛选 | 静音、研讨和电脑工位分类保留为禁用展示，暂无真实目录字段 |
@@ -54,4 +54,4 @@ macOS 可设 `STUDYSEAT_BROWSER_CHANNEL=chrome`。设置 `STUDYSEAT_NODE`、`NOD
 
 ## PR 依赖
 
-[PR #8](https://github.com/hoangthithang880-dotcom/studyseat-prototype/pull/8) 仍为 Open，main 为 `328a3b3d9784d33832094610610498ae14d30935`。补充 PR 应说明该依赖。本轮浏览器与本机服务验收受限，补充 PR 的验收状态为 Draft。新旧验证是否通过以当前代码的独立日志为准。
+[PR #8](https://github.com/hoangthithang880-dotcom/studyseat-prototype/pull/8) 在 2026-11-28 核对时仍为 Open，main 为 `328a3b3d9784d33832094610610498ae14d30935`。补充 PR 应说明该依赖。此前提交 `111e64cf` 的执行限制及报告属于历史记录；本轮已在可以运行 HTTP 与 Chrome 的环境补做验收，见[补充修复和验收记录](PROTOTYPE-UI-COMPLETION.md)。测试通过表示本轮技术检查通过，不替代团队合并批准。

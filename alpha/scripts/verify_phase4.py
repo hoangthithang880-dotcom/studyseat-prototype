@@ -30,6 +30,7 @@ BROWSER_SUITES = (
     "phase3-browser.cjs",
     "phase3-review-browser.cjs",
     "prototype-integration-browser.cjs",
+    "prototype-async-browser.cjs",
 )
 
 

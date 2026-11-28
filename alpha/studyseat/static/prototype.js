@@ -448,7 +448,7 @@ function getDraft(room) {
     const day = localDay(1);
     const [start, end] = defaultSlot(day, room);
     bookingDrafts.set(room.id, {
-      day, start, end, selected: '', zone: '', availability: null, loading: false, agreed: false,
+      day, start, end, selected: '', zone: '', availability: null, loading: false, agreed: false, version: 0,
     });
   }
   return bookingDrafts.get(room.id);
@@ -503,6 +503,7 @@ function renderHome() {
       const draft = getDraft(room);
       if (homeParams && !draft.availability && !draft.selected) {
         Object.assign(draft, homeParams);
+        ++draft.version;
       }
       move('room', room.id);
     }));
@@ -619,6 +620,7 @@ function renderRoom() {
       <button id="next-confirm" class="primary" type="button"${disabled(!selected)}>确认选座 →</button></div>`;
   const invalidate = () => {
     ++seatVersion;
+    ++draft.version;
     draft.loading = false;
     draft.error = '';
     draft.availability = null;
@@ -691,6 +693,7 @@ function renderRoom() {
   });
   view.querySelectorAll('[data-seat]').forEach(button => button.onclick = () => {
     draft.selected = button.dataset.seat;
+    ++draft.version;
     draft.agreed = false;
     renderRoom();
     Array.from(view.querySelectorAll('[data-seat]')).find(item => item.dataset.seat === draft.selected)?.focus();
@@ -716,16 +719,19 @@ function renderConfirm() {
       <button id="confirm-booking" class="primary" type="button"${disabled(!draft.agreed)}>确认预约</button></div>`;
   on('agreement', 'change', event => {
     draft.agreed = event.target.checked;
+    ++draft.version;
     byId('confirm-booking').disabled = !draft.agreed;
   });
   on('edit-booking', 'click', () => move('room', room.id));
   on('confirm-booking', 'click', event => void perform(event.currentTarget, async () => {
     const id = room.id;
+    const submittedVersion = draft.version;
     try {
       const result = await write('/reservations', { seat_id: seat.id, ...queryBody(draft) });
       ++listVersion;
       records = null;
-      if (bookingDrafts.get(id) === draft) bookingDrafts.delete(id);
+      // Navigation can keep this object alive while the student edits a new draft.
+      if (bookingDrafts.get(id) === draft && draft.version === submittedVersion) bookingDrafts.delete(id);
       if (routeVersion !== expectedRoute) {
         if (page === 'bookings' || page === 'profile') void loadRecords();
         return;
