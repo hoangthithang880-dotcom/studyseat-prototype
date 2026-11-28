@@ -78,6 +78,7 @@ export function createAdmin(context) {
     }
     showSheet({
       title: '有未保存内容', cancel: '继续编辑', confirm: '放弃修改',
+      onCancel: closeDraft?.changed ? () => editClosure() : closeSheet,
       content: '<p>离开前可以继续编辑，或放弃当前未保存的内容。</p>',
       submit: () => {
         clear();

@@ -2,7 +2,7 @@
 
 当前已完成阶段一服务基础、阶段二预约与并发控制，并在已合并 PR #3 的主线基础上开发 11 月 25—26 日第三阶段。真实业务由 Flask 同源首页与 API 提供，SQLite 持久化；保留原型蓝白视觉和独立静态原型，不将原型模拟流程计作真实业务。
 
-已实现登录与权限、查座、预约、取消、签到、暂离、返回、结束、独立超时任务，以及管理规则、开放安排、共享预约、资源关闭预览/确认、重新开放和审计。刷新、重登与相同配置重启可恢复已提交状态；工程验证文本工具继续保留。
+首页提供学生预约和管理员工作区，按原型组织导航，以真实 API 读取和更新共享数据。学生可查座、预约、取消、签到、暂离、返回和结束。管理员可设置每周开放安排，预览并确认关闭区间，重新开放并查看审计。已提交记录由服务持久化。原型对照、复验和准备工作见 [原型接入记录](docs/PROTOTYPE-UI.md)。
 
 运行和验收见 [PHASE3.md](docs/PHASE3.md)，契约见 [API-v1.md](docs/API-v1.md)，规则见 [RULES.md](docs/RULES.md)；历史结果保存在 [PHASE2.md](docs/PHASE2.md)。
 
@@ -78,7 +78,7 @@ export STUDYSEAT_SECRET_KEY='replace-with-a-stable-random-secret-of-32-or-more-c
 
 `process_smoke.py` 使用临时数据库、随机端口和两个真实子进程；验证预约、文本和会话跨进程恢复、重登恢复、创建重放、重复取消、B 预约释放时段与唯一审计。
 
-浏览器用例使用仓库根目录的 Playwright 开发依赖和本机 Edge。在根目录安装依赖后，启动一个使用**独立空数据库**的测试服务（5057 端口），执行 `node alpha/tests/browser.cjs`。可用 `STUDYSEAT_TEST_URL` 更改地址。浏览器测试会写入公开测试账号的验证记录，仅用于测试数据库。截图及结果位于 [evidence/](evidence/)。
+浏览器用例使用仓库根目录的 Playwright 开发依赖和本机 Edge。在根目录安装依赖后，以 `STUDYSEAT_DIAGNOSTICS_UI=1` 启动一个使用**独立空数据库**的测试服务（5057 端口），执行 `node alpha/tests/browser.cjs`。旧验证工作台位于 `/diagnostics`，默认关闭。新版首页回归使用 `node alpha/tests/prototype-integration-browser.cjs`。可用 `STUDYSEAT_TEST_URL` 更改地址。浏览器测试会写入公开测试账号的验证记录，仅用于测试数据库。截图及结果位于 [evidence/](evidence/)。
 
 阶段二完整验证（在 alpha 下）：
 
@@ -112,7 +112,7 @@ P2 独立审查修复了初始化期间编辑查询条件导致房间列表永�
 
 阶段二合并主线之后，在 `codex/phase3-attendance-admin` 开发。功能与验收见 [PHASE3](docs/PHASE3.md)，状态和接口见 [API](docs/API-v1.md)。原型目录仍是模拟演示；真实业务从本 Alpha 服务首页进入。
 
-已有阶段二数据库：先停服务并保留数据库与稳定密钥，备份数据库后使用原环境运行 `python -m flask --app studyseat init-db`，将 v1/v2 原子迁移到 v3，再启动服务。不要删库重建。首次使用仍按上文 `init-db --demo` 初始化。`schema.sql` 保留 v1 原声明，保留 `studyseat/migrations/002_phase3.sql` 并新增 `003_state_version.sql`；同一升级命令可重复执行，不重复生成数据。升级后旧代码不支持 v3，若需回退须停服务并恢复升级前备份。
+已有阶段二数据库：先停服务并保留数据库与稳定密钥，备份数据库后使用原环境运行 `python -m flask --app studyseat init-db`，将 v1/v2 原子迁移到 v3，再启动服务。不要删库重建。首次使用仍按上文 `init-db --demo` 初始化。`schema.sql` 保留 v1 原声明，保留 `studyseat/migrations/002_phase3.sql` 并新增 `003_state_version.sql`；同一升级命令可重复执行，不重复生成数据。该段为第三阶段历史说明，当前版本和回退步骤见 [原型接入记录](docs/PROTOTYPE-UI.md)。
 
 另一个终端使用相同 DATABASE 和 SECRET_KEY 环境启动独立超时进程：
 

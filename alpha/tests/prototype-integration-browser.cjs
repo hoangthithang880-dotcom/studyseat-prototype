@@ -8,7 +8,7 @@ const output = path.resolve(process.env.STUDYSEAT_EVIDENCE_DIR || 'alpha/evidenc
 const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: __dirname, encoding: 'utf8' }).trim();
 const base = process.env.STUDYSEAT_TEST_URL;
 const groups = [
-  ['U01', 'student', '入口与身份', ['login-roles', 'login-password', 'login-invalid', 'login-valid', 'exit-keep', 'exit-confirm', 'relogin', 'student-isolation']],
+  ['U01', 'student', '入口与身份', ['login-roles', 'login-password', 'login-invalid', 'login-valid', 'initialization-wait', 'exit-keep', 'exit-confirm', 'relogin', 'student-isolation']],
   ['S01', 'student', '首页', ['home-search', 'home-empty', 'home-clear-reset', 'home-scenes', 'home-conditions', 'home-query', 'available-only', 'immediate-pick', 'room-card']],
   ['S02', 'student', '房间与座位', ['room-back', 'date-picker', 'day-shortcuts', 'slot-shortcuts', 'start-end', 'search-seats', 'seat-zone', 'seat-disabled', 'seat-select', 'seat-retry', 'continue-booking']],
   ['S03', 'student', '确认与回执', ['agreement', 'confirm-back', 'confirm-submit', 'booking-receipt']],
@@ -153,14 +153,30 @@ async function studentFlow(page) {
       assert.equal((await response).status(), 401);
       return success(await text(page.locator('#login-error'), /账号|密码/), [await screenshot(page, 'desktop-login')]);
     });
-  await check('login-valid', '在现有错误提示下修正密码并提交', '登录成功并显示本人姓名与真实房间', async () => {
-    await page.locator('#password').fill('123456');
-    await click(page, '#sign-in');
+  await check(['login-valid', 'initialization-wait'], '修正密码，延迟真实房间目录回执再恢复',
+    '登录中显示正在加载。目录返回后才出现真实房间和完整工作台', async () => {
+    let release;
+    let reached;
+    const reachedServer = new Promise(resolve => { reached = resolve; });
+    const unblock = new Promise(resolve => { release = resolve; });
+    await page.route('**/api/v1/rooms', async route => {
+      const response = await route.fetch();
+      reached(response.status());
+      await unblock;
+      await route.fulfill({ response });
+    }, { times: 1 });
+    try {
+      await page.locator('#password').fill('123456');
+      await click(page, '#sign-in');
+      assert.equal(await Promise.race([reachedServer, new Promise(resolve => setTimeout(() => resolve(0), 7000))]), 200);
+      await text(page.locator('main'), '正在加载房间和规则');
+      assert.equal(await page.locator('[data-room]').count(), 0);
+    } finally { release(); }
     await route(page, 'home');
     await text(page.locator('main'), '申子衡');
     assert(await page.locator('[data-room]').count() > 0);
     assert.equal(await page.getByText('数据持久化验证', { exact: true }).count(), 0);
-    return success('进入学生首页，显示本人姓名和房间。');
+    return success('加载期间不提前显示旧卡片。真实房间目录返回后进入学生首页。');
   });
   await check(['home-search', 'home-empty', 'home-clear-reset', 'home-scenes'], '输入匹配词、无匹配词、清空，按全天开放筛选再恢复全部', '卡片现场筛选，空结果有提示，可恢复', async () => {
     await page.locator('#room-search').fill('A101');

@@ -252,8 +252,10 @@ function routeTo(next, id = '', replace = false) {
 
 function move(next, id = '', replace = false) {
   const run = () => routeTo(next, id, replace);
-  if (admin?.dirty() && next !== page) admin.guard(run);
-  else run();
+  if (admin?.dirty() && next !== page) {
+    if (replace) history.replaceState(null, '', '#' + page);
+    admin.guard(run);
+  } else run();
 }
 
 function readRoute() {
@@ -352,7 +354,13 @@ async function openSession(note = '') {
     const session = await api('/auth/session');
     acceptAuth(session);
     if (user) await initialize(true);
-    else renderLogin(note);
+    else {
+      const signIn = byId('sign-in');
+      if (signIn && !byId('retry-session')) {
+        signIn.disabled = authBusy || !csrf;
+        message(note);
+      } else renderLogin(note);
+    }
   } catch (error) {
     if (error instanceof Stale) return;
     authRecovery = true;
