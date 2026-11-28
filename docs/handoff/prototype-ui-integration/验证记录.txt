@@ -1,0 +1,15 @@
+StudySeat 原型接入计划书 文档验证记录
+日期：2026年11月28日
+计划版本：1.2
+
+实际结果：8项文档检查通过，0失败、0跳过。
+命令：
+/Users/zhouyiheng/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 docs/handoff/prototype-ui-integration/test_ui_plan.py --render-dir /tmp/studyseat-ui-plan-render-final-20261128
+
+检查范围：产品基线、分支与远端、本次无产品代码改动；原型和接口材料路径；五项原稿/工作副本字节与摘要；任务边界和AI自检交付门槛；历史181项及55项统计的原始证据；文档表格、引用、中文字体及12页分页。
+
+已逐页查看12页渲染图。最终两处措辞调整只影响第7、10页，两页重新查看；其余10页PNG与已查看版本字节一致。中文可见，表格未截断，无空白溢出页或正文/页脚重叠。
+内部渲染目录：/tmp/studyseat-ui-plan-render-final-20261128
+
+重要边界：以上是计划书材料检查，不是本轮产品UI自检通过。实际界面接入、AI逐控件操作审计和完整产品回归尚待新对话执行。本次未重新运行产品全量测试，因为没有更改产品代码；181项、70项和55项仅为基线历史参考。
+本次没有推送、创建PR、合并或部署，原型原稿与现有人工自测数据库未改动。

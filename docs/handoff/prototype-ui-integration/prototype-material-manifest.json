@@ -1,0 +1,42 @@
+{
+  "original_root": "/Users/zhouyiheng/Desktop/软件工程/studyseat原型设计/studyseat-prototype-master",
+  "working_root": "/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix",
+  "product_baseline": "2c24361f0cd05f306ea9cc01c129fb0410638424",
+  "files": [
+    {
+      "path": "modao/StudySeat_定版原型.html",
+      "original": "/Users/zhouyiheng/Desktop/软件工程/studyseat原型设计/studyseat-prototype-master/modao/StudySeat_定版原型.html",
+      "working": "/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix/modao/StudySeat_定版原型.html",
+      "sha256": "4b9f40646df2edeb150561a45cbabe7a8d947a1b3df59e9a6e1a92356e417b7d",
+      "same_bytes": true
+    },
+    {
+      "path": "prototype/student-app.js",
+      "original": "/Users/zhouyiheng/Desktop/软件工程/studyseat原型设计/studyseat-prototype-master/prototype/student-app.js",
+      "working": "/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix/prototype/student-app.js",
+      "sha256": "fa55a72797dbaa6202c5dfa0cb18ca5a92389c3dae299279545d797d701b8074",
+      "same_bytes": true
+    },
+    {
+      "path": "prototype/admin-ui.js",
+      "original": "/Users/zhouyiheng/Desktop/软件工程/studyseat原型设计/studyseat-prototype-master/prototype/admin-ui.js",
+      "working": "/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix/prototype/admin-ui.js",
+      "sha256": "c6c1b8850fdbcdb9c3773d4dc9978a9d18ad258f54208798ec0c7990b5a31a57",
+      "same_bytes": true
+    },
+    {
+      "path": "docs/screenshots/local-room.png",
+      "original": "/Users/zhouyiheng/Desktop/软件工程/studyseat原型设计/studyseat-prototype-master/docs/screenshots/local-room.png",
+      "working": "/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix/docs/screenshots/local-room.png",
+      "sha256": "76132d0473c86b6041feacbe12170577ea0638702351fbc0a9683a25af955774",
+      "same_bytes": true
+    },
+    {
+      "path": "docs/prototype-release.json",
+      "original": "/Users/zhouyiheng/Desktop/软件工程/studyseat原型设计/studyseat-prototype-master/docs/prototype-release.json",
+      "working": "/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix/docs/prototype-release.json",
+      "sha256": "6fae7a315e429d2fe920a173555304e5f4c0e12bc8cd855fecc1c59791b3bf0a",
+      "same_bytes": true
+    }
+  ]
+}
