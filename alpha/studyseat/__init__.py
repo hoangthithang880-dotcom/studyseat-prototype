@@ -8,7 +8,7 @@ from flask import Flask, jsonify, request
 from werkzeug.exceptions import HTTPException
 
 from . import db
-from .auth import ApiError, load_identity
+from .auth import ApiError, check_csrf, load_identity
 
 
 def create_app(test_config=None):
@@ -24,6 +24,7 @@ def create_app(test_config=None):
         SESSION_COOKIE_SAMESITE="Lax",
         SESSION_COOKIE_SECURE=os.environ.get("STUDYSEAT_HTTPS") == "1",
         MAX_CONTENT_LENGTH=8192,
+        DIAGNOSTICS_UI=os.environ.get("STUDYSEAT_DIAGNOSTICS_UI") == "1",
     )
     if test_config:
         app.config.update(test_config)
@@ -73,6 +74,10 @@ def create_app(test_config=None):
     def identity():
         if request.path.startswith("/api/") and request.path != "/api/v1/health":
             load_identity()
+            if request.method == "GET" and "X-StudySeat-Session" in request.headers:
+                # A stale tab must never render private GET data for the account
+                # currently signed in through that browser's shared cookie.
+                check_csrf("X-StudySeat-Session")
 
     @app.after_request
     def headers(response):

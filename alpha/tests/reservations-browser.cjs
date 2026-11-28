@@ -84,7 +84,7 @@ async function hold(page, endpoint) {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   try {
-    await page.goto(base);
+    await page.goto(new URL('/diagnostics', base).href);
     await page.locator('#username').waitFor({ state: 'visible' });
     await login(page, 'A');
     const date = await page.locator('#start-at').inputValue();

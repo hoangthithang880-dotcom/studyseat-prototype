@@ -184,3 +184,156 @@ def test_scheduled_preview_cannot_confirm_after_end(app, monkeypatch):
     assert failed.json["error"]["code"] == "PREVIEW_STALE"
     with app.app_context():
         assert get_db().execute("SELECT COUNT(*) FROM resource_closures").fetchone()[0] == 0
+
+
+def test_prototype_shell_and_diagnostics_opt_in(app, client, monkeypatch):
+    page = client.get("/")
+    assert page.status_code == 200
+    assert 'type="module" src="/static/prototype.js"' in page.text
+    assert "note-form" not in page.text
+    assert "script-src 'self'" in page.headers["Content-Security-Policy"]
+    assert client.get("/diagnostics").status_code == 404
+    for asset in ("prototype.js", "prototype-admin.js", "prototype.css"):
+        assert client.get(f"/static/{asset}").status_code == 200
+    monkeypatch.setitem(app.config, "DIAGNOSTICS_UI", True)
+    legacy = client.get("/diagnostics")
+    assert legacy.status_code == 200
+    assert 'id="note-form"' in legacy.text
+
+
+def test_private_get_rejects_credentials_from_a_previous_tab_session(client):
+    old = auth(client)["X-CSRF-Token"]
+    new = auth(client, "student02", "Study1234")["X-CSRF-Token"]
+    stale = client.get(API + "/reservations", headers={"X-StudySeat-Session": old})
+    assert stale.status_code == 403
+    assert stale.json["error"]["code"] == "CSRF_INVALID"
+    assert "data" not in stale.json
+    assert (
+        client.get(API + "/reservations", headers={"X-StudySeat-Session": new}).status_code == 200
+    )
+
+
+def test_admin_can_opt_into_real_student_labels(app, client):
+    student = auth(client)
+    booked = booking(client, student).json["data"]
+    endpoint = API + "/admin/reservations"
+    assert client.get(endpoint + "?include=student").status_code == 403
+    admin = app.test_client()
+    auth(admin, "admin01", "Admin1234")
+    assert admin.get(endpoint).json["data"] == [booked]
+    (row,) = admin.get(endpoint + "?include=student").json["data"]
+    assert row.pop("student_username") == "832402116"
+    assert row.pop("student_name") == "申子衡"
+    assert row == booked
+    (own,) = client.get(API + "/reservations").json["data"]
+    assert own == booked
+
+
+@pytest.mark.parametrize("version", [3, 4])
+def test_additive_upgrade_preserves_legacy_rows_and_rolls_back(version, tmp_path, monkeypatch):
+    import sqlite3
+    from contextlib import closing
+    from pathlib import Path
+
+    from studyseat import create_app
+    from studyseat.db import SCHEMA_VERSION, initialize
+
+    root = Path(reservations.__file__).parent
+    database = tmp_path / "legacy.sqlite3"
+    migrations = ["002_phase3.sql", "003_state_version.sql", "004_weekly_hours.sql"]
+    with closing(sqlite3.connect(database)) as db:
+        db.executescript((root / "schema.sql").read_text())
+        for migration in migrations[: version - 1]:
+            db.executescript((root / "migrations" / migration).read_text())
+        db.executemany(
+            "INSERT INTO schema_versions VALUES (?, 'old')", [(n,) for n in range(1, version + 1)]
+        )
+        db.execute(f"PRAGMA user_version={version}")
+        db.execute(
+            "INSERT INTO users(id,username,display_name,password_hash,role) VALUES ('legacy','legacy','原管理账号','hash','admin')"
+        )
+        db.execute(
+            "INSERT INTO rooms(id,name,location,opens_minute,closes_minute) VALUES ('room','原教室','校区',420,1260)"
+        )
+        db.execute(
+            "INSERT INTO resource_closures(id,room_id,reason,created_by,created_at) VALUES ('closed','room','维修','legacy','old')"
+        )
+        if version == 4:
+            db.execute("INSERT INTO room_weekly_hours VALUES ('room',0,NULL,NULL)")
+        db.commit()
+
+    app = create_app({"DATABASE": str(database), "SECRET_KEY": "migration-test-" * 3})
+    original = Path.read_text
+
+    def break_last_migration(file, *args, **kwargs):
+        text = original(file, *args, **kwargs)
+        if file.name == "005_timed_closures.sql":
+            return text + "\nINSERT INTO nonexistent_table VALUES(1);\n"
+        return text
+
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, "read_text", break_last_migration)
+        with app.app_context(), pytest.raises(sqlite3.OperationalError, match="nonexistent_table"):
+            initialize()
+
+    with closing(sqlite3.connect(database)) as db:
+        assert db.execute("PRAGMA user_version").fetchone()[0] == version
+        assert "start_at" not in [
+            col[1] for col in db.execute("PRAGMA table_info(resource_closures)")
+        ]
+        assert db.execute("SELECT COUNT(*) FROM schema_versions").fetchone()[0] == version
+        assert db.execute("SELECT reason FROM resource_closures").fetchone()[0] == "维修"
+        assert bool(
+            db.execute("SELECT 1 FROM sqlite_schema WHERE name='room_weekly_hours'").fetchone()
+        ) == (version == 4)
+
+    with app.app_context():
+        initialize()
+        initialize()
+        db = get_db()
+        assert db.execute("PRAGMA user_version").fetchone()[0] == SCHEMA_VERSION
+        assert db.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+        assert tuple(
+            db.execute("SELECT reason,start_at,end_at FROM resource_closures").fetchone()
+        ) == ("维修", None, None)
+        assert tuple(db.execute("SELECT opens_minute,closes_minute FROM rooms").fetchone()) == (
+            420,
+            1260,
+        )
+        assert db.execute("SELECT COUNT(*) FROM room_weekly_hours").fetchone()[0] == int(
+            version == 4
+        )
+
+
+def test_scheduled_confirmation_revalidates_after_an_overlapping_booking(app, client):
+    student = auth(client)
+    admin = app.test_client()
+    headers = auth(admin, "admin01", "Admin1234")
+    body = {
+        "room_id": ROOM,
+        "reason": "时段检修",
+        "start_at": "2026-11-24T08:30:00+08:00",
+        "end_at": "2026-11-24T09:30:00+08:00",
+    }
+    first = admin.post(API + "/admin/closures/preview", headers=headers, json=body).json["data"]
+    assert first["affected"] == []
+    booked = booking(client, student).json["data"]
+    rejected = admin.post(
+        API + "/admin/closures",
+        headers=headers,
+        json={"preview_token": first["preview_token"], "idempotency_key": "stale"},
+    )
+    assert rejected.json["error"]["code"] == "PREVIEW_STALE"
+    assert (
+        client.get(f"{API}/reservations/{booked['id']}").json["data"]["status"] == "PENDING_CHECKIN"
+    )
+    current = admin.post(API + "/admin/closures/preview", headers=headers, json=body).json["data"]
+    saved = admin.post(
+        API + "/admin/closures",
+        headers=headers,
+        json={"preview_token": current["preview_token"], "idempotency_key": "fresh"},
+    ).json["data"]
+    listing = admin.get(API + "/admin/resources").json["data"]["closures"]
+    assert listing[0]["id"] == saved["id"]
+    assert listing[0]["affected_reservation_ids"] == [booked["id"]]
+    assert listing[0]["actor_name"] == "演示管理员"

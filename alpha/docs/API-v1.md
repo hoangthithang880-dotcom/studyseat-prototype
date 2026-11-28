@@ -135,3 +135,12 @@ RESERVATIONS_AFFECTED，版本过期时返回 RESOURCE_CHANGED。旧 /hours
 数据库 v5 给关闭记录追加可空的 `start_at`、`end_at`。旧请求可以继续省略两个字段，关闭立即生效且持续到重新开放。也可以在预览同时提交两个带明确时区的时间，关闭只影响与 `[start_at,end_at)` 重叠的预约。触及边界的相邻预约不受影响。结束必须晚于当前服务端时间，已开始的区间可以关闭其剩余时间。
 
 预览返回 `mode=scheduled`，签名绑定标准化时段、管理员、资源和影响快照。确认时再次校验结束时间、数据库影响和当前状态，不允许强制取消使用中或暂离中的预约。待签到预约在确认时取消。已到期的限制不阻挡新预约，主动重新开放仍允许提前结束有效限制。已取消的预约保留。管理资源、关闭回执与审计返回真实时段。
+
+管理端可用 GET /admin/reservations?include=student 显示学号与姓名，增加
+`student_username` 和 `student_name`。不带参数的管理端接口、学生接口
+及写入回执保持原有预约字段。GET /admin/resources 的关停记录附带执行者
+`actor_name` 及实际取消的 `affected_reservation_ids`，不受最近百条日志限制。
+
+新版页面对私有 GET 可附 `X-StudySeat-Session`，值为已观察到的会话凭据。
+凭据与当前 Cookie 会话不一致时返回 CSRF_INVALID，防止切换账号后另一个
+标签页读取新身份记录并显示在旧身份视图。原 API 客户端仍可使用原有 GET。

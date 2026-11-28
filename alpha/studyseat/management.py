@@ -265,25 +265,42 @@ def reopen(actor, closure_id, key):
         return closure_record(connection, closure_id)
 
 
-def list_reservations():
+def list_reservations(include_student=False):
     sweep()
-    return [
-        r.serialize(row) for row in get_db().execute(r.SELECT + " ORDER BY r.start_at DESC,r.id")
-    ]
+    query = r.SELECT
+    if include_student:
+        query = (
+            query.replace(
+                "SELECT r.*,",
+                "SELECT r.*, u.display_name AS student_name, u.username AS student_username,",
+            )
+            + " JOIN users u ON u.id=r.student_id"
+        )
+    return [r.serialize(row) for row in get_db().execute(query + " ORDER BY r.start_at DESC,r.id")]
 
 
 def resources():
-    return {
-        "seats": [
-            dict(row) for row in get_db().execute("SELECT * FROM seats ORDER BY room_id,label")
-        ],
-        "closures": [
-            dict(row)
-            for row in get_db().execute(
-                "SELECT * FROM resource_closures ORDER BY created_at DESC,id"
-            )
-        ],
-    }
+    connection = get_db()
+    connection.execute("BEGIN")
+    try:
+        seats = [
+            dict(row) for row in connection.execute("SELECT * FROM seats ORDER BY room_id,label")
+        ]
+        closures = []
+        for row in connection.execute(
+            """SELECT c.*, users.display_name AS actor_name,
+               (SELECT json_group_array(a.reservation_id) FROM audit_events a
+                WHERE a.action='RESERVATION_CANCELLED_BY_CLOSURE' AND a.target_id=c.id)
+               AS affected_json
+               FROM resource_closures c JOIN users ON users.id=c.created_by
+               ORDER BY c.created_at DESC,c.id"""
+        ):
+            closure = dict(row)
+            closure["affected_reservation_ids"] = json.loads(closure.pop("affected_json"))
+            closures.append(closure)
+        return {"seats": seats, "closures": closures}
+    finally:
+        connection.rollback()
 
 
 def save_hours(actor, room_id, body, key):

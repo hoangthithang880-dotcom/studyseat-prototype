@@ -120,7 +120,7 @@ async function cleanup(page) {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     try {
-      await page.goto(base);
+      await page.goto(new URL('/diagnostics', base).href);
       await page.locator('#username').waitFor({ state: 'visible' });
       const proof = await task(page, nextHour++);
       assert.deepEqual(errors, []);

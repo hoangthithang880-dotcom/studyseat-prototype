@@ -82,7 +82,7 @@ async function hold(page, endpoint, failure = false) {
   const errors = [];
   for (const page of [student, admin]) { page.setDefaultTimeout(15000); page.on('pageerror', error => errors.push(error.message)); }
   try {
-    await student.goto(base);
+    await student.goto(new URL('/diagnostics', base).href);
     await student.locator('#username').waitFor();
     await login(student, 'A');
     const serverNow = new Date((await request(student, '/health')).body.data.server_time);
@@ -114,7 +114,7 @@ async function hold(page, endpoint, failure = false) {
     assert.equal((await request(student, '/admin/reservations')).status, 403);
     checks.push('账号 B 看不到 A 的记录，四种状态操作均 404，管理读取 403');
 
-    await admin.goto(base);
+    await admin.goto(new URL('/diagnostics', base).href);
     await admin.locator('#username').waitFor();
     await login(admin, 'admin');
     await contains(admin, 'admin-reservations', first.id);

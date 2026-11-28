@@ -1,6 +1,6 @@
 import uuid
 
-from flask import Blueprint, g, jsonify, render_template, request
+from flask import Blueprint, abort, current_app, g, jsonify, render_template, request
 
 from . import lifecycle, management, reservations
 from .auth import ApiError, activate_session, authenticate, check_csrf, new_session, require_role
@@ -32,6 +32,13 @@ def valid_text(value, maximum):
 
 @bp.get("/")
 def index():
+    return render_template("prototype.html")
+
+
+@bp.get("/diagnostics")
+def diagnostics():
+    if not current_app.config["DIAGNOSTICS_UI"]:
+        abort(404)
     return render_template("index.html")
 
 
@@ -251,7 +258,7 @@ def reservation_action(reservation_id, action):
 @bp.get("/api/v1/admin/reservations")
 @require_role("admin")
 def admin_reservations():
-    return ok(management.list_reservations())
+    return ok(management.list_reservations(request.args.get("include") == "student"))
 
 
 @bp.get("/api/v1/admin/resources")
