@@ -13,7 +13,7 @@ const { chromium } = require('playwright');
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   try {
-    await page.goto(baseURL);
+    await page.goto(new URL('/diagnostics', baseURL).href);
     await page.locator('#username').waitFor({ state: 'visible' });
     await page.screenshot({ path: path.join(evidence, 'login-desktop.png'), fullPage: true });
     await page.setViewportSize({ width: 390, height: 844 });

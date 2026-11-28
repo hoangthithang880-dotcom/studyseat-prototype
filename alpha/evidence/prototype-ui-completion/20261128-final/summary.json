@@ -1,0 +1,53 @@
+{
+  "result": "passed",
+  "tested_commit": "519d2021fe80313c5b3e5ca560c6a2d385ef2439",
+  "browser": "158.0.8127.37",
+  "date": "2026-11-28",
+  "timezone": "Asia/Shanghai",
+  "counts": {
+    "pytest": 197,
+    "prototype_unit": 70,
+    "legacy_diagnostics_browser": 55,
+    "new_ui_control_checks": 87,
+    "new_ui_async_scenarios": 16,
+    "prototype_browser_flows": 6
+  },
+  "failed": 0,
+  "skipped": 0,
+  "not_run_within_executed_suites": 0,
+  "baseline_regression": {
+    "commit": "111e64cf5409c85527596c84899dd0a242d48265",
+    "result": "failed as expected",
+    "assertion": "08:00 != 13:00",
+    "evidence": "before/prototype-async-browser/results.json"
+  },
+  "command": {
+    "cwd": "/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix",
+    "env": {
+      "STUDYSEAT_EVIDENCE_DIR": "/tmp/studyseat-ui-completion-evidence/final-full",
+      "STUDYSEAT_BROWSER_CHANNEL": "chrome",
+      "STUDYSEAT_NODE": "/Users/zhouyiheng/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "NODE_PATH": "/Users/zhouyiheng/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    },
+    "argv": [
+      "/tmp/studyseat-phase3-venv/bin/python",
+      "alpha/scripts/verify_phase4.py"
+    ]
+  },
+  "source_sha256_file": "final-source.json",
+  "manual_url": "http://127.0.0.1:5071/",
+  "manual_database": "alpha/instance/prototype-ui-5071.sqlite3",
+  "preserved_service": "http://127.0.0.1:5068/",
+  "limits": [
+    "Windows/Edge not executed; no support claim from this run",
+    "No team non-author approval recorded",
+    "Disabled prototype features have no backend implementation; see PROTOTYPE-UI.md",
+    "Loopback HTTP load is not production capacity acceptance"
+  ],
+  "pull_request_dependency": {
+    "number": 8,
+    "head": "2c24361f0cd05f306ea9cc01c129fb0410638424",
+    "source_repo": "832402123wuyiming/studyseat-prototype",
+    "state_at_check": "open; unmerged"
+  }
+}

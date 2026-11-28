@@ -11,7 +11,7 @@ import pytest
 from conftest import login
 
 from studyseat import create_app, lifecycle, reservations
-from studyseat.db import get_db, initialize, write_transaction
+from studyseat.db import SCHEMA_VERSION, get_db, initialize, write_transaction
 
 BASE = "/api/v1"
 START = datetime(2026, 11, 25, 2, 0, tzinfo=timezone.utc)
@@ -424,9 +424,9 @@ def test_migration_v1_is_additive_and_repeated_initialization_safe(tmp_path):
         initialize()
         initialize()
         db = get_db()
-        assert db.execute("PRAGMA user_version").fetchone()[0] == 3
+        assert db.execute("PRAGMA user_version").fetchone()[0] == SCHEMA_VERSION
         assert db.execute("SELECT content FROM persistence_notes").fetchone()[0] == "retained"
-        assert db.execute("SELECT COUNT(*) FROM schema_versions").fetchone()[0] == 3
+        assert db.execute("SELECT COUNT(*) FROM schema_versions").fetchone()[0] == SCHEMA_VERSION
 
 
 def test_independent_connections_checkin_and_timeout_race(client, app, clock):
@@ -754,9 +754,11 @@ def test_concurrent_initializers_recheck_schema_under_lock(tmp_path, monkeypatch
             return get_db().execute("PRAGMA user_version").fetchone()[0]
 
     with ThreadPoolExecutor(max_workers=2) as executor:
-        assert list(executor.map(upgrade, range(2))) == [3, 3]
+        assert list(executor.map(upgrade, range(2))) == [SCHEMA_VERSION, SCHEMA_VERSION]
     with app.app_context():
-        assert get_db().execute("SELECT COUNT(*) FROM schema_versions").fetchone()[0] == 3
+        assert (
+            get_db().execute("SELECT COUNT(*) FROM schema_versions").fetchone()[0] == SCHEMA_VERSION
+        )
 
 
 @pytest.mark.parametrize(

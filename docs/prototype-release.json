@@ -1,10 +1,10 @@
 {
-  "release": "0b2c9b4b3438",
+  "release": "7fd46f4dca29",
   "modaoCanvas": "rcVZMWRghgfFFxdw",
   "assets": {
     "assets/css/studyseat-prototype.css": "6d0b4bb021ee",
-    "assets/js/studyseat-frames.js": "cf96e7fda5e4",
-    "assets/js/studyseat-prototype.js": "558db0b14257"
+    "assets/js/studyseat-frames.js": "bbca946d1cee",
+    "assets/js/studyseat-prototype.js": "b22855c2a341"
   },
   "storage": "session-memory; refresh resets; roles independent"
 }

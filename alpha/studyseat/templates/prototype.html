@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Seat</title>
+  <link rel="icon" href="{{ url_for('static', filename='brand-mark.svg', v='seat-person-20261128') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='prototype.css') }}">
+  <script type="module" src="{{ url_for('static', filename='prototype.js') }}"></script>
+</head>
+<body>
+  <div class="phone">
+    <header id="top" class="top" hidden></header>
+    <main id="view" tabindex="-1">
+      <p class="notice" role="status">正在连接 Study Seat…</p>
+    </main>
+    <p id="feedback" class="feedback" role="status" hidden></p>
+    <nav id="navigation" aria-label="主导航" hidden></nav>
+    <dialog id="sheet" aria-labelledby="sheet-title">
+      <div class="sheet-body">
+        <h2 id="sheet-title"></h2>
+        <div id="sheet-content"></div>
+        <p id="sheet-error" class="error" role="alert" hidden></p>
+        <div id="sheet-actions" class="actions"></div>
+      </div>
+    </dialog>
+  </div>
+  <noscript>登录 Study Seat 需要启用 JavaScript。</noscript>
+</body>
+</html>

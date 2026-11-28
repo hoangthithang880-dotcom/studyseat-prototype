@@ -1,0 +1,39 @@
+SCENARIO A-delayed-rooms-input
+SCENARIO B-old-seats-after-new-query
+SCENARIO B-old-seats-before-new-query
+SCENARIO B-old-read-error-preserves-new-query
+SCENARIO C-query-input-preserves-reservation-load
+SCENARIO E-initialization-failure-retry
+{
+  "result": "passed",
+  "executed_at": "2026-11-28T04:34:02.331Z",
+  "browser": "158.0.8127.37",
+  "channel": "chrome",
+  "playwright": "1.62.1",
+  "scenarios": [
+    {
+      "name": "A-delayed-rooms-input",
+      "result": "passed"
+    },
+    {
+      "name": "B-old-seats-after-new-query",
+      "result": "passed"
+    },
+    {
+      "name": "B-old-seats-before-new-query",
+      "result": "passed"
+    },
+    {
+      "name": "B-old-read-error-preserves-new-query",
+      "result": "passed"
+    },
+    {
+      "name": "C-query-input-preserves-reservation-load",
+      "result": "passed"
+    },
+    {
+      "name": "E-initialization-failure-retry",
+      "result": "passed"
+    }
+  ]
+}

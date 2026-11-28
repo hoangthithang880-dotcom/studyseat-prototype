@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from studyseat import create_app  # noqa: E402
-from studyseat.db import get_db  # noqa: E402
+from studyseat.db import SCHEMA_VERSION, get_db  # noqa: E402
 from studyseat.seed import DEFAULT_RULES, seed_demo  # noqa: E402
 
 
@@ -68,7 +68,7 @@ def main():
         )
         assert migrated.returncode == 0, migrated.stdout + migrated.stderr
         with closing(sqlite3.connect(database)) as db, db:
-            assert db.execute("PRAGMA user_version").fetchone()[0] == 3
+            assert db.execute("PRAGMA user_version").fetchone()[0] == SCHEMA_VERSION
             assert db.execute("SELECT COUNT(*) FROM reservations").fetchone()[0] == 1
             assert db.execute("SELECT action,details_json FROM audit_events").fetchone() == (
                 "RESERVATION_CREATED",
@@ -228,7 +228,7 @@ def main():
             "service_pids": [first.pid, second.pid],
             "worker_pids": [a.pid, b.pid],
             "checks": [
-                "real v1 reservation/audit migrated to v3 without loss",
+                f"real v1 reservation/audit migrated to v{SCHEMA_VERSION} without loss",
                 "HTTP checkin/leave",
                 "session and leave state survive service restart",
                 "same leave key retains original deadline after restart",

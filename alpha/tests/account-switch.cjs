@@ -86,7 +86,7 @@ async function hold(page, endpoint) {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     try {
-      await page.goto(baseURL);
+      await page.goto(new URL('/diagnostics', baseURL).href);
       await page.locator('#username').waitFor({ state: 'visible' });
       await task(page);
       assert.deepEqual(errors, []);

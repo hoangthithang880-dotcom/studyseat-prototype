@@ -74,6 +74,7 @@ def browser_case(directory, script):
         STUDYSEAT_DATABASE=str(directory / f"{name}.sqlite3"),
         STUDYSEAT_SECRET_KEY="phase2-isolated-local-test-secret-" * 2,
         STUDYSEAT_HTTPS="0",
+        STUDYSEAT_DIAGNOSTICS_UI="1",
         STUDYSEAT_EVIDENCE_DIR=str(EVIDENCE / name),
     )
     run(

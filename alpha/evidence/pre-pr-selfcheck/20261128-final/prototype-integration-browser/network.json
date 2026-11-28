@@ -1,0 +1,653 @@
+[
+  {
+    "index": 0,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/auth/session",
+    "status": 200
+  },
+  {
+    "index": 1,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 401
+  },
+  {
+    "index": 2,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 200
+  },
+  {
+    "index": 3,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/health",
+    "status": 200
+  },
+  {
+    "index": 4,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/me",
+    "status": 200
+  },
+  {
+    "index": 5,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/rules",
+    "status": 200
+  },
+  {
+    "index": 6,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 7,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/seats",
+    "status": 200
+  },
+  {
+    "index": 8,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/seats",
+    "status": 200
+  },
+  {
+    "index": 9,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/seats",
+    "status": 200
+  },
+  {
+    "index": 10,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/seats",
+    "status": 200
+  },
+  {
+    "index": 11,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/seats",
+    "status": 200
+  },
+  {
+    "index": 12,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/seats",
+    "status": 200
+  },
+  {
+    "index": 13,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/reservations",
+    "status": 201
+  },
+  {
+    "index": 14,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 15,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 16,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 17,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 18,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 19,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 20,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 21,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/auth/logout",
+    "status": 200
+  },
+  {
+    "index": 22,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/auth/session",
+    "status": 200
+  },
+  {
+    "index": 23,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 200
+  },
+  {
+    "index": 24,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/me",
+    "status": 200
+  },
+  {
+    "index": 25,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/health",
+    "status": 200
+  },
+  {
+    "index": 26,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/rules",
+    "status": 200
+  },
+  {
+    "index": 27,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 28,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 29,
+    "role": "other-student",
+    "method": "GET",
+    "path": "/api/v1/auth/session",
+    "status": 200
+  },
+  {
+    "index": 30,
+    "role": "other-student",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 200
+  },
+  {
+    "index": 31,
+    "role": "other-student",
+    "method": "GET",
+    "path": "/api/v1/me",
+    "status": 200
+  },
+  {
+    "index": 32,
+    "role": "other-student",
+    "method": "GET",
+    "path": "/api/v1/health",
+    "status": 200
+  },
+  {
+    "index": 33,
+    "role": "other-student",
+    "method": "GET",
+    "path": "/api/v1/rules",
+    "status": 200
+  },
+  {
+    "index": 34,
+    "role": "other-student",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 35,
+    "role": "other-student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 36,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/auth/session",
+    "status": 200
+  },
+  {
+    "index": 37,
+    "role": "admin",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 200
+  },
+  {
+    "index": 38,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rules",
+    "status": 200
+  },
+  {
+    "index": 39,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/me",
+    "status": 200
+  },
+  {
+    "index": 40,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/health",
+    "status": 200
+  },
+  {
+    "index": 41,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 42,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rules",
+    "status": 200
+  },
+  {
+    "index": 43,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 44,
+    "role": "admin",
+    "method": "POST",
+    "path": "/api/v1/admin/rules",
+    "status": 200
+  },
+  {
+    "index": 45,
+    "role": "admin",
+    "method": "POST",
+    "path": "/api/v1/admin/rules",
+    "status": 200
+  },
+  {
+    "index": 46,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 47,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rules",
+    "status": 200
+  },
+  {
+    "index": 48,
+    "role": "admin",
+    "method": "POST",
+    "path": "/api/v1/admin/rooms/east-b203/weekly-hours",
+    "status": 200
+  },
+  {
+    "index": 49,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 50,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/admin/resources",
+    "status": 200
+  },
+  {
+    "index": 51,
+    "role": "admin",
+    "method": "POST",
+    "path": "/api/v1/admin/closures/preview",
+    "status": 200
+  },
+  {
+    "index": 52,
+    "role": "admin",
+    "method": "POST",
+    "path": "/api/v1/admin/closures/preview",
+    "status": 200
+  },
+  {
+    "index": 53,
+    "role": "admin",
+    "method": "POST",
+    "path": "/api/v1/admin/closures",
+    "status": 200
+  },
+  {
+    "index": 54,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 55,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/admin/resources",
+    "status": 200
+  },
+  {
+    "index": 56,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/admin/audit-events",
+    "status": 200
+  },
+  {
+    "index": 57,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 58,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/admin/reservations",
+    "status": 200
+  },
+  {
+    "index": 59,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 60,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/admin/resources",
+    "status": 200
+  },
+  {
+    "index": 61,
+    "role": "admin",
+    "method": "POST",
+    "path": "/api/v1/admin/closures/70dea69f-dfae-4465-842a-95afdda5a2db/reopen",
+    "status": 200
+  },
+  {
+    "index": 62,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 63,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/admin/resources",
+    "status": 200
+  },
+  {
+    "index": 64,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/admin/audit-events",
+    "status": 200
+  },
+  {
+    "index": 65,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 66,
+    "role": "admin",
+    "method": "GET",
+    "path": "/api/v1/admin/reservations",
+    "status": 200
+  },
+  {
+    "index": 67,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 68,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/reservations/c256da5f-30e2-44d6-bcf4-6fb09fb73567/check-in",
+    "status": 200
+  },
+  {
+    "index": 69,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 70,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/reservations/c256da5f-30e2-44d6-bcf4-6fb09fb73567/leave",
+    "status": 200
+  },
+  {
+    "index": 71,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 72,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/reservations/c256da5f-30e2-44d6-bcf4-6fb09fb73567/return",
+    "status": 200
+  },
+  {
+    "index": 73,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 74,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/reservations/c256da5f-30e2-44d6-bcf4-6fb09fb73567/finish",
+    "status": 200
+  },
+  {
+    "index": 75,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 76,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 77,
+    "role": "student",
+    "method": "POST",
+    "path": "/api/v1/reservations/278ce3de-6c4c-4a7a-a2b2-77aeaf7e3a1d/cancel",
+    "status": 200
+  },
+  {
+    "index": 78,
+    "role": "student",
+    "method": "GET",
+    "path": "/api/v1/reservations",
+    "status": 200
+  },
+  {
+    "index": 79,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/auth/session",
+    "status": 200
+  },
+  {
+    "index": 80,
+    "role": "mobile-student",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 200
+  },
+  {
+    "index": 81,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/me",
+    "status": 200
+  },
+  {
+    "index": 82,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/health",
+    "status": 200
+  },
+  {
+    "index": 83,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/rules",
+    "status": 200
+  },
+  {
+    "index": 84,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 85,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/seats",
+    "status": 200
+  },
+  {
+    "index": 86,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/auth/session",
+    "status": 200
+  },
+  {
+    "index": 87,
+    "role": "mobile-student",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "status": 200
+  },
+  {
+    "index": 88,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/health",
+    "status": 200
+  },
+  {
+    "index": 89,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/me",
+    "status": 200
+  },
+  {
+    "index": 90,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/rules",
+    "status": 200
+  },
+  {
+    "index": 91,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/rooms",
+    "status": 200
+  },
+  {
+    "index": 92,
+    "role": "mobile-student",
+    "method": "GET",
+    "path": "/api/v1/seats",
+    "status": 200
+  }
+]

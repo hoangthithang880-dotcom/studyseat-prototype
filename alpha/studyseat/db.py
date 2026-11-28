@@ -6,6 +6,8 @@ from pathlib import Path
 
 from flask import current_app, g
 
+SCHEMA_VERSION = 5
+
 
 def is_busy(error):
     if not isinstance(error, sqlite3.OperationalError):
@@ -73,31 +75,33 @@ def initialize():
                 raise
             time.sleep(0.02)
     version = connection.execute("PRAGMA user_version").fetchone()[0]
-    if version not in (0, 1, 2, 3):
+    if not 0 <= version <= SCHEMA_VERSION:
         raise RuntimeError("Unsupported database schema version")
     schema = Path(__file__).with_name("schema.sql").read_text(encoding="utf-8")
     try:
         connection.executescript("BEGIN IMMEDIATE;\n" + schema)
         # Another initializer may have upgraded while this process waited for its lock.
         version = connection.execute("PRAGMA user_version").fetchone()[0]
-        if version not in (0, 1, 2, 3):
+        if not 0 <= version <= SCHEMA_VERSION:
             raise RuntimeError("Unsupported database schema version")
         connection.execute("INSERT OR IGNORE INTO schema_versions VALUES (1, ?)", (utc_now(),))
-        if version < 2:
-            migration = Path(__file__).with_name("migrations") / "002_phase3.sql"
-            # executescript implicitly commits; execute individual SQL statements
-            # so v1 bootstrap and v2 upgrade share the same rollback boundary.
+        migrations = (
+            "002_phase3.sql",
+            "003_state_version.sql",
+            "004_weekly_hours.sql",
+            "005_timed_closures.sql",
+        )
+        for number, filename in enumerate(migrations, 2):
+            if number <= version:
+                continue
+            migration = Path(__file__).with_name("migrations") / filename
+            # executescript implicitly commits. Run migration statements in the
+            # existing transaction so all changes share the same rollback boundary.
             for statement in migration.read_text(encoding="utf-8").split(";"):
                 if statement.strip():
                     connection.execute(statement)
-            connection.execute("INSERT INTO schema_versions VALUES (2, ?)", (utc_now(),))
-        if version < 3:
-            migration = Path(__file__).with_name("migrations") / "003_state_version.sql"
-            for statement in migration.read_text(encoding="utf-8").split(";"):
-                if statement.strip():
-                    connection.execute(statement)
-            connection.execute("INSERT INTO schema_versions VALUES (3, ?)", (utc_now(),))
-        connection.execute("PRAGMA user_version = 3")
+            connection.execute("INSERT INTO schema_versions VALUES (?,?)", (number, utc_now()))
+        connection.execute(f"PRAGMA user_version = {SCHEMA_VERSION}")
         connection.commit()
     except Exception:
         connection.rollback()

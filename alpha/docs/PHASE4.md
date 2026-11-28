@@ -1,5 +1,7 @@
 # StudySeat Alpha 第四阶段集成记录
 
+2026-11-28 原型界面接入的补充修复、真实浏览器验证和证据说明见[原型接入补充验收记录](PROTOTYPE-UI-COMPLETION.md)。旧工作台检查与新版页面检查分别记录，不能将旧工作台的通过数量套用于新版界面。
+
 本轮针对 `71cabb9` 的独立审查问题修复见 [修复与完整复验记录](PHASE4-REVIEW-FIXES.md)，证据位于 `alpha/evidence/phase4-review-fixes/full/`。下文保留上一轮候选与主线集成上下文；本轮实际数量以新记录及原始报告为准。
 
 任务 [Issue #7](https://github.com/hoangthithang880-dotcom/studyseat-prototype/issues/7)，合并请求 [PR #8](https://github.com/hoangthithang880-dotcom/studyseat-prototype/pull/8)。

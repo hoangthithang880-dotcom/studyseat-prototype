@@ -1,0 +1,37 @@
+{
+  "result": "passed",
+  "tested_commit": "118f32c2f2e479ffcf3c1390bf5d9928786930e2",
+  "executed_at": "2026-11-28T04:35:10.259862+00:00",
+  "browser": "158.0.8127.37",
+  "approved_mark": "blue square with white seated person and U-shaped seat",
+  "counts": {
+    "pytest": 197,
+    "prototype_unit": 71,
+    "new_ui_controls": 89,
+    "new_ui_async": 16,
+    "legacy_diagnostics_checks": 55,
+    "prototype_browser_flows": 6,
+    "live_login_layout_checks": 6
+  },
+  "failed": 0,
+  "skipped": 0,
+  "command": {
+    "cwd": "/Users/zhouyiheng/Desktop/软件工程/studyseat-phase4-ui-fix",
+    "argv": [
+      "/tmp/studyseat-phase3-venv/bin/python",
+      "alpha/scripts/verify_phase4.py"
+    ],
+    "environment": {
+      "STUDYSEAT_EVIDENCE_DIR": "/tmp/studyseat-person-brand-evidence/full",
+      "STUDYSEAT_BROWSER_CHANNEL": "chrome",
+      "STUDYSEAT_NODE": "/Users/zhouyiheng/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "NODE_PATH": "/Users/zhouyiheng/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    }
+  },
+  "limits": [
+    "Windows/Edge not executed",
+    "Historical screenshots retained as historical evidence"
+  ],
+  "manual_url": "http://127.0.0.1:5071/",
+  "prototype_release": "7fd46f4dca29"
+}

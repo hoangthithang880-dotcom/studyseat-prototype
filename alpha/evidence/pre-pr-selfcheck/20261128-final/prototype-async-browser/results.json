@@ -1,0 +1,71 @@
+{
+  "commit": "6827940b5eebbf5915fbd23084625bc85eaa0e1b",
+  "browser": "158.0.8127.37",
+  "checks": [
+    {
+      "name": "create-receipt-preserves-new-draft",
+      "result": "passed"
+    },
+    {
+      "name": "uncertain-create-retries-same-reservation",
+      "result": "passed"
+    },
+    {
+      "name": "seat-new-first",
+      "result": "passed"
+    },
+    {
+      "name": "seat-old-first",
+      "result": "passed"
+    },
+    {
+      "name": "seat-old-error-after-new-result",
+      "result": "passed"
+    },
+    {
+      "name": "list-before-create-cannot-remove-new-record",
+      "result": "passed"
+    },
+    {
+      "name": "list-cancel-new-first",
+      "result": "passed"
+    },
+    {
+      "name": "list-cancel-old-first",
+      "result": "passed"
+    },
+    {
+      "name": "list-old-error-after-new-result",
+      "result": "passed"
+    },
+    {
+      "name": "list-old-error-during-new-load",
+      "result": "passed"
+    },
+    {
+      "name": "list-current-error-retry",
+      "result": "passed"
+    },
+    {
+      "name": "old-account-list-after-new-login",
+      "result": "passed"
+    },
+    {
+      "name": "old-account-csrf-error-after-new-login",
+      "result": "passed"
+    },
+    {
+      "name": "delayed-session-recovery-and-csrf",
+      "result": "passed"
+    },
+    {
+      "name": "initialization-error-retry-and-ready-controls",
+      "result": "passed"
+    },
+    {
+      "name": "mobile-admin-resets-and-discard-guard",
+      "result": "passed"
+    }
+  ],
+  "page_errors": []
+}

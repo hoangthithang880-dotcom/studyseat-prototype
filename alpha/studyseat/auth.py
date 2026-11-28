@@ -77,8 +77,8 @@ def activate_session(token):
     session["sid"] = token
 
 
-def check_csrf():
-    supplied = request.headers.get("X-CSRF-Token", "")
+def check_csrf(header="X-CSRF-Token"):
+    supplied = request.headers.get(header, "")
     if (
         not g.auth_session
         or not supplied.isascii()

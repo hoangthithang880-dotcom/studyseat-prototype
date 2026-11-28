@@ -14,7 +14,7 @@ SCREENSHOTS = ['local-final-login.png', 'local-room.png', 'local-booking.png', '
 ALPHA_ROOT_FILES = ['README.md', '.env.example', 'requirements.txt', 'requirements-dev.txt', 'pyproject.toml', 'start.ps1']
 ALPHA_DOCUMENT_FILES = ['docs/StudySeat-Alpha-Phase4-Blog.docx']
 ALPHA_DIRECTORIES = ['studyseat', 'docs', 'tests', 'scripts', 'evidence']
-ALPHA_SUFFIXES = {'.py', '.sql', '.html', '.js', '.css', '.md', '.cjs', '.json', '.xml', '.png', '.txt', '.csv'}
+ALPHA_SUFFIXES = {'.py', '.sql', '.html', '.js', '.css', '.svg', '.md', '.cjs', '.json', '.xml', '.png', '.txt', '.csv'}
 OMIT_PARTS = {'.git', 'node_modules', '__pycache__', '.DS_Store', 'test-results', 'playwright-report', '.venv', 'instance', '.pytest_cache', '.ruff_cache'}
 
 

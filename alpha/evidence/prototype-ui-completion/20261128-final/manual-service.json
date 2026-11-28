@@ -1,0 +1,13 @@
+{
+  "5068": {
+    "schema_version": 3,
+    "server_time": "2026-11-28T02:38:55.058620Z",
+    "status": "ok"
+  },
+  "5071": {
+    "schema_version": 5,
+    "server_time": "2026-11-28T02:38:55.063858Z",
+    "status": "ok"
+  },
+  "5071_static_source_matches_target": true
+}

@@ -14,7 +14,7 @@ const deferred = () => { let resolve; const promise = new Promise(r => { resolve
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   try {
-    await page.goto(base);
+    await page.goto(new URL('/diagnostics', base).href);
     await page.locator('#username').waitFor();
     await page.locator('#username').fill('admin01'); await page.locator('#password').fill('Admin1234');
     await page.locator('#login-form button').click();
@@ -67,7 +67,7 @@ const deferred = () => { let resolve; const promise = new Promise(r => { resolve
     for (const student of [left, right]) {
       student.setDefaultTimeout(12000);
       student.on('pageerror', error => errors.push(error.message));
-      await student.goto(base); await student.locator('#username').waitFor();
+      await student.goto(new URL('/diagnostics', base).href); await student.locator('#username').waitFor();
       await student.locator('#username').fill('832402116'); await student.locator('#password').fill('123456');
       await student.locator('#login-form button').click();
       await student.waitForFunction(() => document.querySelectorAll('#room-id option').length === 4 && !document.getElementById('search-fields').disabled);

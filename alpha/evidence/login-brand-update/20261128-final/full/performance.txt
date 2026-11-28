@@ -1,0 +1,63 @@
+{
+  "executed_at": "2026-11-28T04:14:42.537688+00:00",
+  "transport": "loopback HTTP, threaded Werkzeug, SQLite WAL file, independent sessions",
+  "scope": "312 seeded seats; 20 synthetic students; login excluded; one run per load level",
+  "limits": "Not production WSGI, not Internet latency, not a 100-user capacity acceptance test",
+  "reports": [
+    {
+      "name": "seat-query",
+      "workers": 1,
+      "requests": 100,
+      "seconds": 0.195,
+      "requests_per_second": 512.69,
+      "p50_ms": 1.86,
+      "p95_ms": 2.15,
+      "max_ms": 3.83,
+      "http_status": {
+        "200": 100
+      }
+    },
+    {
+      "name": "seat-query",
+      "workers": 10,
+      "requests": 100,
+      "seconds": 0.752,
+      "requests_per_second": 132.91,
+      "p50_ms": 77.07,
+      "p95_ms": 86.43,
+      "max_ms": 113.19,
+      "http_status": {
+        "200": 100
+      }
+    },
+    {
+      "name": "seat-query",
+      "workers": 20,
+      "requests": 100,
+      "seconds": 0.852,
+      "requests_per_second": 117.36,
+      "p50_ms": 166.69,
+      "p95_ms": 193.18,
+      "max_ms": 219.35,
+      "http_status": {
+        "200": 100
+      }
+    },
+    {
+      "name": "same-seat-competition",
+      "workers": 20,
+      "requests": 20,
+      "seconds": 0.118,
+      "requests_per_second": 169.91,
+      "p50_ms": 21.18,
+      "p95_ms": 82.43,
+      "max_ms": 115.2,
+      "http_status": {
+        "409": 19,
+        "201": 1
+      }
+    }
+  ],
+  "database_reservations": 1,
+  "integrity_check": "ok"
+}

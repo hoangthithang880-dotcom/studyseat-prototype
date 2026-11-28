@@ -1,0 +1,4 @@
+FAIL create-receipt-preserves-new-draft: Expected values to be strictly equal:
+
+'08:00' !== '13:00'
+

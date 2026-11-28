@@ -12,7 +12,7 @@ import pytest
 from scripts import verify_phase2, verify_phase3
 from scripts.backup_db import backup
 from studyseat import create_app
-from studyseat.db import get_db, initialize
+from studyseat.db import SCHEMA_VERSION, get_db, initialize
 
 
 def test_backup_restores_committed_wal_data(tmp_path):
@@ -115,5 +115,5 @@ def test_initialize_recovers_wal_transition_after_exclusive_lock(tmp_path):
                 initialize()
             finally:
                 thread.join(timeout=2)
-            assert connection.execute("PRAGMA user_version").fetchone()[0] == 3
+            assert connection.execute("PRAGMA user_version").fetchone()[0] == SCHEMA_VERSION
             assert connection.execute("PRAGMA journal_mode").fetchone()[0] == "wal"

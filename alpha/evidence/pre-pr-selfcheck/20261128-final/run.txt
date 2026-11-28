@@ -1,0 +1,7 @@
+prototype-tests.txt: exit 0
+ruff-check.txt: exit 0
+ruff-format.txt: exit 0
+prototype-integration-browser-init.txt: exit 0
+prototype-integration-browser.txt: exit 0
+prototype-async-browser-init.txt: exit 0
+prototype-async-browser.txt: exit 0
