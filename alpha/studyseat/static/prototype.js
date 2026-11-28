@@ -274,7 +274,7 @@ function renderLogin(note = '', error = false) {
   byId('top').hidden = byId('navigation').hidden = true;
   view.className = 'login';
   const adminLogin = loginRole === 'admin';
-  view.innerHTML = `<section class="hero"><div class="brand-icon" aria-hidden="true">♧</div>
+  view.innerHTML = `<section class="hero"><div class="brand-icon" aria-hidden="true"><img src="/static/brand-mark.svg" width="38" height="38" alt=""></div>
     <h1>Study Seat</h1><p>智慧校园自习室预约与座位管理系统</p></section>
     <section class="login-card" aria-label="登录 Study Seat">
       <div class="tabs" aria-label="登录入口">
@@ -292,6 +292,12 @@ function renderLogin(note = '', error = false) {
         <p class="muted">账号权限由服务器确定。</p>
         <button id="sign-in" class="primary full" type="submit"${disabled(!csrf || authBusy)}>登录</button>
       </form>
+      <aside id="demo-accounts" class="demo-accounts" aria-label="${adminLogin ? '管理员' : '学生'}示例账号">
+        <h2>示例账号</h2>
+        ${adminLogin ? '<p>管理员：<code>admin01</code><br>密码：<code>Admin1234</code></p>'
+          : '<p>学生 A：<code>832402116</code> · 密码：<code>123456</code></p><p>学生 B：<code>student02</code> · 密码：<code>Study1234</code></p>'}
+        <small>以上为公开演示账号。</small>
+      </aside>
     </section><footer class="login-footer">福州大学 · 软件工程实践课程</footer>`;
   const toggle = (role, id) => {
     if (loginRole === role) return;

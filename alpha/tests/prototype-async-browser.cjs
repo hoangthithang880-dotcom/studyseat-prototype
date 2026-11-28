@@ -392,6 +392,8 @@ async function mobileAdmin(page) {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto(base);
   await click(page, '#admin-login');
+  await visible(page, '#demo-accounts', 'admin01');
+  assert((await page.locator('#demo-accounts').innerText()).includes('Admin1234'));
   await page.locator('#account').fill('admin01');
   await page.locator('#password').fill('Admin1234');
   await click(page, '#sign-in');

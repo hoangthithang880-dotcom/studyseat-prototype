@@ -14,6 +14,8 @@ async function verify({tab,base,phase,report=console.log,shot=async()=>{}}){
  const logout=async(role='student')=>{await ui.locator('#global-exit').click();if(role==='student')await button(ui,'确认退出').click();await ui.locator('#entry').waitFor({state:'visible'});assert.equal(await ui.locator('#unified-password').evaluate(e=>e.value),'');};
  if(phase==='student'){
   await tab.goto(new URL('login.html',base).href);
+  assert.equal(await ui.locator('.mark svg').count(),1);
+  assert(!(await ui.locator('.mark').allTextContents()).join('').includes('\u2667'));
   await ui.getByRole('heading',{name:'Study Seat',exact:true}).waitFor({state:'visible'});await shot('local-login');
   await ui.locator('#submit-login').click();await text(ui.locator('#account-error'),'请输入');await text(ui.locator('#password-error'),'请输入');
   await ui.locator('#unified-account').fill('admin01');await ui.locator('#unified-password').fill('Admin1234');await ui.locator('#submit-login').click();await text(ui.locator('#login-error'),'所选角色不正确');

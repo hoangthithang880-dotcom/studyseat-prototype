@@ -8,7 +8,7 @@ const output = path.resolve(process.env.STUDYSEAT_EVIDENCE_DIR || 'alpha/evidenc
 const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: __dirname, encoding: 'utf8' }).trim();
 const base = process.env.STUDYSEAT_TEST_URL;
 const groups = [
-  ['U01', 'student', '入口与身份', ['login-roles', 'login-password', 'login-invalid', 'login-valid', 'initialization-wait', 'exit-keep', 'exit-confirm', 'relogin', 'student-isolation']],
+  ['U01', 'student', '入口与身份', ['login-roles', 'login-examples', 'login-brand', 'login-password', 'login-invalid', 'login-valid', 'initialization-wait', 'exit-keep', 'exit-confirm', 'relogin', 'student-isolation']],
   ['S01', 'student', '首页', ['home-search', 'home-empty', 'home-clear-reset', 'home-scenes', 'home-conditions', 'home-query', 'available-only', 'immediate-pick', 'room-card']],
   ['S02', 'student', '房间与座位', ['room-back', 'date-picker', 'day-shortcuts', 'slot-shortcuts', 'start-end', 'search-seats', 'seat-zone', 'seat-disabled', 'seat-select', 'seat-retry', 'continue-booking']],
   ['S03', 'student', '确认与回执', ['agreement', 'confirm-back', 'confirm-submit', 'booking-receipt']],
@@ -108,6 +108,8 @@ const waitApi = (page, endpoint, method) => page.waitForResponse(res =>
 async function login(page, username = '832402116', password = '123456', admin = false) {
   await page.goto(base);
   if (admin) await click(page, '#admin-login');
+  const examples = await page.locator('#demo-accounts').innerText();
+  assert(examples.includes(username) && examples.includes(password), 'The displayed example credentials must authenticate');
   await page.locator('#account').fill(username);
   await page.locator('#password').fill(password);
   const reply = waitApi(page, '/auth/login', 'POST');
@@ -136,12 +138,25 @@ function observe(page, errors, role) {
 }
 
 async function studentFlow(page) {
-  await check(['login-roles', 'login-password', 'login-invalid'], '切换身份入口，切换密码显示，通过键盘提交错误密码',
-    '账号标签、密码可见性更新，真实认证返回 401，并提示可继续登录', async () => {
+  await check(['login-roles', 'login-examples', 'login-brand', 'login-password', 'login-invalid'], '切换身份入口及示例账号，检查新标识，切换密码显示，通过键盘提交错误密码',
+    '身份入口显示对应公开账号及密码，账号标签、密码可见性更新，真实认证返回 401，并提示可继续登录', async () => {
       await page.goto(base);
+      await page.waitForFunction(() => {
+        const image = document.querySelector('.brand-icon img');
+        return image?.complete && image.naturalWidth > 0;
+      });
+      assert((await page.locator('.brand-icon img').getAttribute('src')).endsWith('/brand-mark.svg'));
       await click(page, '#admin-login');
       await page.getByLabel('管理员账号').waitFor();
+      await text(page.getByLabel('管理员示例账号'), 'admin01');
+      assert((await page.locator('#demo-accounts').innerText()).includes('Admin1234'));
+      assert(!(await page.locator('#demo-accounts').innerText()).includes('832402116'));
       await click(page, '#student-login');
+      const examples = await page.getByLabel('学生示例账号').innerText();
+      for (const value of ['832402116', '123456', 'student02', 'Study1234']) assert(examples.includes(value));
+      assert(!examples.includes('admin01'));
+      assert.equal(await page.locator('#account').inputValue(), '');
+      assert.equal(await page.locator('#password').inputValue(), '');
       await page.getByLabel('学生账号').fill('832402116');
       await page.getByLabel('密码', { exact: true }).fill('invalid-password');
       await click(page, '#show-password');

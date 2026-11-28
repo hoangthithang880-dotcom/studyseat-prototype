@@ -15,7 +15,8 @@ test('GitHub export is self-contained, matches source hashes, excludes unrelated
   execFileSync(python,[path.join(root,'scripts/prepare-github.py'),'--output',output]);
   const manifest=JSON.parse(fs.readFileSync(path.join(output,'SUBMISSION_MANIFEST.json'),'utf8'));
   for(const file of manifest.files){assert.equal(createHash('sha256').update(fs.readFileSync(path.join(output,file.path))).digest('hex'),file.sha256,file.path);assert(fs.readFileSync(path.join(root,file.path)).equals(fs.readFileSync(path.join(output,file.path))));}
-  for(const name of ['alpha/README.md','alpha/studyseat/api.py','alpha/studyseat/schema.sql','alpha/docs/API-v1.md','alpha/tests/test_foundation.py','alpha/docs/StudySeat-Alpha-Phase4-Blog.docx'])assert(fs.existsSync(path.join(output,name)),name);
+  for(const name of ['alpha/README.md','alpha/studyseat/api.py','alpha/studyseat/schema.sql','alpha/studyseat/static/brand-mark.svg','alpha/docs/API-v1.md','alpha/tests/test_foundation.py','alpha/docs/StudySeat-Alpha-Phase4-Blog.docx'])assert(fs.existsSync(path.join(output,name)),name);
+  assert(manifest.files.some(file=>file.path==='alpha/studyseat/static/brand-mark.svg'),'live logo is exported before any rebuild');
   const word='alpha/docs/StudySeat-Alpha-Phase4-Blog.docx';
   assert(fs.readFileSync(path.join(output,word)).equals(fs.readFileSync(path.join(root,word))),'exported Word content matches source');
   assert(manifest.files.some(file=>file.path===word),'Word is included in the hash manifest');

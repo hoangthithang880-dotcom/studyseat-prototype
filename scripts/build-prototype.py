@@ -3,6 +3,11 @@ import json,re
 PROJECT=Path(__file__).resolve().parent.parent
 P=PROJECT/'prototype'
 ROOT=PROJECT/'deploy'
+# Keep the approved book-and-seat mark identical in prototype and live UI assets.
+brand=(P/'brand-mark.svg').read_bytes()
+(ROOT/'assets/brand-mark.svg').write_bytes(brand)
+alpha_brand=PROJECT/'alpha/studyseat/static/brand-mark.svg'
+if alpha_brand.parent.is_dir():alpha_brand.write_bytes(brand)
 def tag(s): return '<script>'+s.replace('</script','<\\/script')+'</script>'
 def data(s): return json.dumps(s,ensure_ascii=False).replace('<','\\u003c')
 def replace(s,a,b):

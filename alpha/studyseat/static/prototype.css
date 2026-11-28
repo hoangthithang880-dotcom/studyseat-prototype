@@ -39,6 +39,10 @@ small, .muted { color: var(--muted); }
 .brand-icon { display: inline-grid; place-items: center; height: 58px; width: 58px; background: #fff; color: var(--blue); border-radius: 18px; font-size: 27px; }
 .login-card { position: relative; margin: -35px 20px 16px; padding: 20px; border-radius: 22px; background: white; box-shadow: 0 12px 26px #17244b0c; }
 .login-footer { text-align: center; color: var(--muted); }
+.demo-accounts { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
+.demo-accounts h2 { font-size: 14px; }
+.demo-accounts p { font-size: 13px; }
+.demo-accounts code { font-family: inherit; font-weight: 650; color: #284ba5; }
 .password { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
 .top { display: flex; gap: 8px; flex-shrink: 0; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #fff; }
 .top strong { flex: 1; }
