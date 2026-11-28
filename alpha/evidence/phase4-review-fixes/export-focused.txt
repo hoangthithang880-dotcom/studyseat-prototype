@@ -1,0 +1,11 @@
+✔ Current documentation replaces retired Modao guides and accurately describes the formal component (4.8045ms)
+✔ GitHub export is self-contained, matches source hashes, excludes unrelated files and refuses overwrite (16641.7739ms)
+✔ Alpha export allowlist excludes runtime and unrelated data (96.4603ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16802.2091

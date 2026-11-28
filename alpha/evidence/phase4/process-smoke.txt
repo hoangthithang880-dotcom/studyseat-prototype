@@ -1,0 +1,22 @@
+{
+  "executed_at": "2026-11-27T11:43:21.379002+00:00",
+  "result": "passed",
+  "first_pid": 76884,
+  "second_pid": 74528,
+  "checks": [
+    "HTTP health",
+    "student login",
+    "database write",
+    "process restart",
+    "session restored",
+    "note restored",
+    "reservation and session restored across real process restart",
+    "reservation survives relogin",
+    "create replay returns original reservation",
+    "duplicate cancel preserves original receipt and single audit",
+    "student B can reserve released interval",
+    "admin shares audit data"
+  ],
+  "scope": "Real persisted reservations and foundation persistence notes",
+  "reservation_id": "78f0e5f1-324d-4641-b410-2942bcc7152d"
+}

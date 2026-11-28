@@ -1,0 +1,2935 @@
+{
+  "reviewed_commit": "71cabb929c98566db4f074c6dc8c6f70336c6969",
+  "historical_files_checked": 732,
+  "changed": [],
+  "files": [
+    {
+      "path": "alpha/evidence/account-switch/T1-logout-private-state.png",
+      "sha256": "bd33c10781926dbcaf49261a59371805aa9b4aeaeb3b45ddebb12d9f84fd9a89"
+    },
+    {
+      "path": "alpha/evidence/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "580510dbf9bb75c3982581db71379ed18309b3e41a80b573c5afb58534d20aa6"
+    },
+    {
+      "path": "alpha/evidence/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "8e58c15bb1e76b64cce703a7c8f53003d929d5da51b6ea8f7ab54720be6d753c"
+    },
+    {
+      "path": "alpha/evidence/account-switch/T4-delayed-events.png",
+      "sha256": "580510dbf9bb75c3982581db71379ed18309b3e41a80b573c5afb58534d20aa6"
+    },
+    {
+      "path": "alpha/evidence/account-switch/T4-delayed-notes.png",
+      "sha256": "1085391ad06e2d6abb0b22c879b515feb5f65d273bda62dc8ae6f83e8ae90686"
+    },
+    {
+      "path": "alpha/evidence/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "719b0870e55f6a3db74c600fa767721b98a835bd13b09c9c3c970da77b0bf148"
+    },
+    {
+      "path": "alpha/evidence/account-switch/normal-browser/admin-dashboard.png",
+      "sha256": "06555d35113c89b420f2f059f7e5a1ad5beab98c8afb045fdc1e9f05c978df6c"
+    },
+    {
+      "path": "alpha/evidence/account-switch/normal-browser/browser.json",
+      "sha256": "2bf7a0723b8de709ea458fc28269860298a7f79e4b69245984694d6e98b2d8c7"
+    },
+    {
+      "path": "alpha/evidence/account-switch/normal-browser/login-desktop.png",
+      "sha256": "4cac3f4f4624f7bca459621d23fc490948ab56e5ce0ad4835524a6491ff3e4d7"
+    },
+    {
+      "path": "alpha/evidence/account-switch/normal-browser/login-mobile.png",
+      "sha256": "987828e42f64a4f8cdf24b43e13437bcf02267d6c7be9b517cbc560cc980024f"
+    },
+    {
+      "path": "alpha/evidence/account-switch/normal-browser/student-dashboard.png",
+      "sha256": "e8498dd94d5ff87b40f13793437a1ced5e2ff552a91d772d86f77e1430f1c63b"
+    },
+    {
+      "path": "alpha/evidence/account-switch/pre-fix.json",
+      "sha256": "7e0b7e96a08238691873f9476d49c393001dc5c4d3d41af934549369470a12de"
+    },
+    {
+      "path": "alpha/evidence/account-switch/prototype-baseline-lf.txt",
+      "sha256": "b49154269459a79842649b38bc5e1ba45140705eb2ed43c2dd00d9b5881f3bbc"
+    },
+    {
+      "path": "alpha/evidence/account-switch/prototype-canonical-baseline.txt",
+      "sha256": "5d3906ec7d7c18bae3585fd80bbe7df8d816ae2ef1957c9a8607ea3b18940be2"
+    },
+    {
+      "path": "alpha/evidence/account-switch/prototype-worktree.txt",
+      "sha256": "c7911e8c6ed93c66789629a777afdbf08f29ac502f9c22f4d626b480e5dcbd78"
+    },
+    {
+      "path": "alpha/evidence/account-switch/restart/process-smoke.json",
+      "sha256": "df189e7c5a28b1cc28b374d348cc59e1d7b2a626eb5ff381d789936d4091a8c8"
+    },
+    {
+      "path": "alpha/evidence/account-switch/results.json",
+      "sha256": "774a4c4ab5a5013b1736471f221d8a9980ebd5837cb3dfba5b1caa7e16722184"
+    },
+    {
+      "path": "alpha/evidence/admin-dashboard.png",
+      "sha256": "6380ab3b7dd73192cc4bece5f6836ed84879cb438589e2f78207de3555fd2f61"
+    },
+    {
+      "path": "alpha/evidence/browser.json",
+      "sha256": "1038f98adc78db48d81e7506344946ed603f90f5d9ba7033fa9b7f3f08b005a8"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/attempts/route-conflict.json",
+      "sha256": "4c9ecc93970472406f9b4f8beef1a54a41389dd8e20517a8b83f8aa85b68de35"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/attempts/route-conflict.txt",
+      "sha256": "8e1dcf632e413305fd2fcc836da3bf8db6b0094df3299e84110e96e301ff0034"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch-server.txt",
+      "sha256": "42190a8663ec626265d3bacf4f01868a65253f153c740971a0b87526ab60e564"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch.txt",
+      "sha256": "b5456889deff7966a07cc48068be804f0d49c589c7ef1f3cbcb45a439c881292"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch/T1-logout-private-state.png",
+      "sha256": "b8e439b674969635e0c839086b97c4515667fd7019d4b1424b58207aa7566dbb"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "e4bf2045b755822058de5f73519b41e60681ae161f933b4c0e8bb3323d41187a"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "e874dba55f14bfe4340e82b02de6bb11a9ea4df012408a213225cdee8b9a73a5"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch/T4-delayed-events.png",
+      "sha256": "e4bf2045b755822058de5f73519b41e60681ae161f933b4c0e8bb3323d41187a"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch/T4-delayed-notes.png",
+      "sha256": "e4bf2045b755822058de5f73519b41e60681ae161f933b4c0e8bb3323d41187a"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "81ee691b1053cd055f5672d2bc34b90586d20e93e5c91877a303ee71e5fce03a"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/account-switch/results.json",
+      "sha256": "8e645764d2a701fa4c75654f4706f29636899eb0c1359de5a6a6edd61c285041"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/browser-server.txt",
+      "sha256": "12e14358ebe5ec940b8809cd8576ca83888e2b96f29ec5d1d1650fedf8ec68fd"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/browser.txt",
+      "sha256": "11882148627ba7974f663544f66c3404bf630edb9f4c77050123c7027a9a4942"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/browser/admin-dashboard.png",
+      "sha256": "56cded6ccfd4382bfdc03f93c1115e60cbfb855c513ce1226affd782a1aca6ae"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/browser/browser.json",
+      "sha256": "eb4d054690daecd2b33ad2a6f93ef02a035d6dd717942844ff4b0ec4cf1f4426"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/browser/login-desktop.png",
+      "sha256": "5621c6b883d335405b5f8acba2fad76223d000be4c7bcb155e8d06a861524e65"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/browser/login-mobile.png",
+      "sha256": "37283bdfc1dd6c5f0cea62c927ee80980a3eb4f3704bcb1e5085c1e70492e7c4"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/browser/student-dashboard.png",
+      "sha256": "7288e4b35d1aec50fdffbe766e80a261b5c6151f69e2ab255c39f52d71d233e4"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/document-links-and-prototype.txt",
+      "sha256": "a4a45982470d27bbc2a5e2a821e4588d2f26babbae3553f5a9060124c8a2a670"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser-server.txt",
+      "sha256": "4e107504ffd4dff42bf02a806376e08685bf5339c8090ff2f8bf6a6548984be2"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser.txt",
+      "sha256": "9dcdd737c62d92a9e9e0b9f92939de710717fe23cbcd6b0ded25174f026be599"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser/A-delayed-rooms-input.png",
+      "sha256": "099a7ce8c3d30e120aaf713c6a393b78507535cc9d45d5b2219e9e8f1b9adeef"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser/B-old-read-error-preserves-new-query.png",
+      "sha256": "23617aa3443cbf729cfdc51a509e3d0766c1ee3c0e3fa1d1914c87119b0e1434"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser/B-old-seats-after-new-query.png",
+      "sha256": "693ac4058b139ff9cffc4377ae9783012b86fea4bb7cbd42840c071eef7d4efc"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser/B-old-seats-before-new-query.png",
+      "sha256": "693ac4058b139ff9cffc4377ae9783012b86fea4bb7cbd42840c071eef7d4efc"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser/C-query-input-preserves-reservation-load.png",
+      "sha256": "7e3f55896cd5afd10d922737a80239e9c6079b7bfc8ac9ee3482ba69cf2de412"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser/E-initialization-failure-retry.png",
+      "sha256": "9f0d6ab7f8df7537d4f7116549700d5f4eb9ffe1fc66002b1fc11bee41a7b513"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/initialization-browser/results.json",
+      "sha256": "104ddc85c50e5212f1e0607929d927d6619ee2cbfee399c1b18421d88961fca3"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/process-smoke.txt",
+      "sha256": "6df21b5d5b70549bf775a9cb66c4d310e5791f790c1d64a5fb7a5551ec5fff0b"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser.txt",
+      "sha256": "5872a79fae4e51757856929ed60d6e4d58c821ab6795ae0656176705cdf129ac"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-admin-closure.png",
+      "sha256": "d9559e787cdfb4490c443e645be599e73363da69def6d81c0016b149bab58146"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-admin-logs.png",
+      "sha256": "96d06babb6247f6c7bdfc9fd436a8f32444c04f1c1b600716925c39363be2207"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-admin-rules.png",
+      "sha256": "b3f0f45c6fd3cfa9af43aa3298adbf3352001986e7294bd756c14739c1612eeb"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-attendance.png",
+      "sha256": "0f30b43348bb27fb0995683ab37b60d1d68dc745b7ac2a32b95175a0e48ed526"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-booking.png",
+      "sha256": "138a2ed7178f557c7d3267856d0e6356fc762535a132e3dd88e17d38e70df724"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-final-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-profile.png",
+      "sha256": "1afc5c77a34ac67a9ed19369b56c7e62c9b393ad7775b26d73cfcc69c25006d9"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/local-room.png",
+      "sha256": "1e6ed90c9a677cd26f124aa1d9ae49986af9fdb569fe7729a3847278a5b9b931"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-browser/results.json",
+      "sha256": "cbff7cab77fe24348e31ec50b1b45032af939f00753f42e0baa047e022a83da6"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-export.txt",
+      "sha256": "75bd0d2684e7b2b26cb1a31a096a1bc7f64cf20103f228ec761220d3d7149ba6"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-server.txt",
+      "sha256": "b1fbcd3e25c8a747941c04ded4eb277a1ac8e88dd8d2d9643687c8622a7174cc"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/prototype-tests.txt",
+      "sha256": "90ca5e294aa8dfde5745dc4c3b86ae12f61953d43c24d572ed564a9c16b752c8"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/pytest.txt",
+      "sha256": "21305284d822a28d52cc5917a9f0ff64266e4726f55a14c219a7a2a23a5535c9"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/pytest.xml",
+      "sha256": "edc87ff249d954faa5d6e0c0c426ca37df201c7acf64014916ea6e891474bb3b"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/reservations-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/reservations-browser-server.txt",
+      "sha256": "baa99ba2a6c8c4c0d6ffa28b6e01555c50bec0bf12f1008f18451c4f395c0e53"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/reservations-browser.txt",
+      "sha256": "c86d3fad4f27f2bb89b08688577919a1b819dd72c19b0f6d049a0de816fca7a3"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/reservations-browser/reservation-desktop.png",
+      "sha256": "9a8f27e57486006391051896db35b2e37e5b4f40245dbac784635517794fe6b4"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/reservations-browser/reservation-mobile.png",
+      "sha256": "9663679a399ef0ab9e56c8f249e8e625b1e84497f616f2d5cbc1b4146856a55a"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/reservations-browser/results.json",
+      "sha256": "c86d3fad4f27f2bb89b08688577919a1b819dd72c19b0f6d049a0de816fca7a3"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/restart/process-smoke.json",
+      "sha256": "16b0e5486443b61b4396dd46c8054974549725285f3e9bd43a1251bc37fa1a4e"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/ruff-format.txt",
+      "sha256": "793e2905062e677bc49a961cd9fd445b511f01c6196d6dfc46ac854a2639a903"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/final/verification.json",
+      "sha256": "b74589f570dbe50c00ae42f95cc35c49cd58a5aa8c6b1c86a1bc6f89f3a7d868"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/pre-fix/initialization-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/pre-fix/initialization-browser-server.txt",
+      "sha256": "9934edaab7ac617b82b40d93510b7c83cb18f2b530f96ba6b6368e896e55ab95"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/pre-fix/initialization-browser.txt",
+      "sha256": "f748ef08d326850f186ea63863d9b8fb637b71782d5f978d309aa43f6edb60d8"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/pre-fix/initialization-browser/A-delayed-rooms-input-failure.png",
+      "sha256": "c0c2afbbcf7579cf258e21fc43adb15a9e455f0bb3df22a21956a810b0469a3e"
+    },
+    {
+      "path": "alpha/evidence/initialization-review/pre-fix/initialization-browser/failure.json",
+      "sha256": "e6014ceb0520197e7365350a37262210b3d128eb5059a29ae886e8af9c1a2be8"
+    },
+    {
+      "path": "alpha/evidence/login-desktop.png",
+      "sha256": "4cac3f4f4624f7bca459621d23fc490948ab56e5ce0ad4835524a6491ff3e4d7"
+    },
+    {
+      "path": "alpha/evidence/login-mobile.png",
+      "sha256": "987828e42f64a4f8cdf24b43e13437bcf02267d6c7be9b517cbc560cc980024f"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch-server.txt",
+      "sha256": "98fc87b854d4e37bd15ec155a2d714a4cbe8635554ec796f6a8cdfe23d6d6dde"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch.txt",
+      "sha256": "e00656544d359dda7248a601abf827476ab52c65d0cfd6f3f2efd40bbed7c5c8"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch/T1-logout-private-state.png",
+      "sha256": "b8e439b674969635e0c839086b97c4515667fd7019d4b1424b58207aa7566dbb"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "f803f29226833e6e6de90e048812e63361c18636b3907fc1eccee6c21cfc0ba7"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "f8773b104470e7b40fe9fe7334e13b6c49b04277db644d4a906150395af2a148"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch/T4-delayed-events.png",
+      "sha256": "f803f29226833e6e6de90e048812e63361c18636b3907fc1eccee6c21cfc0ba7"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch/T4-delayed-notes.png",
+      "sha256": "f803f29226833e6e6de90e048812e63361c18636b3907fc1eccee6c21cfc0ba7"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "ade313a4e79ae55b0cadff38a1470f27ac9f453a8514c5e1513cfddbe312382c"
+    },
+    {
+      "path": "alpha/evidence/phase2/account-switch/results.json",
+      "sha256": "836c59b8aba42c9071b0f87dfcb4d9dfaf75f9b9bc646f6027ba39c33e84e5ee"
+    },
+    {
+      "path": "alpha/evidence/phase2/attempts/initial-room-assumption-failure.json",
+      "sha256": "6eeaf11b5747229499310695068e5427eae6796defbfad36c0ae08167bfe426b"
+    },
+    {
+      "path": "alpha/evidence/phase2/attempts/initial-room-assumption-failure.png",
+      "sha256": "85f27ed56528861a0381457d2ea8fc6adad4cd1f8e6c885987229391c644317f"
+    },
+    {
+      "path": "alpha/evidence/phase2/browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase2/browser-server.txt",
+      "sha256": "bbe6e439165fd5e9d49de504684ed3b94d38ea94e2be9508667c98ab14e01ad8"
+    },
+    {
+      "path": "alpha/evidence/phase2/browser.txt",
+      "sha256": "19c0092337eedc1a92522ab7a395aabcf26a29381e5e9894d14d75133cfa5209"
+    },
+    {
+      "path": "alpha/evidence/phase2/browser/admin-dashboard.png",
+      "sha256": "eb8b15b88f2ca96927b01034ee1cb825ede84158316eb6bc879cffd355556ee2"
+    },
+    {
+      "path": "alpha/evidence/phase2/browser/browser.json",
+      "sha256": "846390e811663ed017ab1f28f5a2051bd414cf377848c45b333e3820ed4415a1"
+    },
+    {
+      "path": "alpha/evidence/phase2/browser/login-desktop.png",
+      "sha256": "5621c6b883d335405b5f8acba2fad76223d000be4c7bcb155e8d06a861524e65"
+    },
+    {
+      "path": "alpha/evidence/phase2/browser/login-mobile.png",
+      "sha256": "45dd5667f96374e0e1ec3bdd8bb10b87ba94d18d8083884a7b084143738c3b55"
+    },
+    {
+      "path": "alpha/evidence/phase2/browser/student-dashboard.png",
+      "sha256": "6aff39e5b64ce93d0b8e22700d256a8dc87d78e540181b08e5afe621cacc2e5e"
+    },
+    {
+      "path": "alpha/evidence/phase2/concurrency.json",
+      "sha256": "f875c23d500aff9da92dafd89e4bc93815360780835d337e1fbea94a3ff8743b"
+    },
+    {
+      "path": "alpha/evidence/phase2/export-regression.txt",
+      "sha256": "70d7b0e41d5970f4b29b4a5bf88f88cd9694fcb7555c83725b5a33ab21043dc8"
+    },
+    {
+      "path": "alpha/evidence/phase2/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase2/process-smoke.txt",
+      "sha256": "176f2bab4eed6389ad1f112a2b639a11c7953b115d3c7a65e52257c99c705ade"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser.txt",
+      "sha256": "5872a79fae4e51757856929ed60d6e4d58c821ab6795ae0656176705cdf129ac"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-admin-closure.png",
+      "sha256": "d9559e787cdfb4490c443e645be599e73363da69def6d81c0016b149bab58146"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-admin-logs.png",
+      "sha256": "96d06babb6247f6c7bdfc9fd436a8f32444c04f1c1b600716925c39363be2207"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-admin-rules.png",
+      "sha256": "b3f0f45c6fd3cfa9af43aa3298adbf3352001986e7294bd756c14739c1612eeb"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-attendance.png",
+      "sha256": "0f30b43348bb27fb0995683ab37b60d1d68dc745b7ac2a32b95175a0e48ed526"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-booking.png",
+      "sha256": "138a2ed7178f557c7d3267856d0e6356fc762535a132e3dd88e17d38e70df724"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-final-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-profile.png",
+      "sha256": "1afc5c77a34ac67a9ed19369b56c7e62c9b393ad7775b26d73cfcc69c25006d9"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/local-room.png",
+      "sha256": "263b662755b5b3a43048a199eab57d4fbccb3561135d68031ccb281365bc4752"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-browser/results.json",
+      "sha256": "cbff7cab77fe24348e31ec50b1b45032af939f00753f42e0baa047e022a83da6"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-export.txt",
+      "sha256": "7a92faeca7461524e6508729330e28aacd8d389319e35a2a9a8d26b9cfa17ff4"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-server.txt",
+      "sha256": "bac26749bbd7f2700378248a525e487f4447640836ef0535c51a15a8b6651e46"
+    },
+    {
+      "path": "alpha/evidence/phase2/prototype-tests.txt",
+      "sha256": "0117716ae1ecc2974fef8099d88161825d083c2a18625af9c1b542e46b49d600"
+    },
+    {
+      "path": "alpha/evidence/phase2/pytest.txt",
+      "sha256": "b9e15ac7d6a576e7e1f971d698916b92bfd088a63e37ab97c015d4f6dcaff968"
+    },
+    {
+      "path": "alpha/evidence/phase2/pytest.xml",
+      "sha256": "bf207374de5f268583221de4a6a3fab4e367c23443204779c92e111812215e1e"
+    },
+    {
+      "path": "alpha/evidence/phase2/reservations-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase2/reservations-browser-server.txt",
+      "sha256": "11084b276981f938b5c6f50e6b26b0c2ef80a6d9006d23d31f4a50413cfa67e4"
+    },
+    {
+      "path": "alpha/evidence/phase2/reservations-browser.txt",
+      "sha256": "471d67e75c6b0765de4d1d200687ba87ad2e94bbe2a9535c2e6b79d59cb9be9a"
+    },
+    {
+      "path": "alpha/evidence/phase2/reservations-browser/reservation-desktop.png",
+      "sha256": "9a8f27e57486006391051896db35b2e37e5b4f40245dbac784635517794fe6b4"
+    },
+    {
+      "path": "alpha/evidence/phase2/reservations-browser/reservation-mobile.png",
+      "sha256": "40f2862b69cb38898c5955b5a03aa03fa67079d33cbb38b2e1141bea4bdb69dd"
+    },
+    {
+      "path": "alpha/evidence/phase2/reservations-browser/results.json",
+      "sha256": "471d67e75c6b0765de4d1d200687ba87ad2e94bbe2a9535c2e6b79d59cb9be9a"
+    },
+    {
+      "path": "alpha/evidence/phase2/restart/process-smoke.json",
+      "sha256": "a22aa693c906a6fec430db773ddc135ffabc6aef6628fb90e96f67f73609ae71"
+    },
+    {
+      "path": "alpha/evidence/phase2/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/phase2/ruff-format.txt",
+      "sha256": "793e2905062e677bc49a961cd9fd445b511f01c6196d6dfc46ac854a2639a903"
+    },
+    {
+      "path": "alpha/evidence/phase2/verification.json",
+      "sha256": "adc6945d080009a72a599c930a2488ce131cc791e30cf0a7d1436042ef819924"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/attempts/full-before-window-copy.json",
+      "sha256": "cf67275664ab56ff9607e43b01aa3c3c023a8d2fb62c66a093bde57b0c0d0b2d"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/attempts/migration-comment-pytest.xml",
+      "sha256": "005dba5e2290e8654661f663bf97f72848243ca68c0355f04470becc5ec67c95"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch-server.txt",
+      "sha256": "4553dd840f07d0cdf2487b987f35cb573b1e659991373fbe850bfbd0dd1841f2"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch.txt",
+      "sha256": "20ea8a7d860497c58f411b3da2965fe14f251ed85cc4277ecd7b8039313f47f0"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch/T1-logout-private-state.png",
+      "sha256": "38a9956c29c5a88f760b6dd7688eb8c67348ebd0339715ad2236338542280732"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "8eac6759437cc9526b967ed938b6ffe2aa724a2ecfe36370154f3680e19a2fd9"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "77e5b8ef2cc59136a97c1dd5e0f42ff8c024e993aeb8e10c22e7c0c01da4878a"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch/T4-delayed-events.png",
+      "sha256": "8eac6759437cc9526b967ed938b6ffe2aa724a2ecfe36370154f3680e19a2fd9"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch/T4-delayed-notes.png",
+      "sha256": "8eac6759437cc9526b967ed938b6ffe2aa724a2ecfe36370154f3680e19a2fd9"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "dde602f9a093f6e52f926022dcff94f97b42bd33b50be9165762429b8b8c0e3b"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/account-switch/results.json",
+      "sha256": "83553e496055b55b6adc3c4a77cb9a4c5124be03cbfbed69f1f0a2fbd89640eb"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/browser-server.txt",
+      "sha256": "a363dca5fb8841e7f045b0ffc4309c7c0e50a8ba6e4b17b2db0dc58ad8b21b39"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/browser.txt",
+      "sha256": "065d68fd1ae0c9cb740b00d44fbf889ef9d83ada2e532eb4d3a2425ac7014844"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/browser/admin-dashboard.png",
+      "sha256": "a2e15fdb367b6e950feeee0eee8cf8c2aac1894c857e2223bc879b3f9958aef3"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/browser/browser.json",
+      "sha256": "5556bd65206a2c86882a63b64b3cd9ce387e6bb48d3e2c51232c7187ad8c3fcd"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/browser/login-desktop.png",
+      "sha256": "e8ed67c6bd9585543c981d5352bea61c51cff136f062198273dce64c1acb223a"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/browser/login-mobile.png",
+      "sha256": "6f6107c583f2cc3bce2b97e684287ccf7f4a1c69271154437d0186643198d0df"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/browser/student-dashboard.png",
+      "sha256": "fff4fda74d3bbfb6b153e05823654bd3c39696260c2cff5ea1b71b11836d445b"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/document-links-and-prototype.txt",
+      "sha256": "c3a9568f75972bccc0a7948997c3bc200687f9746166d4135312b70c34124fc3"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser-server.txt",
+      "sha256": "3cc1a4ba6969cc183da91470e9dc28d239e3d745d498886edd9b8207de3e8b39"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser.txt",
+      "sha256": "4a32e17c338097e41ed68f4b2a9a9363e24dc8a362f35f65d643141a6c4ff7bf"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser/A-delayed-rooms-input.png",
+      "sha256": "f3e4e14bd00e8d70cc6740b1c37eaa1568c361c0b520d10d1f84e72a2168258d"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser/B-old-read-error-preserves-new-query.png",
+      "sha256": "724f2d072c1d1b6c5e93b5af6322587dd9ae48909c9f08f994454ad55f9e1762"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser/B-old-seats-after-new-query.png",
+      "sha256": "ff443788978351e4d5381329d4be4835299546b74d67e096e991d0d9988861a0"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser/B-old-seats-before-new-query.png",
+      "sha256": "ff443788978351e4d5381329d4be4835299546b74d67e096e991d0d9988861a0"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser/C-query-input-preserves-reservation-load.png",
+      "sha256": "845ff9309c79163a395d95e9eef85009261e1c7711da4935926b19e15dee5d7d"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser/E-initialization-failure-retry.png",
+      "sha256": "b791251214919df9d7e41a1da5ab52b44d35792330390027f18c25927d3651cf"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/initialization-browser/results.json",
+      "sha256": "b0afc6dbb1cc3c08ec3ceb57bead06af3f4117dda14fab9d4d392588570d6eef"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser-server.txt",
+      "sha256": "887b2a74bfbcdafaf0ceee62f40da6da5ebc46c81f54d4116e89a987e4614a31"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser.txt",
+      "sha256": "41d4797d5eb9e1e16b252bd95a653a2b19383ff38eb051fbadefea02a5fbeaf6"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser/admin-closed-desktop.png",
+      "sha256": "943597369058de4908d74b22d861ea10162d61ff6ca139048666594a77309310"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser/admin-mobile.png",
+      "sha256": "125371351f3f1db8b4e208fecddfe5de92034cc4de69c7b06403bec890088ebe"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser/admin-preview-desktop.png",
+      "sha256": "1c7f5fa971bc601e94e7d487745d45e7da72f9f675e62015ded76afa0bcdfed7"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser/results.json",
+      "sha256": "75b35bc08121bfced4ea018a749d98db77751370a2896c066e7a2a29bb08586c"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser/student-leave-desktop.png",
+      "sha256": "a0914b04b4569470a5d887118b07a4ecbf53a8aceb3182884a986ba9083ed431"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-browser/student-mobile.png",
+      "sha256": "b4400d3146163412ffa9d45217d1b8184f31b6f431873e775066aa888b3f86b1"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-process-smoke.txt",
+      "sha256": "3865152aa71e3bcf3918b123cb104b989fc3ad627107d96e93e2c5df5f1ab93f"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-review-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-review-browser-server.txt",
+      "sha256": "090106adce73730f317a0004d40e72e657a4960206f46e773e7b754272ee2c9b"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-review-browser.txt",
+      "sha256": "370d0fbea27fbe58401e18ba1f5b1828259355c673b29908ac9242d4b1d1b5c7"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-review-browser/draft-preserved.png",
+      "sha256": "a0ad2450e75b09e452bf702c15b853e95749b3c33420af43222c8d0d4ba25ffa"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-review-browser/results.json",
+      "sha256": "5b337c5295a5bd066af402d657193ddd55c4c863f989e3c22957078aa3d51811"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/phase3-review-browser/stale-cycle-recovered.png",
+      "sha256": "84c862fe7fa9dfb2f482fbfecfe33cde70aba86f3d0319dd8263f550d731c2ae"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/process-smoke.txt",
+      "sha256": "e98c205465467b4af3c98723f58a8c62d9555d25351f7f052b83e9370a17e506"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser.txt",
+      "sha256": "5872a79fae4e51757856929ed60d6e4d58c821ab6795ae0656176705cdf129ac"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-admin-closure.png",
+      "sha256": "d9559e787cdfb4490c443e645be599e73363da69def6d81c0016b149bab58146"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-admin-logs.png",
+      "sha256": "96d06babb6247f6c7bdfc9fd436a8f32444c04f1c1b600716925c39363be2207"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-admin-rules.png",
+      "sha256": "b3f0f45c6fd3cfa9af43aa3298adbf3352001986e7294bd756c14739c1612eeb"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-attendance.png",
+      "sha256": "a9f2ca44666be0018e079e8fc56f64b08968310cd2827eb2d8a30df3e58c8e8d"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-booking.png",
+      "sha256": "fb745bb0d3b43f0814024bdb27ed8b9382931e941a6a9d280292bf12ed30a195"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-final-login.png",
+      "sha256": "52346acebbcd2d40fe4ee3722544bbad5d2870bbeb94c53eb2c359591e754d0d"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-login.png",
+      "sha256": "52346acebbcd2d40fe4ee3722544bbad5d2870bbeb94c53eb2c359591e754d0d"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-profile.png",
+      "sha256": "67c91c2e075135fc22977cf1c4fb79ca09d21c46987d62a263f834d23d2764ac"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/local-room.png",
+      "sha256": "8e060b581fa35f62d7ffcb10a33d494defe91a4718a608d53bafa4626102e438"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-browser/results.json",
+      "sha256": "cbff7cab77fe24348e31ec50b1b45032af939f00753f42e0baa047e022a83da6"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-export.txt",
+      "sha256": "17af97ddde255dc2b5587d65ed47e8ffcdb079f4417a84d032fc70a218c44f7b"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-server.txt",
+      "sha256": "7acd28163f1f361d5d5979ffdaac5dd37b8f284915a9113a0b992eb35c1dd326"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/prototype-tests.txt",
+      "sha256": "26117f88423d1b8f87000ae1d5eae8345546c65d10aa7c99b9398b8159cacbf8"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/pytest.txt",
+      "sha256": "bba8ce1a1406c9154a227ae587439e713177b335dfc0efe8006794ec06057596"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/pytest.xml",
+      "sha256": "57997513fcdf801150a132e999b434548d6c3bd741117d6241d828fb016dbed2"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser-server.txt",
+      "sha256": "737411af9484da9735e46c5d0e8c247b10a78ed4bdf3d4477577ef2c85c5cb57"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser.txt",
+      "sha256": "78cfc90c30a2408f3f9d2faed4c2020e6b4894aa5da99a808f421d8d9a13b3ea"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser/A-empty-list-after-create.png",
+      "sha256": "7dc190b376a872a01f9863c3e73cd89f06216b2dfeea06f31181085a08da7c91"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser/B-D-cancel-new-first.png",
+      "sha256": "48ab73d2ac7d5a2546a137c0449992c1a93a36f39440fd357e4472a7d42d5b50"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser/B-D-cancel-old-first.png",
+      "sha256": "3572236b19fa65b46a26ccd9e0a7d4c3ab92da3402fd3c9fab8a874ca44fd971"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser/C-old-error-503.png",
+      "sha256": "4872864cf47da4241c08ce8c4d37de3ce5ec77dacd4ba42f4bb53438a634e3e7"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser/C-old-error-abort.png",
+      "sha256": "e84d35511fd61a3bdfeeb718cdcf5272ed5579c2986845ff644e4d6314e11ee0"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser/E-current-error-remains-visible-and-retryable.png",
+      "sha256": "2565239a147cf5615595c737bb467d06cb7e749461b458710e4dcb1e618966c0"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser/F-superseded-initial-list-keeps-catalog.png",
+      "sha256": "93d895d9a69542bc9040405e66ecd4e54c3c06459a4f0545355ac6cbd874ca6e"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservation-list-browser/results.json",
+      "sha256": "508c1d18f7354142c3334412c158f886fe742802134a5a25c0b5ce9f4df7ad5d"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservations-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservations-browser-server.txt",
+      "sha256": "f06f96ff0995703f8769dcd58df0a80ba0aef6193071d41413995661ef12aac7"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservations-browser.txt",
+      "sha256": "8f82645496a399a65c5e27a939963ec5dd249ec1e3a63965edbd4aacee3f2aa4"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservations-browser/reservation-desktop.png",
+      "sha256": "9fe34ad1becf4ee82255113a01f0d25b57b3add62970bb476cc34f9d6f225fc0"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservations-browser/reservation-mobile.png",
+      "sha256": "e787ba5b1bd01062d4ae1c675a70efa29e4e1a3ee32796b5564579ce918ca0a0"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/reservations-browser/results.json",
+      "sha256": "8f82645496a399a65c5e27a939963ec5dd249ec1e3a63965edbd4aacee3f2aa4"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/restart/phase3-process-smoke.json",
+      "sha256": "3865152aa71e3bcf3918b123cb104b989fc3ad627107d96e93e2c5df5f1ab93f"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/restart/process-smoke.json",
+      "sha256": "1f78b9f7972c2ff8cb761378ca61b72b8688aedf56ef5d8ba7ffe625e7e7f713"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/review-regressions.json",
+      "sha256": "7319be025dd79a64a604b52335865af101f80aa6c40816fd807ca3bebe8ef0fa"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/ruff-format.txt",
+      "sha256": "dde85ab0ab657507e2a1c53a7cfe26e5ab8acfd4abe3547bac113731d2477097"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/final/verification.json",
+      "sha256": "3b4970c9a911bbbb5f60ffb26b7dbdbfb6210b0455d120a044e297662bc26c7c"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused-pytest.txt",
+      "sha256": "3546f0142deeff35267ebcd9c27ccea9e68382e64cd4b7e92c4f056179c71608"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused-pytest.xml",
+      "sha256": "26214c100ddc54c572f0ad6e9b70918dc5f608f1acee80af687e452b6795930d"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused-versioned/phase3-review-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused-versioned/phase3-review-browser-server.txt",
+      "sha256": "eb14192592ceacd2b738409bc23691498f1aec2b548dc2a6a98c0615a748234a"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused-versioned/phase3-review-browser.txt",
+      "sha256": "7ffddf37efee83fe97cad19bae5302fa845544bc54d9bb8ea793de8c633623d8"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused-versioned/phase3-review-browser/draft-preserved.png",
+      "sha256": "ef7af7a86b780dd8edc5a018d9d02be26913692d25d1d1fe8ee94745df698f89"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused-versioned/phase3-review-browser/results.json",
+      "sha256": "03967edb482c70dda9efc88e4c50e2885fdc23925091391b60723edcf327b3ca"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused-versioned/phase3-review-browser/stale-cycle-recovered.png",
+      "sha256": "594e073380ecfbd1c1b828a21c543d956aee4d8dcbeae39e607cbc6f4ea245d9"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser-server.txt",
+      "sha256": "d4065a236b95a2e45fed0d526404d3c6a332ce3077de6ae9b8a036194adf8b17"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser.txt",
+      "sha256": "56d627b3f7d223154d0066068b9533ba87b354d35f54cb7e09a5d61d320c370b"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser/admin-closed-desktop.png",
+      "sha256": "4329c279a2a4c44ad5accf22b1cbee6fcb74d2e116052de73ac01fb57300698f"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser/admin-mobile.png",
+      "sha256": "42614e475384548c35d6fe4ea1c72d7f8b293c507e98f2b60b9a007b30574480"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser/admin-preview-desktop.png",
+      "sha256": "0518c74f06e56f70f40932729d35abce34ca915b71fe7067c193ab27fe0e3afe"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser/results.json",
+      "sha256": "c572df66a46b573625f6d372a2354f3de107dad339ce253ffe36531baaf4b495"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser/student-leave-desktop.png",
+      "sha256": "67f42e2e54d3722f617351bbcaf2379478a153a4a559a1ded2fc159be8110dee"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-browser/student-mobile.png",
+      "sha256": "5fbd8b1fe6b30a21ebce07a3a5d9ad908257f16959d20cb5f3645c85a23b0cc8"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-review-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-review-browser-server.txt",
+      "sha256": "f3e9e53b2dff0e45e4b22438b281152b543426a2ea02d2ad52d8748f23010ffb"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-review-browser.txt",
+      "sha256": "1fbb392982f2e062d9decff4fe30ac5b8a3054c9c9b30d59d52e2c5e9b40dbfd"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-review-browser/draft-preserved.png",
+      "sha256": "74dae380194433e791ff56545aa35cc91bd4ec64bc29d07edda58529eff8f63b"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/focused/phase3-review-browser/results.json",
+      "sha256": "74458f24f4604ae1d463e7447200968739051000c4a3b962cec93211e9eeaa9e"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/lifecycle-pytest.xml",
+      "sha256": "005dba5e2290e8654661f663bf97f72848243ca68c0355f04470becc5ec67c95"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pre-fix/phase3-review-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pre-fix/phase3-review-browser-server.txt",
+      "sha256": "ee61ea1636edebd78c879bb05231d2862ba245869bb0e92193cd0ee681c442cc"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pre-fix/phase3-review-browser.txt",
+      "sha256": "d26bdfcbd2949a4f32766acab6b967a23aa634a49e8e62bd793b515a26664b51"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pre-fix/phase3-review-browser/failure.json",
+      "sha256": "8b8ab0ec189e545a6994971c08307d2a95ee70ad55b6fb07b3b04a12f7728722"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pre-fix/phase3-review-browser/failure.png",
+      "sha256": "9d968988d5350986b7905784e0917d677f4c456e6a2e2e3acb8a346345fecb61"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pre-fix/pytest.txt",
+      "sha256": "70cf0c7efab31e6ba8eda5a3cc3373c5c0360cb8ce2c7fba00db27caa81a3f2a"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pre-fix/pytest.xml",
+      "sha256": "d573826f3121fb7b62c548993a956627b40a97343d7efcfe9be417a072a09dd4"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pytest-focused-all.txt",
+      "sha256": "7dea2bc9c1ce5ac7c04c1e31b824cc146bee4a407bda3d585419055ec038cd00"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/pytest-focused-all.xml",
+      "sha256": "336587e5c5ed36ac9f65ee3bedcb05bc0872790d48f120232365cf77eabdaa71"
+    },
+    {
+      "path": "alpha/evidence/phase3-review/review-input.json",
+      "sha256": "3bca293ef687117d3930db1e47077004d3d6ace712accc0ca3170db11b5fce0d"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch-server.txt",
+      "sha256": "c223e76d5da22bac5791d78da9131d581a9eee6add0c57f6f3ac10ceff60d1c5"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch.txt",
+      "sha256": "87ddfd9a8680e48707bb967a2ab333f88e1bf3070c4894fa8ce037caadee8dae"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch/T1-logout-private-state.png",
+      "sha256": "07e2f26931752830d6cb1619bcac18a3ee6b375f6dfa9db691e610babc771c11"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "492e78835367cb111d04db52b449a54585ebd5ebd0b77e9a2d33f6940e123ee1"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch/T4-delayed-events.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch/T4-delayed-notes.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "29695af3afcfcd8595e29525b943c824270e1b40bf2922aab60438ef91fbcbd4"
+    },
+    {
+      "path": "alpha/evidence/phase3/account-switch/results.json",
+      "sha256": "ee58d5745b6f9b902bfc4cbd51ebb1784ae17f91cfdcd3ae00ba8604719b85fd"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/first-full-run/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/first-full-run/prototype-tests.txt",
+      "sha256": "2cbe35eebe89922ebfb06829a8577189d951403fa5b3b965bd3b0aab7c619742"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/first-full-run/pytest.txt",
+      "sha256": "ab836d0f3d20e91b392f4467d03821a052bfc8c7236f34d7f583ee2c828aeeee"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/first-full-run/pytest.xml",
+      "sha256": "9b4da66e24c7deab3724d567d1b0d259c947983e9c9d8e5fee64829bc6ba3d6f"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/first-full-run/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/first-full-run/ruff-format.txt",
+      "sha256": "2bcbe8e6e763d11737554aa861ef6606aea9d87114a002aa9bd426ec920674cf"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/first-full-run/verification.json",
+      "sha256": "4e81124e7078da88d3cd8210716e74d99c019503bdbb3c12e7452caf1ae5f678"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/account-switch-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/account-switch-server.txt",
+      "sha256": "83612063ac716ad6fede5c9adf1b565fa764409fd0a8076c85f85ed225dd8c44"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/account-switch.txt",
+      "sha256": "8a100daaaeedb2bc5ff0e723cfa8b12bc3b51f07664f545f1ad2f63ea0adac78"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/account-switch/failure.json",
+      "sha256": "be8d730a3670f3d9e635fbfd3b32433a63549b2863c413a1112554c433223073"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/browser-server.txt",
+      "sha256": "8755dfc4342413f85e522968bd197c86fc7939647700bb689dd4080742a587ab"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/browser.txt",
+      "sha256": "da9d683e4924bd7042e81b3ed928dc29696fa1bf336b336e60e3d6c5ad86a6bb"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/browser/admin-dashboard.png",
+      "sha256": "be959010b2b282b3e7cb11b0dded10713e58ec6eacd549d8ca5549232da8f844"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/browser/browser.json",
+      "sha256": "e677fc47f5995466bf3f936378509deb50c3acb6b38e4d7fe1601d1e95412703"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/browser/login-desktop.png",
+      "sha256": "b87cfd2e124fd34cc7ad723450ded219fb205db27fec9ca6ed02811c77331c78"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/browser/login-mobile.png",
+      "sha256": "95288d0444efd78b49405bb4fb9dd3c90db4aa3da54ff98867309fc57db8bbd7"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/browser/student-dashboard.png",
+      "sha256": "70f461620813b7c9f96a93a1120be51d37c6b5e1c6be1c303ec969a8f91eb2cc"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/phase3-process-smoke.txt",
+      "sha256": "e58f76ab66f62dca5dd0427dabd4809ab141493c6c686aebe6e8dd79fabe1033"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/process-smoke.txt",
+      "sha256": "ed2709dcd0ff53bc4816aac3038359641db71ce4c60576aeb19f532bf21b4336"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/prototype-tests.txt",
+      "sha256": "65255f6276749930bba7eece3804e1330a10dcdab445068ab48c18b89277586b"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/pytest.txt",
+      "sha256": "dceec911819522a3b20787e552b2c1e76c13226ab1242e7ad1d6ddcbb1c1f71e"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/pytest.xml",
+      "sha256": "1a56a69f571374bd04c6c6141c92b431dd91ba8af29cd9dc10733e17f222ee4d"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/restart/phase3-process-smoke.json",
+      "sha256": "e58f76ab66f62dca5dd0427dabd4809ab141493c6c686aebe6e8dd79fabe1033"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/restart/process-smoke.json",
+      "sha256": "526f61a02d07d650b205d5dc243bdd24cc60df14282921335dc69d6c9d759602"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/ruff-format.txt",
+      "sha256": "2bcbe8e6e763d11737554aa861ef6606aea9d87114a002aa9bd426ec920674cf"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/fourth-full-run/verification.json",
+      "sha256": "2737b5ead925e254a62c26ab6552a304aee5cfa93cf3c99260e5b7195a835ad8"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch-server.txt",
+      "sha256": "db02d41af1a98fb56c599d35c33d958e4472a8d67ae0201b9774e6687881f480"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch.txt",
+      "sha256": "51a497ee812b5ecf0db73c6ea786237a478f2487aae51b921bda817c391286b3"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch/T1-logout-private-state.png",
+      "sha256": "07e2f26931752830d6cb1619bcac18a3ee6b375f6dfa9db691e610babc771c11"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "492e78835367cb111d04db52b449a54585ebd5ebd0b77e9a2d33f6940e123ee1"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch/T4-delayed-events.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch/T4-delayed-notes.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "a796ab023f67cbe629cfb60b4c8bd2d6783c372b39845df78be5593202da26b1"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/account-switch/results.json",
+      "sha256": "e26a5ff018cea2e567c87ff6e7aed795de14971f1d7fe4c5a4210e80f98b63bb"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/browser-server.txt",
+      "sha256": "e95957e644fc9cdfddcf1f844312d3c4b3db5cdf23bee5322b6728213910b5fc"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/browser.txt",
+      "sha256": "3d68a55ec9dbe959b3d67f0a7f054bbbe383015e8b7d1bab783b35fe85bc2df0"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/browser/admin-dashboard.png",
+      "sha256": "256767c652969c3145d890402e6248d8815d1e805cd283f9f502705828015f1d"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/browser/browser.json",
+      "sha256": "c0300641bf7d3fd252a7c97cc26f1bd98e575ca514ff4f317b5b0e8e05ca5890"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/browser/login-desktop.png",
+      "sha256": "b87cfd2e124fd34cc7ad723450ded219fb205db27fec9ca6ed02811c77331c78"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/browser/login-mobile.png",
+      "sha256": "95288d0444efd78b49405bb4fb9dd3c90db4aa3da54ff98867309fc57db8bbd7"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/browser/student-dashboard.png",
+      "sha256": "4e87749f32daa39bfc26b01f8cfdc2476875c798eee10c43c275815b2bec6b48"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/phase3-process-smoke.txt",
+      "sha256": "3373411c883f96c59f1e1ad550c4543a0a281d4a13fce09d105bec21a02216a9"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/process-smoke.txt",
+      "sha256": "83ce261f4fb1f22679729f533c57d9a2bb957c9e296120030047f121070f310a"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/prototype-tests.txt",
+      "sha256": "e0a018449903588bcd5db2bf510ec7b6c26411d112bbb50b6207e3b25830e932"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/pytest.txt",
+      "sha256": "7fcae6639a9278f28f8b593092ff16110d0ac1b1d9f6b25367353692fc689acc"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/pytest.xml",
+      "sha256": "4ebf997ba1b23a6ca57cc7c55cb1687abb514e94f3e0981eb79d2fac981d90fc"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/reservations-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/reservations-browser-server.txt",
+      "sha256": "029be8e21b2688036d382da63e033e8229ed056afc93d14aed03540d5b652878"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/reservations-browser.txt",
+      "sha256": "05408aa81cc9d90b251363764d41243af9a640861a6c5b1b13b422db7ff0be0c"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/reservations-browser/failure.json",
+      "sha256": "9ab9cad18043a60d4df31b70a674dd1b505fba5f5e0f9eda82d5e8844131c606"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/reservations-browser/failure.png",
+      "sha256": "8aae5684e1c32c77faae619936a90be3222b440849c66122ab2244dbfd032d1a"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/reservations-browser/reservation-desktop.png",
+      "sha256": "8aae5684e1c32c77faae619936a90be3222b440849c66122ab2244dbfd032d1a"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/reservations-browser/reservation-mobile.png",
+      "sha256": "673a3cf75769ca8340f68f02af9520aaec128409597b54e5424006fb7ad7af8c"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/restart/phase3-process-smoke.json",
+      "sha256": "3373411c883f96c59f1e1ad550c4543a0a281d4a13fce09d105bec21a02216a9"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/restart/process-smoke.json",
+      "sha256": "f473fdd3b9a99859d53487367132edda7c637c08bd5aeb9517a2907049d3bfe3"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/ruff-format.txt",
+      "sha256": "2bcbe8e6e763d11737554aa861ef6606aea9d87114a002aa9bd426ec920674cf"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/second-full-run/verification.json",
+      "sha256": "7073362a695dfa65169799d25030b665338707c5a9a83887d1a36f1305d2d224"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch-server.txt",
+      "sha256": "b4e86fbe6da7188b7909affc5acf97a81397deec65803ed635eef7ae9d80dfc9"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch.txt",
+      "sha256": "60d2fcd469d13d66ae09c78e5ee3be95c16fc5ff64a1804ad6e6dde7d27cac57"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch/T1-logout-private-state.png",
+      "sha256": "07e2f26931752830d6cb1619bcac18a3ee6b375f6dfa9db691e610babc771c11"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "492e78835367cb111d04db52b449a54585ebd5ebd0b77e9a2d33f6940e123ee1"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch/T4-delayed-events.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch/T4-delayed-notes.png",
+      "sha256": "57a7c22a35c5c4d2b72a0d48b016c83a53f8d7e8a5c081fe1cae68530a13e881"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "12c99f829cfcd5a26f0c8b2b0e9b14b707e8ba21c4be36263007993c33ace29b"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/account-switch/results.json",
+      "sha256": "f7da785fd02b15f1911145c71b8164da34d09160074e72d91981aa1856ad283f"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/browser-server.txt",
+      "sha256": "979e16f9208381333aaca53b5f16199bb1afb9f42f9cf0ddda046f4f6410b0c7"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/browser.txt",
+      "sha256": "1920c71708671da7e950f0c179d0dee51e7532dbc4bf0a36054e6560eb21c26b"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/browser/admin-dashboard.png",
+      "sha256": "7aa4517f216fd8696610e72bd6240945bda4dea9018220a0a62dd917c2a8187e"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/browser/browser.json",
+      "sha256": "a44b2340720308019f589e9e032a8710ac5949c0d7870a13f25084c746ba1e0c"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/browser/login-desktop.png",
+      "sha256": "b87cfd2e124fd34cc7ad723450ded219fb205db27fec9ca6ed02811c77331c78"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/browser/login-mobile.png",
+      "sha256": "95288d0444efd78b49405bb4fb9dd3c90db4aa3da54ff98867309fc57db8bbd7"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/browser/student-dashboard.png",
+      "sha256": "95b20dc8b96fc47ca0e975ce030ae427891c38ffcfad855e4b7f28fe30b158ce"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser-server.txt",
+      "sha256": "9a5dc76b380db59cbb4e1577cf273d8efe479639aba0a07585d668740e54038a"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser.txt",
+      "sha256": "b7d28c5d082e8580bcb6bf127442e739eae2815cbf796655fd24615946afcf41"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser/A-delayed-rooms-input.png",
+      "sha256": "8da54bb6825d772d29d1d3e7e72d7835b4464fc47601e8c2051a237e7b320bb1"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser/B-old-read-error-preserves-new-query.png",
+      "sha256": "4d49ac373d078823a55144d81ac873cdcc10e2efa028b9c5f65bbc020be1280a"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser/B-old-seats-after-new-query.png",
+      "sha256": "29f742e35a54acf8ac805eba8b17b17c6b83d5f7c5de7fa3f4092b132d73c57d"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser/B-old-seats-before-new-query.png",
+      "sha256": "29f742e35a54acf8ac805eba8b17b17c6b83d5f7c5de7fa3f4092b132d73c57d"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser/C-query-input-preserves-reservation-load.png",
+      "sha256": "c8cae70b95586a95b07051a110b7a37f16a0974ede80aa1995d164ad8a074ffd"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser/E-initialization-failure-retry.png",
+      "sha256": "0f1d808b81a05dd488230f5ea920a77c86b5860cdac515cca53e510be1cb773b"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/initialization-browser/results.json",
+      "sha256": "27875c87993deaa91bec1a99585917695ae9bf3b00df65883f8479d2a57551c0"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-browser-server.txt",
+      "sha256": "1f2ab8c24df48f1fff9212442e43f04558dd82ee13033c6c3d8af67db5dbf595"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-browser.txt",
+      "sha256": "97120e8d1f8dde9c29d6a3069f9eeeebe7363faff2f186d1ac5ed4f1c0dd3151"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-browser/admin-closed-desktop.png",
+      "sha256": "4da9eeca6f286dd45b6c9844f766952dcc54c2fa1161e32247740a8625087436"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-browser/admin-mobile.png",
+      "sha256": "a4074451badf4f57e8842b2745811205fb25cedcd0f141a1f64ddd6bb8bdde52"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-browser/results.json",
+      "sha256": "fdc3f870cad9ab204d4f019f4e08c8cdd18849254f757f4a62731b118d5ab29c"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-browser/student-leave-desktop.png",
+      "sha256": "8a56bbf8bb4215091a80286803d9127ebbe9c70610fc252ef3f9ccefe4180141"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-browser/student-mobile.png",
+      "sha256": "f1159c97c9ad8b7fbb6b94d2f675d71ccc42e4dcc1446705421733b4f276b2c5"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/phase3-process-smoke.txt",
+      "sha256": "f88f3c1743e40ca89091a2bb9f14d162667445c7dc1803b2807926d1131954e7"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/process-smoke.txt",
+      "sha256": "188a1702a245e98dcaa60ed8d4950f7fc15fbd21d669ffdad7ea6fe8394e75a2"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser.txt",
+      "sha256": "5872a79fae4e51757856929ed60d6e4d58c821ab6795ae0656176705cdf129ac"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-admin-closure.png",
+      "sha256": "d9559e787cdfb4490c443e645be599e73363da69def6d81c0016b149bab58146"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-admin-logs.png",
+      "sha256": "96d06babb6247f6c7bdfc9fd436a8f32444c04f1c1b600716925c39363be2207"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-admin-rules.png",
+      "sha256": "b3f0f45c6fd3cfa9af43aa3298adbf3352001986e7294bd756c14739c1612eeb"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-attendance.png",
+      "sha256": "0f30b43348bb27fb0995683ab37b60d1d68dc745b7ac2a32b95175a0e48ed526"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-booking.png",
+      "sha256": "138a2ed7178f557c7d3267856d0e6356fc762535a132e3dd88e17d38e70df724"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-final-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-profile.png",
+      "sha256": "1afc5c77a34ac67a9ed19369b56c7e62c9b393ad7775b26d73cfcc69c25006d9"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/local-room.png",
+      "sha256": "ad7a2c83e7f06ec293cbe695f07555acc7448071b5df687e4aba4cede9b89665"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-browser/results.json",
+      "sha256": "cbff7cab77fe24348e31ec50b1b45032af939f00753f42e0baa047e022a83da6"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-export.txt",
+      "sha256": "ca5b3b6f5ad1361bfa39da6a2759b7c102e7b20edfb3ed92b23efc927a940ad4"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-server.txt",
+      "sha256": "68c57b6cd0e65c01170f51213fb59c16fbc3a3f77b22ada078e0bc5de976a472"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/prototype-tests.txt",
+      "sha256": "aa385fca1aef6f57b56ef955ef2f77bf6b3553901ee793d845c9d19290b92fde"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/pytest.txt",
+      "sha256": "badb0534648d879205035d6a959b551d2b07eccb887596bacff7cfb7b6a034ee"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/pytest.xml",
+      "sha256": "1e433f3dcc46034c71f84ba57e5d310bfcf3160d28078084d30ea9e9a9bc42b5"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser-server.txt",
+      "sha256": "f32289fb11d62cd424141b6f6e29ccc76aa70ab3de2a0ba82341024cbf8b1289"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser.txt",
+      "sha256": "d138d28926b085ab5003468451c89888e0183a04e783ecaafcdcd03c04f189a8"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser/A-empty-list-after-create.png",
+      "sha256": "1290a92cbf642c714207ae470712ca06bb7cbc29cb89ab73d8b31cd0174c5c85"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser/B-D-cancel-new-first.png",
+      "sha256": "92d1a96e59eb32483fb5c4c5c3f7f7d97736bfcbb6fb11f4e318c2432d8743ce"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser/B-D-cancel-old-first.png",
+      "sha256": "de1b44a533b9aa8bbdf1c9ee2a8e6b77236860d4f1f72d73c64bfacd4a875fe0"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser/C-old-error-503.png",
+      "sha256": "c60de0046d666966d102868ad3c8e49b55dfb04de6f1204842d879e084a3315e"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser/C-old-error-abort.png",
+      "sha256": "c6f6e841b682cb85adcf0b92a393a965b2684be15a59b61f6d1f16448a86b12d"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser/E-current-error-remains-visible-and-retryable.png",
+      "sha256": "8d9434c0519a324acedd3599002c8c1a736f4c6c6544db324e064ad881baf51a"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser/F-superseded-initial-list-keeps-catalog.png",
+      "sha256": "58a9a3df4aa4f97d7737a6616477f2adad5069e9b455d812ae3373666cc2621c"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservation-list-browser/results.json",
+      "sha256": "403367fd5ae739b6e8e2aaf814fb97b027f27baa194fc505a1faba9b109bb8b6"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservations-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservations-browser-server.txt",
+      "sha256": "43a78c75853f432f8b4dc6aba58fa0646f9bc63e3a2ab1ca71ca5f87b28efe2a"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservations-browser.txt",
+      "sha256": "727aab58fe231ec5c39cd8166fde5f0d084104923e77315cca36077522796ea8"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservations-browser/reservation-desktop.png",
+      "sha256": "8aae5684e1c32c77faae619936a90be3222b440849c66122ab2244dbfd032d1a"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservations-browser/reservation-mobile.png",
+      "sha256": "412e99595b7cd8a72c07fb38308d97b46b5dac9920e6c7814cc00ee865b9c722"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/reservations-browser/results.json",
+      "sha256": "727aab58fe231ec5c39cd8166fde5f0d084104923e77315cca36077522796ea8"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/restart/phase3-process-smoke.json",
+      "sha256": "f88f3c1743e40ca89091a2bb9f14d162667445c7dc1803b2807926d1131954e7"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/restart/process-smoke.json",
+      "sha256": "2e5c41a5428fd22de9a4b57dd8f0ad8f1ea979f5bdc9813faef49acdb8391793"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/ruff-format.txt",
+      "sha256": "2bcbe8e6e763d11737554aa861ef6606aea9d87114a002aa9bd426ec920674cf"
+    },
+    {
+      "path": "alpha/evidence/phase3/attempts/third-full-run-before-display-polish/verification.json",
+      "sha256": "ff38306d2433aed24eb121c5643d565b8d05326978768e219c2b37b3e54a3c81"
+    },
+    {
+      "path": "alpha/evidence/phase3/browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/browser-server.txt",
+      "sha256": "4b0e83ff0f379db69a3df13d8da75704373ccc6ff6155918fb4d2cb092a715e5"
+    },
+    {
+      "path": "alpha/evidence/phase3/browser.txt",
+      "sha256": "6c93d337fdb6641e345909b62dbd32829c35365ff49a5a7374bd5dece6cdb6ee"
+    },
+    {
+      "path": "alpha/evidence/phase3/browser/admin-dashboard.png",
+      "sha256": "a051cbc2056ba4fd30c5d2430cd3c8ccb5d1f390393dc3ff78d8e44deaa7a008"
+    },
+    {
+      "path": "alpha/evidence/phase3/browser/browser.json",
+      "sha256": "11c9932aec522bfd13ce2b426455fe8b5f431c178c7fe14b93db935800847095"
+    },
+    {
+      "path": "alpha/evidence/phase3/browser/login-desktop.png",
+      "sha256": "b87cfd2e124fd34cc7ad723450ded219fb205db27fec9ca6ed02811c77331c78"
+    },
+    {
+      "path": "alpha/evidence/phase3/browser/login-mobile.png",
+      "sha256": "6f6107c583f2cc3bce2b97e684287ccf7f4a1c69271154437d0186643198d0df"
+    },
+    {
+      "path": "alpha/evidence/phase3/browser/student-dashboard.png",
+      "sha256": "0deb84aa2c95009eb35f321467ad5f126f0618f9e5cbe8b879e12710f44dcb06"
+    },
+    {
+      "path": "alpha/evidence/phase3/concurrency.json",
+      "sha256": "92b5237dd8b48601b58b2153c1170732227211ed0a9a184b84304d4736e7d0cb"
+    },
+    {
+      "path": "alpha/evidence/phase3/documentation-final.txt",
+      "sha256": "a1a5eb678a5ceaf2231ecc20991015236d41fb3471ecb0471799b72bda571258"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser-server.txt",
+      "sha256": "c7178d8f52c4318b7f884b39b992e3a1901270560a294e84dabd06a7a1b4efa1"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser.txt",
+      "sha256": "73cfcde3ed917b1b6ddc0f4bba3d5ec322e908ec5f8683ebb5ca227eed821705"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser/A-delayed-rooms-input.png",
+      "sha256": "8da54bb6825d772d29d1d3e7e72d7835b4464fc47601e8c2051a237e7b320bb1"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser/B-old-read-error-preserves-new-query.png",
+      "sha256": "4d49ac373d078823a55144d81ac873cdcc10e2efa028b9c5f65bbc020be1280a"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser/B-old-seats-after-new-query.png",
+      "sha256": "29f742e35a54acf8ac805eba8b17b17c6b83d5f7c5de7fa3f4092b132d73c57d"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser/B-old-seats-before-new-query.png",
+      "sha256": "29f742e35a54acf8ac805eba8b17b17c6b83d5f7c5de7fa3f4092b132d73c57d"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser/C-query-input-preserves-reservation-load.png",
+      "sha256": "c8cae70b95586a95b07051a110b7a37f16a0974ede80aa1995d164ad8a074ffd"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser/E-initialization-failure-retry.png",
+      "sha256": "0f1d808b81a05dd488230f5ea920a77c86b5860cdac515cca53e510be1cb773b"
+    },
+    {
+      "path": "alpha/evidence/phase3/initialization-browser/results.json",
+      "sha256": "6cff6ee080bd639517505d271223578bd8b85c1d8e8c67f41f0e8153cbc7d72f"
+    },
+    {
+      "path": "alpha/evidence/phase3/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser-server.txt",
+      "sha256": "e23d8dcffdaf1c99b7c03718a483c383b4e565f9ff9fe2e204a5800f3cddee80"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser.txt",
+      "sha256": "e66ff00e255f14133fe2eee0beb738647052e99ce595caf67a7f08cecd5550a5"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser/admin-closed-desktop.png",
+      "sha256": "455125d71cd4c6b1e9c7300b675bdf46bea60f7f7064c4c3ed143bd83802042b"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser/admin-mobile.png",
+      "sha256": "ac8362b8ccff3cb27fecb0f49dde271dea3725a0f5979976216467ededff3bdb"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser/admin-preview-desktop.png",
+      "sha256": "75c0084ae000851908e538c623207513f95d4e5e82cf7943a6d717642e5f06b7"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser/results.json",
+      "sha256": "244f1d5a39b55facf8c8f58e89c67b21a4ed5e8a961b64f48c01d66d3f673781"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser/student-leave-desktop.png",
+      "sha256": "c16635c156d223a22f2c8262c53293decbfb5f3794da9dc03f6dba0b176526d3"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-browser/student-mobile.png",
+      "sha256": "22754343d0308eed000f7f0f88b8a5860b5989d1a03b5a396201aadc744078c8"
+    },
+    {
+      "path": "alpha/evidence/phase3/phase3-process-smoke.txt",
+      "sha256": "143c4f6b5be7b3d3547e2c524c104c158fcf67a572a07918efb1fb6e11fef232"
+    },
+    {
+      "path": "alpha/evidence/phase3/process-smoke.txt",
+      "sha256": "d338f5c151c9d69875443253c91096df7faa5aeeb3a4fc956c84cdadac8d318d"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser.txt",
+      "sha256": "5872a79fae4e51757856929ed60d6e4d58c821ab6795ae0656176705cdf129ac"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-admin-closure.png",
+      "sha256": "d9559e787cdfb4490c443e645be599e73363da69def6d81c0016b149bab58146"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-admin-logs.png",
+      "sha256": "96d06babb6247f6c7bdfc9fd436a8f32444c04f1c1b600716925c39363be2207"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-admin-rules.png",
+      "sha256": "b3f0f45c6fd3cfa9af43aa3298adbf3352001986e7294bd756c14739c1612eeb"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-attendance.png",
+      "sha256": "0f30b43348bb27fb0995683ab37b60d1d68dc745b7ac2a32b95175a0e48ed526"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-booking.png",
+      "sha256": "138a2ed7178f557c7d3267856d0e6356fc762535a132e3dd88e17d38e70df724"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-final-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-profile.png",
+      "sha256": "1afc5c77a34ac67a9ed19369b56c7e62c9b393ad7775b26d73cfcc69c25006d9"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/local-room.png",
+      "sha256": "1e6ed90c9a677cd26f124aa1d9ae49986af9fdb569fe7729a3847278a5b9b931"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-browser/results.json",
+      "sha256": "cbff7cab77fe24348e31ec50b1b45032af939f00753f42e0baa047e022a83da6"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-export.txt",
+      "sha256": "4ad9bdaa363c4cf8ac60df6ffe7affdb78ef02d69fbc186fc4537bb1caacfcfb"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-server.txt",
+      "sha256": "e4ee4e13a48b31fd0cb56853f2a1e3f0b6893325225477fed14f9a7265b567c7"
+    },
+    {
+      "path": "alpha/evidence/phase3/prototype-tests.txt",
+      "sha256": "dc91a9859feca5c619af80650877bf67d2d249cc5e1f1f8f6d645932ad0cc1a4"
+    },
+    {
+      "path": "alpha/evidence/phase3/pytest.txt",
+      "sha256": "b8255d442943dee6f0423b50fca729a88474bfcee560fd419ddf3923c4b105d1"
+    },
+    {
+      "path": "alpha/evidence/phase3/pytest.xml",
+      "sha256": "715b41027794797124075b0bd3bd9bb07e702910804c14a34a25426423bc14cd"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser-server.txt",
+      "sha256": "d0de7a10d95d63492177074d9e648714a476794a30b8fc53aa6be60dfb484ae9"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser.txt",
+      "sha256": "549db5837421c227d3f900848852bb31849b32d5f7a9cd056c344c0b9be4a317"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser/A-empty-list-after-create.png",
+      "sha256": "1290a92cbf642c714207ae470712ca06bb7cbc29cb89ab73d8b31cd0174c5c85"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser/B-D-cancel-new-first.png",
+      "sha256": "92d1a96e59eb32483fb5c4c5c3f7f7d97736bfcbb6fb11f4e318c2432d8743ce"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser/B-D-cancel-old-first.png",
+      "sha256": "de1b44a533b9aa8bbdf1c9ee2a8e6b77236860d4f1f72d73c64bfacd4a875fe0"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser/C-old-error-503.png",
+      "sha256": "c60de0046d666966d102868ad3c8e49b55dfb04de6f1204842d879e084a3315e"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser/C-old-error-abort.png",
+      "sha256": "c6f6e841b682cb85adcf0b92a393a965b2684be15a59b61f6d1f16448a86b12d"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser/E-current-error-remains-visible-and-retryable.png",
+      "sha256": "8d9434c0519a324acedd3599002c8c1a736f4c6c6544db324e064ad881baf51a"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser/F-superseded-initial-list-keeps-catalog.png",
+      "sha256": "81b48f0a28ea1b92954dab405578ba303ac6154e4edfc62f76c4992c30dd1e6e"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservation-list-browser/results.json",
+      "sha256": "cb479619b0cffbafa7ed75f814c925dedc3db2baf1613b0ee4f9eeb911908e40"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservations-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservations-browser-server.txt",
+      "sha256": "e1bf6f198f1f8e800c4313d9629d435051ac1ad2a314b93eb19f87d5118a71ca"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservations-browser.txt",
+      "sha256": "bd95ec9d62c5e13192c2f981f198af412479d6811d8a17f41b9bf9f985c27658"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservations-browser/reservation-desktop.png",
+      "sha256": "8aae5684e1c32c77faae619936a90be3222b440849c66122ab2244dbfd032d1a"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservations-browser/reservation-mobile.png",
+      "sha256": "cb44738b0a1529e9c599af9434e48b353157dc1021f2c7cc69fbcfdd36f52df3"
+    },
+    {
+      "path": "alpha/evidence/phase3/reservations-browser/results.json",
+      "sha256": "bd95ec9d62c5e13192c2f981f198af412479d6811d8a17f41b9bf9f985c27658"
+    },
+    {
+      "path": "alpha/evidence/phase3/restart/phase3-process-smoke.json",
+      "sha256": "143c4f6b5be7b3d3547e2c524c104c158fcf67a572a07918efb1fb6e11fef232"
+    },
+    {
+      "path": "alpha/evidence/phase3/restart/process-smoke.json",
+      "sha256": "d4f167337923c438b15bb91098b678798dbbded6ae78858280d93673f5d8f5b2"
+    },
+    {
+      "path": "alpha/evidence/phase3/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/phase3/ruff-format.txt",
+      "sha256": "2bcbe8e6e763d11737554aa861ef6606aea9d87114a002aa9bd426ec920674cf"
+    },
+    {
+      "path": "alpha/evidence/phase3/verification.json",
+      "sha256": "6363087203c58e542807e2a9fd7d982a381ed02e9ba2bc018584148af473be1c"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch-server.txt",
+      "sha256": "209f4a18f3c87c8a743417aa8961bb4dd388d6055cc23c3235262f8e21564f6e"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch.txt",
+      "sha256": "cee69356d97935de4d5e3e28279c66ccc8a1a984bfce71e93aed1f0599e4a9c9"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch/T1-logout-private-state.png",
+      "sha256": "d3f4b23e525d78c19ee6bdf3efd90536c16c8712d2aeb3e00e32ea49ba9b8981"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "67948f9f0da9a416ae5823c9aecc942a27eeda2ff6128097d6c0c1406503c65f"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "c9e025fbd1873031736669dfe2aad53d4094914ab18789d12d60945583b6356b"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch/T4-delayed-events.png",
+      "sha256": "67948f9f0da9a416ae5823c9aecc942a27eeda2ff6128097d6c0c1406503c65f"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch/T4-delayed-notes.png",
+      "sha256": "67948f9f0da9a416ae5823c9aecc942a27eeda2ff6128097d6c0c1406503c65f"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "1e6768a17336599d6055730953c84a9fa300d7123fe0d1d4c9f034919e2c1c03"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/account-switch/results.json",
+      "sha256": "1bb91da07d7bacae8fdafad315c5b07c184923a5852a9c5f784d5217a4dedd8b"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/browser-server.txt",
+      "sha256": "48279b7b2ca8b8353968dc40b6d1eeda6deb16b425dc0899f9cf1165aac2d9f6"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/browser.txt",
+      "sha256": "acd7624a4aabd6bbe2570c9458081e60cd5b9c44eb02a6aea565441013fc47d0"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/browser/admin-dashboard.png",
+      "sha256": "6a04caa321dd16c8ff8f353e4f52bc97937f97d6175d4c4fc9260d7ba9112bf1"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/browser/browser.json",
+      "sha256": "1ceb2c1424b9e1e8cb28805d67dea3ea1864814a96927553cc224515e56e9e5f"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/browser/login-desktop.png",
+      "sha256": "012848665fa4e9724a804cb9c4b8e6f84feadaca6662e01c8af957d2643719da"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/browser/login-mobile.png",
+      "sha256": "ff3ceef7627d6e17c2bf6202a5020e99a33b18764ee4e7b6b578170a5609c255"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/browser/student-dashboard.png",
+      "sha256": "f019e6e899122d38e0c0897198e45c4030bba09b05bbbbe0972a300171c2a957"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser-server.txt",
+      "sha256": "1ac167049caced4450345df5335d9db13899067c10bc2c8a9647fcf01f6f56c6"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser.txt",
+      "sha256": "d35660daccdeae98ca1da87083bbebfb5a60ad13a4cb582dc2787105fbe8f9d4"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser/A-delayed-rooms-input.png",
+      "sha256": "e9df09b458846d14d73508dfde9b2786511756e9efa2eb5ae53dbfc8a12e5757"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser/B-old-read-error-preserves-new-query.png",
+      "sha256": "b7bfb13ed10b936bd51d9007077820221e51a6b274f22c68a964cba44bac290c"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser/B-old-seats-after-new-query.png",
+      "sha256": "62dd262e7b2624adc17ceda990dd890f99d9967900b0060be73fa3df345b2cd7"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser/B-old-seats-before-new-query.png",
+      "sha256": "8041cd0a4eab2a9a2a5fda754d6f50fe55f8d53567cc7d96671b5f8aca09736c"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser/C-query-input-preserves-reservation-load.png",
+      "sha256": "e14e278870d3abc1988312ae868196114ff543798ba38e59be1b81a84f049d00"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser/E-initialization-failure-retry.png",
+      "sha256": "7e753550fd0d025608f5800e6d37f1eb1edfb82a8e64f5af745633a1ec60f33b"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/initialization-browser/results.json",
+      "sha256": "669ba17d550c61b3a20e60d412188074d2e985a83d96b89642d4e985870c3489"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/performance.json",
+      "sha256": "3e61498cdd0d033bb704d302de172800249034c4d23ecf87f4bec5a66d1004e9"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/performance.txt",
+      "sha256": "ca9f097dea65438c7b23ab3e3551159d0d35e2d8e6e5283515758cfd5f1813dd"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser-server.txt",
+      "sha256": "a4a9bb7e4b4fd7de85fab039fa233215c806f8a73ae8c20ab51637ccf3b7550a"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser.txt",
+      "sha256": "e238ee84c36fc8035ee61b59b494eba02d6e515ab7279787c4c413a95ae1c6c8"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser/admin-closed-desktop.png",
+      "sha256": "a1be6f8ea420e4589f5b0345f3ce3298cf37d6098b0efbd24c3861ac7fd1a902"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser/admin-mobile.png",
+      "sha256": "664e45120b745e2fc7899921d3bc9f574d6f66a74159570fd4ed369a65106565"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser/admin-preview-desktop.png",
+      "sha256": "d6cc19d30c7b342daf9d23109bcbe859a222afbee1f6f7e692eb170e310f2b30"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser/results.json",
+      "sha256": "53b323e4a695fe72d911c5b453bf24b02fb80d099f2016c505f6a44fb2c13eb0"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser/student-leave-desktop.png",
+      "sha256": "eec21dae5bcb89f59d3b307ce846221a050f66402433c3c6d4157683e53e19e5"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-browser/student-mobile.png",
+      "sha256": "14ad7060f8851c447ac489a0125655c1f1cbedca574ca42bb41d595d417aa13b"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-process-smoke.txt",
+      "sha256": "cb85a8450a1dfb07c05ae0e6e64603e109bf0c7bdede2cf5096b7757fb4e7fcb"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-review-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-review-browser-server.txt",
+      "sha256": "5524a4497e9c56a6ede63d1b5cc7fd55ba0713b0cc89523523df1d834228bfd5"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-review-browser.txt",
+      "sha256": "8be1bd18ecbdfcf5f71f379b4b5f7d2a9e2b78d1ce4557ad528e91b9d63495db"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-review-browser/draft-preserved.png",
+      "sha256": "99ce73f9519a8415f74755e073ccdd673444bf5e1e6d117be3dd1b1fe8d134ae"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-review-browser/results.json",
+      "sha256": "7cacfdae6a8bf3b9915e90b2a697e6078a0f455dc3a7484178c296797cdb5b5d"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/phase3-review-browser/stale-cycle-recovered.png",
+      "sha256": "a248ef2cf631c2d78d688f4aa6bdc6879b4a461ec977c4d9c1f732dc8bb2090a"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/process-smoke.txt",
+      "sha256": "6104361b2c9fafb37ed943cd32580007e132671baeea51c0b6a54955c711ed29"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-before-fix.txt",
+      "sha256": "34c2f25f9f9121ff6bda4fbfc5ef4f795c8164eadb38b48cf3b4800040bbc57d"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-before-fix.xml",
+      "sha256": "89964976e367ac602738afc2b0e6ecbf86d3ea2afc0119db3e57a6d31d9efa50"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-group-0.txt",
+      "sha256": "970b04d350691cc32f04e58f7a1577f0bda03b51093f67fb47aed3fe8b05138a"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-group-0.xml",
+      "sha256": "7137b2470d2b78681865558245a89e23169c4851e284359f3d1cf1ffd5a1242b"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-group-1.txt",
+      "sha256": "7db26d1c7171e7b7760de0909c3eb162858ebc567b1e239fc7e7d9fd9f5bd366"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-group-1.xml",
+      "sha256": "a355b32f083af46de804a434150de37b402978ec0f8be2de71cea3133621e808"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-group-2.txt",
+      "sha256": "e56c071faae2b7846e7ebba0753b8804b81559ca73acc5e4fb7524cb4cfcb4b3"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-group-2.xml",
+      "sha256": "d9ebe1c51d6718e765307494228f0767a1dd89be7bf826dac6673e0021d15411"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-group-3.txt",
+      "sha256": "74ed900c4ed704909db3b532a3ea251f45c212ed1693b6bac65883abda9d43c1"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest-group-3.xml",
+      "sha256": "5b00cbe80765ed31599eecb6dd785cfc47f561df1e5b748e05967a78daca7705"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest.txt",
+      "sha256": "f29b4f03440c6ac9258277ba402b21896153a8407480f5d2d37d609961aec91d"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/pytest.xml",
+      "sha256": "46424c323da63276a85726388eac86d49924b4ef3f21625a175e0880526c112d"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser-server.txt",
+      "sha256": "6ab592445156156db216020269e4ba373a33cccccd827f2a5ba0fdc141664b38"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser.txt",
+      "sha256": "7cfd43483ef17e58ada2195684ea1c2431ba7d115d3f2cf3d582cac9f9e61f16"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser/A-empty-list-after-create.png",
+      "sha256": "7e2f23b49848f83a19fd5bbb7616ee2817b8e6b5e1d8fe9e0156b13cc6ce736b"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser/B-D-cancel-new-first.png",
+      "sha256": "389c342721a8bc43c9f843d7507dedfe1c2152923c7076245a7716725997c0b2"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser/B-D-cancel-old-first.png",
+      "sha256": "289730031ec31534f2295a04a73f78693d1aa5a68dc5d4b886fcfdaaf1de02ec"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser/C-old-error-503.png",
+      "sha256": "ecd13bf206efc439ffafb14b2e7767d0d0fb1b938ebac345fb2e5b6946baea3d"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser/C-old-error-abort.png",
+      "sha256": "de73e9ab0ab68307ff521c95af1728b384f4d5ffe9cf5db4181949d754731302"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser/E-current-error-remains-visible-and-retryable.png",
+      "sha256": "e2116826032b009b372967d3e80c8594146bfbdbc7ab89c1b4e0eff3c37af2cf"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser/F-superseded-initial-list-keeps-catalog.png",
+      "sha256": "e29e767c7c90e2357294f16ceee5c343710b193713e9bdcfb0cb1655295f4413"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservation-list-browser/results.json",
+      "sha256": "755fe50dc445ed03e66e6bc1c2599cbfd5e96d60c1be83d168cde6b495ef12a5"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservations-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservations-browser-server.txt",
+      "sha256": "03c07176bdf802c8d1421eeeff5c53b3d46509ff9c9b2c7b0ef04064fe0ab24b"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservations-browser.txt",
+      "sha256": "4a0600164bf619691ead594fd121a7705c9354d68c07b8107c3895917094d868"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservations-browser/reservation-desktop.png",
+      "sha256": "5bdef483cc335b1d87e75dc745946bd08bb7fbafad8e3b557f839458c8220740"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservations-browser/reservation-mobile.png",
+      "sha256": "9e08b629b695a6a69302a58b8d44ab80155db9ab8a100f0d2d8214acebf5b1b2"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/reservations-browser/results.json",
+      "sha256": "5d2feebef0d71048e8f116aa7bd677e972992b135a277cc5c53a23109d7643fc"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/restart/phase3-process-smoke.json",
+      "sha256": "cb85a8450a1dfb07c05ae0e6e64603e109bf0c7bdede2cf5096b7757fb4e7fcb"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/restart/process-smoke.json",
+      "sha256": "927f18a9e35d8a5c779f1338905bb2fb33198d2115b2f9e2110f62bd8ce45ca4"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/ruff-check.txt",
+      "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/ruff-format.txt",
+      "sha256": "a6b88871775f65b3c42559ed341f1212d4b3a9ab5110c4d87f8e9a9eb44e0332"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/source-manifest.json",
+      "sha256": "bca4c87fd02101add6d0ac0436ddf2b3de62a8762a01596106d342de0c157e7d"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/syntax-account-switch.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/syntax-app.js.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/syntax-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/syntax-initialization-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/syntax-phase3-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/syntax-phase3-review-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/syntax-reservation-list-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/syntax-reservations-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4-integration/verification.json",
+      "sha256": "293621638d12f98f8e790eb7348831b385139058a92fe5813f9c9313ae1a662c"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch-server.txt",
+      "sha256": "5c90cc4d29d42a5dd8a0d1fa9559062647c12e66e4964c75fc55ed1ae05faef0"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch.txt",
+      "sha256": "ce410ab7e2fbb0c3aa22cf1cb1c0d5daba25744c4f83b155d4c9d4522bac9792"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch/T1-logout-private-state.png",
+      "sha256": "15a401aa492b30a9847d5b85bcbbbb1c04f3d957ae3884336fb67f1db19face2"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "7ab00790c81d5b045fcdc4a8b0ad20c628be6d2f9ab38ec8bb8cfc20a29964df"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "dca143bdffaed5e67ac7629c0e4d461029551504108c87e226ea97d33ea5f06a"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch/T4-delayed-events.png",
+      "sha256": "7ab00790c81d5b045fcdc4a8b0ad20c628be6d2f9ab38ec8bb8cfc20a29964df"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch/T4-delayed-notes.png",
+      "sha256": "7ab00790c81d5b045fcdc4a8b0ad20c628be6d2f9ab38ec8bb8cfc20a29964df"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "956d527573d7a61b119cf8b7e4d6c2a715ab16d150b4d13f1366c6073f3ff3d2"
+    },
+    {
+      "path": "alpha/evidence/phase4/account-switch/results.json",
+      "sha256": "96b4f4bfc04b5278a5088866ee54f48d4f006ec288be3d1404a7e09dbbd71488"
+    },
+    {
+      "path": "alpha/evidence/phase4/browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4/browser-server.txt",
+      "sha256": "b5b726cf9306a6bebf5ea6c2dc1d9e4ea1c6a0f9cb79f336e9e630e24790d1ae"
+    },
+    {
+      "path": "alpha/evidence/phase4/browser.txt",
+      "sha256": "a5f0546955088a15ac953dab5ab2790f6e5a98b007584ff0b6e4641965adc66d"
+    },
+    {
+      "path": "alpha/evidence/phase4/browser/admin-dashboard.png",
+      "sha256": "b5f4a6ab247304674f72198eff98bd0590a7b6bd94705ff195a45253749389ab"
+    },
+    {
+      "path": "alpha/evidence/phase4/browser/browser.json",
+      "sha256": "460b182ac638b361d76c8c87288d89d4d6e8c50dcabbb2991c16e3176fe2ee9a"
+    },
+    {
+      "path": "alpha/evidence/phase4/browser/login-desktop.png",
+      "sha256": "1742f06e4c3979b543c4458091859dd7c83b4f22c0146483fbf8547aa6b43d6b"
+    },
+    {
+      "path": "alpha/evidence/phase4/browser/login-mobile.png",
+      "sha256": "2c15d89b1d844e1607d2dba5b216b2dec96fb2a6bebdbfa8ea2b094c40106120"
+    },
+    {
+      "path": "alpha/evidence/phase4/browser/student-dashboard.png",
+      "sha256": "971dc324bdbe4c16d0dc00c882baf9d1943262e5100611f3f1db276a6b03fba7"
+    },
+    {
+      "path": "alpha/evidence/phase4/delivery-recheck.txt",
+      "sha256": "445d9ae64ed7913e5238d2c3a1e0369aa09de95608491cb725e5a047334dcf61"
+    },
+    {
+      "path": "alpha/evidence/phase4/delivery-recheck.xml",
+      "sha256": "500aefadcd88a0d7e2d5c5423616a3bdc951203c07310cf3f1db2cfba16bc811"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser-server.txt",
+      "sha256": "758a098f919bfabc49a7cc0de32f482cdd4968d8d2a3517681edd72198c4e8b8"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser.txt",
+      "sha256": "2686607f743a3c3f395ce3d6c84139eb2f5a06e1fb21d179229a8fc890116da4"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser/A-delayed-rooms-input.png",
+      "sha256": "b14896bbc7ad5110249593e516e2e7b24a6e6c52e6ac64324212c9721bc7eae5"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser/B-old-read-error-preserves-new-query.png",
+      "sha256": "51c2978dbf434c555881deb0885e236cc75d4b633c5fd7b4f3a50d4092733694"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser/B-old-seats-after-new-query.png",
+      "sha256": "4b20c358419d8a3e95dfb3601d1324ba7748e34937cfda7492ec3df19d488de9"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser/B-old-seats-before-new-query.png",
+      "sha256": "4b20c358419d8a3e95dfb3601d1324ba7748e34937cfda7492ec3df19d488de9"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser/C-query-input-preserves-reservation-load.png",
+      "sha256": "0725a476ba6c341ae4d87340236b5746535232355b9c4f64a3d0f012d144d868"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser/E-initialization-failure-retry.png",
+      "sha256": "f9be0da47855dc7bc3b8cd415ed98fa301660269faf89220deb8eb1472f0f811"
+    },
+    {
+      "path": "alpha/evidence/phase4/initialization-browser/results.json",
+      "sha256": "34ddc1b8ece00d09ecd805d78ea335bfb94212f9d51457470d77cc1de9184350"
+    },
+    {
+      "path": "alpha/evidence/phase4/performance.json",
+      "sha256": "6dd884fa301e3074c09d203cda3ee78a4d24ef59563981f924536d74ad11dc75"
+    },
+    {
+      "path": "alpha/evidence/phase4/performance.txt",
+      "sha256": "c919f9253faeca016bd8b12ac89deefb91e2f3709597f70aa5af860a0ee70641"
+    },
+    {
+      "path": "alpha/evidence/phase4/phase3-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4/phase3-browser-server.txt",
+      "sha256": "6a980657a0aa4523e8feb3d76fc8cfd5b660b8a3f49f0d1b3c108d1a9e5f6d72"
+    },
+    {
+      "path": "alpha/evidence/phase4/phase3-browser.txt",
+      "sha256": "1e4141aaee1b6afc87cb48ed9ef3e44933c32d7d1ae66491b155ddb413712087"
+    },
+    {
+      "path": "alpha/evidence/phase4/phase3-browser/results.json",
+      "sha256": "8e20d9e76e1125e390342b51e1f8f0d2388348a608e4ca3099d906103b4cabfa"
+    },
+    {
+      "path": "alpha/evidence/phase4/phase3-browser/screenshots/admin-closure-applied.png",
+      "sha256": "ba6de06efbc5386e59568c9f94eeffaa99377c2c27fcd7da93ba3fc7c9cd9714"
+    },
+    {
+      "path": "alpha/evidence/phase4/phase3-browser/screenshots/admin-closure-blocked.png",
+      "sha256": "599b4024567a751d583253a3fef7b74e55a80e699ceceab2e8a8177bbbffde1f"
+    },
+    {
+      "path": "alpha/evidence/phase4/phase3-browser/screenshots/admin-reopened.png",
+      "sha256": "4bc0f41158b84a885fc45c6fe4af0f6a1c57210ab45f7128889e688bd7e76799"
+    },
+    {
+      "path": "alpha/evidence/phase4/phase3-browser/screenshots/student-dashboard.png",
+      "sha256": "3236a2e0934ea51369cabc2d7bbcf209effa7c74aab4617871b65a94831a3d5f"
+    },
+    {
+      "path": "alpha/evidence/phase4/process-smoke.txt",
+      "sha256": "5e16b01d94daac17b0a9d059324772add09839adf3530748ae523fce446cafde"
+    },
+    {
+      "path": "alpha/evidence/phase4/pytest-initial113.xml",
+      "sha256": "dc2a5dd6804a5b3c4ec02b9632405dd81a70a2e9ae2933fdd0b2710b0a115b5b"
+    },
+    {
+      "path": "alpha/evidence/phase4/pytest.txt",
+      "sha256": "fac62fc21a2f35d46f89e7c206708f6f4e10449304fe74879d8757dc24339b9e"
+    },
+    {
+      "path": "alpha/evidence/phase4/pytest.xml",
+      "sha256": "6d27725bd91aaeef3753596d245a99285fd0ff7e07893beb1a15e1211fd1137b"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser-server.txt",
+      "sha256": "3e15522e9d3c5c1a94464d7856eb6ffa5a8abde2dfe4925c51b14cd059fb9c54"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser.txt",
+      "sha256": "c30385187bcb112571fcdeac9138950a2a43af2e9dea3fe6ef6886658f3632a5"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser/A-empty-list-after-create.png",
+      "sha256": "f66550212a7657d19daf41d3af7df94c9c1cd35b44e7856c63d21c8379e3c340"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser/B-D-cancel-new-first.png",
+      "sha256": "2f727efbbee19450b7eac69194aa8e0e4b1089d723c8ba14d933d48f44aa6006"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser/B-D-cancel-old-first.png",
+      "sha256": "afa421ad75ea80dcb92e91d013047a59ab3873f0d67090c3c669820a7d94c94e"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser/C-old-error-503.png",
+      "sha256": "e9256f3acc5d5593967cbdba97e05a58bc5800fd25e36773687f85771da1cba9"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser/C-old-error-abort.png",
+      "sha256": "cb0c5e60d13f84bf8bbc252f875709d2ba9779ef9f7959dbc620096a13374de9"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser/E-current-error-remains-visible-and-retryable.png",
+      "sha256": "62412b475c2eee2945b5c23b5cd0782c0d61f98099bf347c110a9169242901ba"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser/F-superseded-initial-list-keeps-catalog.png",
+      "sha256": "5223f6cc60b6a3226f1b42555e3065bd1f71ebdad0fcc233920dfe5bc15e26eb"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservation-list-browser/results.json",
+      "sha256": "8eb8c2958c7559a01970c49492441a93e261e39517c237d27525bfeb4c928ce2"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservations-browser-init.txt",
+      "sha256": "0b886055471d6fd9dabc772ba5671570b3dea7b4a5c1a232bcef943795c2c724"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservations-browser-server.txt",
+      "sha256": "6e7693995e49650f155de664186b7b33a134f82d95dc0fa0b500ed8bf64a7212"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservations-browser.txt",
+      "sha256": "ccdbb632d7426cf54d2bea1229dafe7c0ace2262e43479889d75bb1972cb2f8f"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservations-browser/reservation-desktop.png",
+      "sha256": "bd3cbd8ba4530c8606ebb2e0ceb89a2c845cc3ff3fa2825ba5818dc12c7d66cf"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservations-browser/reservation-mobile.png",
+      "sha256": "a321c4659c8e2d86eae03e03741b861e68ca6f5efb2f42be79a7f64336c3725d"
+    },
+    {
+      "path": "alpha/evidence/phase4/reservations-browser/results.json",
+      "sha256": "3a013ce56f71dffb61116dbd7fd49bf403794e6372e29e578615a4cef2f2cbba"
+    },
+    {
+      "path": "alpha/evidence/phase4/restart/process-smoke.json",
+      "sha256": "555013f354be493a044c26c62329fa121526fd71ca638d79f7bd2462b354cc79"
+    },
+    {
+      "path": "alpha/evidence/phase4/ruff-check.txt",
+      "sha256": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0"
+    },
+    {
+      "path": "alpha/evidence/phase4/ruff-format.txt",
+      "sha256": "1664d016009e56bfe126c3b7b797c653f69c45b68a9701fbff94e668043c4513"
+    },
+    {
+      "path": "alpha/evidence/phase4/source-manifest.json",
+      "sha256": "6b4a3dac2da9ca94cac5820a9c0d3ab94b2b7f91553f745a7d21ad3c752e8cc4"
+    },
+    {
+      "path": "alpha/evidence/phase4/syntax-account-switch.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4/syntax-app.js.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4/syntax-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4/syntax-initialization-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4/syntax-phase3-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4/syntax-reservation-list-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4/syntax-reservations-browser.cjs.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/phase4/verification.json",
+      "sha256": "0f7a0c462339fedffd199a39b699b19d3454d55f7b133b9e505d33a382705933"
+    },
+    {
+      "path": "alpha/evidence/process-smoke.json",
+      "sha256": "d7a139f0c96a416af65a519291178ba3f11376d297c901cc80c81afef2c755c1"
+    },
+    {
+      "path": "alpha/evidence/progress.csv",
+      "sha256": "3e58bfc30ed17498da1da63c71d12ad039646e9a348584307b62bfb4558204f1"
+    },
+    {
+      "path": "alpha/evidence/pytest-account-switch.xml",
+      "sha256": "e65a2d3490dbd4b23821c44c7fe65ba9c28d3dddeb3ad1fe26620f19ea32d364"
+    },
+    {
+      "path": "alpha/evidence/pytest-review.xml",
+      "sha256": "a92ab4721e960014667529d90d1b7a1a16b1fcd0745067166bec0f54c9265b62"
+    },
+    {
+      "path": "alpha/evidence/pytest.xml",
+      "sha256": "4b2cbca011449807d481bed5bbf147ebd826f49c977c29a16125796165b3b33e"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch-server.txt",
+      "sha256": "3ae22b5a6d40f6633acda2d5b6b62122eb0a9e909f8965f1d1a7ef43d04d88f2"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch.txt",
+      "sha256": "166e6b0f7625e9fe997cc0ecd770e720cc5f1b2abd5c3e88780039171fdf6272"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch/T1-logout-private-state.png",
+      "sha256": "b8e439b674969635e0c839086b97c4515667fd7019d4b1424b58207aa7566dbb"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch/T2-notes-failure-isolation.png",
+      "sha256": "f0c6aa3adc956ca0c60b9290e679a6245604964746b478dc3d2918727553cde7"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch/T3-rules-failure-hides-admin.png",
+      "sha256": "e874dba55f14bfe4340e82b02de6bb11a9ea4df012408a213225cdee8b9a73a5"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch/T4-delayed-events.png",
+      "sha256": "f0c6aa3adc956ca0c60b9290e679a6245604964746b478dc3d2918727553cde7"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch/T4-delayed-notes.png",
+      "sha256": "f0c6aa3adc956ca0c60b9290e679a6245604964746b478dc3d2918727553cde7"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch/T4-delayed-session-csrf.png",
+      "sha256": "6cc6bab90534f826b89e28ad68c5b248b62f5b1a1aeb4c6aea409d22314280ed"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/account-switch/results.json",
+      "sha256": "27bccaca05365453f532005e615d96760330365199dff70c3d9cc7174a18d60a"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/browser-server.txt",
+      "sha256": "42f9ff64f62c94a671b5570ac9ab55c7e0f2932b32aa8f28932343d05d5cb66c"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/browser.txt",
+      "sha256": "a854c28114a81f56c4a948f051ccad5aeed5dd596b6e22b9e148c47f608369d2"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/browser/admin-dashboard.png",
+      "sha256": "5b52721f9c2c3851f21805a2c72f1b149094e0fb588a900315519afc0027435f"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/browser/browser.json",
+      "sha256": "d69ab4072041c2d87a3982064505827cba1cde69a80a9dd5f66c2990bd0f1b0e"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/browser/login-desktop.png",
+      "sha256": "5621c6b883d335405b5f8acba2fad76223d000be4c7bcb155e8d06a861524e65"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/browser/login-mobile.png",
+      "sha256": "c67b759958b074edffb9553c4d4e589a38423f5fbe80abd899bda21e8d989e74"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/browser/student-dashboard.png",
+      "sha256": "55f9c80fc6e7d2f51eb58bd5e38f76823b11c4a0ae91e7200df4a93b63107144"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/document-links-and-prototype.txt",
+      "sha256": "8e9bfcc2a79275324d17f08b42d80ea6bd255d206d83fcf41a135c224e561b2e"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser-server.txt",
+      "sha256": "b90fa0ff4a2ed0fe8644de4a9d944f5f921702a62dc40a24e1b1155afe86d0db"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser.txt",
+      "sha256": "6830b32805b69e42fb8bf8d419fb99eeb8c41c36fe92b5565792d6f696246a0e"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser/A-delayed-rooms-input.png",
+      "sha256": "d8ae3b30f58cdb17181eae800eae7572f2ba188e0cf13e5de48b39e0437c0256"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser/B-old-read-error-preserves-new-query.png",
+      "sha256": "1025931d978909c034ae77def1d0a60801a4dc42d2f7d9ee3477d139f5bed288"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser/B-old-seats-after-new-query.png",
+      "sha256": "9e3354d92c10da3528da67a8ca4aca3ed0b5d9e2e8019f7910e48013dfd85eb3"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser/B-old-seats-before-new-query.png",
+      "sha256": "9e3354d92c10da3528da67a8ca4aca3ed0b5d9e2e8019f7910e48013dfd85eb3"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser/C-query-input-preserves-reservation-load.png",
+      "sha256": "75f73dbdab0ae5cb112dbbd45a12783fbc023169480349ccb380492a5fa81a9b"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser/E-initialization-failure-retry.png",
+      "sha256": "39b9db3aef0a26fd29bee227cb9115a50bcf740619d7e3531aa73fbecc96979c"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/initialization-browser/results.json",
+      "sha256": "62f0af0fee27c5784db35c1f213b3e5e6e4ff22aef95509db1bc8f07baa10c5c"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/js-syntax.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/process-smoke.txt",
+      "sha256": "5138a62c70d0f69578a0892448afeb40c781710bba00659079fa24c082eadef7"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser.txt",
+      "sha256": "5872a79fae4e51757856929ed60d6e4d58c821ab6795ae0656176705cdf129ac"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-admin-closure.png",
+      "sha256": "d9559e787cdfb4490c443e645be599e73363da69def6d81c0016b149bab58146"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-admin-logs.png",
+      "sha256": "96d06babb6247f6c7bdfc9fd436a8f32444c04f1c1b600716925c39363be2207"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-admin-rules.png",
+      "sha256": "b3f0f45c6fd3cfa9af43aa3298adbf3352001986e7294bd756c14739c1612eeb"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-attendance.png",
+      "sha256": "0f30b43348bb27fb0995683ab37b60d1d68dc745b7ac2a32b95175a0e48ed526"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-booking.png",
+      "sha256": "138a2ed7178f557c7d3267856d0e6356fc762535a132e3dd88e17d38e70df724"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-final-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-login.png",
+      "sha256": "56f89aa76a9c8fe6feb23b342030d26c8d8112be4f341eca84af2ace54c13b89"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-profile.png",
+      "sha256": "1afc5c77a34ac67a9ed19369b56c7e62c9b393ad7775b26d73cfcc69c25006d9"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/local-room.png",
+      "sha256": "1e6ed90c9a677cd26f124aa1d9ae49986af9fdb569fe7729a3847278a5b9b931"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-browser/results.json",
+      "sha256": "cbff7cab77fe24348e31ec50b1b45032af939f00753f42e0baa047e022a83da6"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-export.txt",
+      "sha256": "61ccdfd44f08581583cc4758b247c2fae0309ff30a9670ca0ae807c9772d4eed"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-server.txt",
+      "sha256": "6225db2fdf59c4cd19f58f6c325d0e3bd14892638a8b5799953ffde6909c1b23"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/prototype-tests.txt",
+      "sha256": "62061120a2b7d05527dc7f268ddcdf301449df77d14a80dede8547de039e176c"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/pytest.txt",
+      "sha256": "b63793b3f101b00595dcc51a501af3725524550df794233ef370b366e0aa39d6"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/pytest.xml",
+      "sha256": "3261ec9eca5327c6565aff9b8a51397256010674a175e5dd19b3d6e43203a794"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser-server.txt",
+      "sha256": "e278088fb94e6490959664cd91881693f5278be69466eec2f65f0854e0e80b1e"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser.txt",
+      "sha256": "921040b12f3e10e4e4daa3c6f391d1aa8c7b8657361d0fb911b6884a9d906c11"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser/A-empty-list-after-create.png",
+      "sha256": "af8f5dfa1a22efbc4a5469d9752074f7d03ab8de784b6dff62a8c4650c3a5d62"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser/B-D-cancel-new-first.png",
+      "sha256": "3b3fe0015e9e73402e2ff76c8e0792e5d5414a8b898b1225a71e08be841f63b8"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser/B-D-cancel-old-first.png",
+      "sha256": "77f9565c50ac4502cc0403ec184031ef746f5abaea1e4de2df978621da7b1efb"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser/C-old-error-503.png",
+      "sha256": "5417d9cf1aa3d039f255c94cef0808a4970b1754451a9c2e4867d330290a6892"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser/C-old-error-abort.png",
+      "sha256": "cf25b59e776524a5ac1888876da85bf77e09daee08f3c1296e77ca0a63f8e4fb"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser/E-current-error-remains-visible-and-retryable.png",
+      "sha256": "17b00df7809a49fb8cdefe7ae4b9eae09ced766703f6cc503b10884c43ba375e"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser/F-superseded-initial-list-keeps-catalog.png",
+      "sha256": "8e25d5f5c993de284a012c29138c2640f04889238587ca761c85754307d2af68"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservation-list-browser/results.json",
+      "sha256": "d1ee9b0d8f820ae9f8d1ba39d5995fd0facaf67b8f0467d3acff7bd1dc897b00"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservations-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservations-browser-server.txt",
+      "sha256": "49f5fba16f555f9e0d88910ea0654e4e282617d06b45ac9cf4a57e4a87dd064f"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservations-browser.txt",
+      "sha256": "2b140cd1956641eb65eeb03b92003c64bb36f8fecf4fe57171c387f016cc281f"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservations-browser/reservation-desktop.png",
+      "sha256": "864ce03a197b1c4082a5e27afc364f69965c2f5eca236ab29286c39e2a931c1d"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservations-browser/reservation-mobile.png",
+      "sha256": "528cf29555e26de03c4e84c03a73c7d5b42cedae35e45bef00ceb75558f4cb14"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/reservations-browser/results.json",
+      "sha256": "2b140cd1956641eb65eeb03b92003c64bb36f8fecf4fe57171c387f016cc281f"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/restart/process-smoke.json",
+      "sha256": "828384b22bf5c83b9dbbd9263134fba88f09c49bb001a56ba053b4b49b18d6a5"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/ruff-check.txt",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/ruff-format.txt",
+      "sha256": "793e2905062e677bc49a961cd9fd445b511f01c6196d6dfc46ac854a2639a903"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/final/verification.json",
+      "sha256": "ac61e5006ffba4c9376b31a3efc943f9d7ec8612ab7a924b54a52837ecf2e497"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser-server.txt",
+      "sha256": "0fccf7db58bb882cb0e4d64858e2fcd8d10b8ac8ae0813d0dd2eab740bb29824"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser.txt",
+      "sha256": "c088f3c6b2ed357fe483642fe08185aadf33c8616ceea8ec885ff656df3c3579"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser/A-empty-list-after-create.png",
+      "sha256": "af8f5dfa1a22efbc4a5469d9752074f7d03ab8de784b6dff62a8c4650c3a5d62"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser/B-D-cancel-new-first.png",
+      "sha256": "3b3fe0015e9e73402e2ff76c8e0792e5d5414a8b898b1225a71e08be841f63b8"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser/B-D-cancel-old-first.png",
+      "sha256": "77f9565c50ac4502cc0403ec184031ef746f5abaea1e4de2df978621da7b1efb"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser/C-old-error-503.png",
+      "sha256": "5417d9cf1aa3d039f255c94cef0808a4970b1754451a9c2e4867d330290a6892"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser/C-old-error-abort.png",
+      "sha256": "cf25b59e776524a5ac1888876da85bf77e09daee08f3c1296e77ca0a63f8e4fb"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser/E-current-error-remains-visible-and-retryable.png",
+      "sha256": "17b00df7809a49fb8cdefe7ae4b9eae09ced766703f6cc503b10884c43ba375e"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser/F-superseded-initial-list-keeps-catalog.png",
+      "sha256": "9147052646e3afb1335dd2a223f9316da940c36745595c490878931284dd6412"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/focused/reservation-list-browser/results.json",
+      "sha256": "9ae819ae32abc45a685d55150b2629894b11dde0d05300b1d1e1fb8da821c6b8"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/pre-fix/reservation-list-browser-init.txt",
+      "sha256": "261795673230b8614ebcfcefbdf24694a97eb8f91cb9bb7a02d550a8c051fd21"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/pre-fix/reservation-list-browser-server.txt",
+      "sha256": "ee65d6b11d970b60d0ae7a1eba9c21c59a8637dd24ed3270362ccd79a6b2d88b"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/pre-fix/reservation-list-browser.txt",
+      "sha256": "50739160983ea9f87116d8e8f9d9fac5c41ebee439f0fad94d4db090443ff168"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/pre-fix/reservation-list-browser/A-empty-list-after-create-failure.png",
+      "sha256": "e408c0b74a5055d217adf69c2f81e0b100f186a7bcef59d304dda9958773423a"
+    },
+    {
+      "path": "alpha/evidence/reservation-list-review/pre-fix/reservation-list-browser/failure.json",
+      "sha256": "cd3562ebfde1d8349899812be3171ef7b71c2c222cd076c7875b1063342360de"
+    },
+    {
+      "path": "alpha/evidence/student-dashboard.png",
+      "sha256": "e903c8a95b1a2e2f9c76a545890cb4420e725e5571ba4b93f7986e273ed96e37"
+    }
+  ]
+}

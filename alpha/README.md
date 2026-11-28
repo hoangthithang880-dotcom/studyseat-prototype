@@ -131,3 +131,7 @@ python scripts/verify_phase3.py
 Node 与 Playwright 依赖及浏览器选择沿用阶段二。macOS 可设 `STUDYSEAT_BROWSER_CHANNEL=chrome`，Windows 默认 msedge。证据默认存放 `evidence/phase3/`，可用 `STUDYSEAT_EVIDENCE_DIR` 指向一个新的目录，历史阶段二报告不覆盖。验证包括全部后端、格式、原型测试、原有五组浏览器、阶段三跨端浏览器、真实 v1 升级/重启及两个独立超时进程。Windows/Edge 必须实际执行才能计为通过。
 
 本次独立审查修复：暂离/返回使用预约状态版本防止首次迟到请求作用于后续轮次；超时 watch 在临时锁竞争后由同一进程退避恢复；管理员保存验证文本只刷新验证记录和管理读取，保留等待期间的新规则草稿。升级前同时停止 HTTP 服务和任务进程，备份数据库；升级后刷新浏览器以读取新状态前提。不可恢复任务故障仍需操作者或外部进程监管恢复，本轮没有部署监管服务。完整验证已加入 phase3-review-browser.cjs 及真实锁恢复测试，运行时用 STUDYSEAT_EVIDENCE_DIR 指向新目录以保留历史证据。详情见 [独立审查修复记录](docs/PHASE3.md#独立审查修复)。
+
+## 第四阶段集成与合并前验证
+
+第四阶段基于已合并 PR #6 后的 main 328a3b3，保留本文件中全部 v3 升级和后台超时说明。执行 `python scripts/verify_phase4.py` 可复跑后端、七套浏览器、升级与真实进程恢复及 HTTP 实测，结果另存 evidence/phase4-integration。见 [阶段记录](docs/PHASE4.md)、[合并前审查](docs/PHASE4-MERGE-REVIEW.md) 和 [交付说明](docs/DELIVERY.md)。任务为 Issue #7，合并请求为 PR #8。历史 phase4 证据和 Word 博客是初次候选快照，不代表本次 main 集成结果。

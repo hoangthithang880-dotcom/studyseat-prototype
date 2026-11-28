@@ -1,0 +1,2 @@
+175 passed in four independent pytest processes; all collected node IDs assigned exactly once.
+See pytest-group-0..3.txt and .xml for raw reports.

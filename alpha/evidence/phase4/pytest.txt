@@ -1,0 +1,4 @@
+........................................................................ [ 63%]
+.........................................                                [100%]
+- generated xml file: C:\Users\ROG\Documents\Codex\2026-11-27\wan\work\candidate\alpha\evidence\phase4\pytest.xml -
+113 passed in 263.72s (0:04:23)

@@ -1,0 +1,338 @@
+FFFFFF                                                                   [100%]
+================================== FAILURES ===================================
+_____ test_verifier_captures_utf8_child_logs[None-scripts.verify_phase2] ______
+
+tmp_path = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_captures_utf8_ch0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C4A8FE4770>
+verifier = <module 'scripts.verify_phase2' from 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\pr8-fixes\\alpha\\scripts\\verify_phase2.py'>
+inherited_encoding = None
+
+    @pytest.mark.parametrize("verifier", [verify_phase2, verify_phase3])
+    @pytest.mark.parametrize("inherited_encoding", [None, "cp936"])
+    def test_verifier_captures_utf8_child_logs(tmp_path, monkeypatch, verifier, inherited_encoding):
+        monkeypatch.setattr(verifier, "EVIDENCE", tmp_path)
+        if inherited_encoding:
+            monkeypatch.setenv("PYTHONIOENCODING", inherited_encoding)
+        else:
+            monkeypatch.delenv("PYTHONIOENCODING", raising=False)
+        monkeypatch.setenv("PYTHONUTF8", "0")
+        monkeypatch.setenv("REVIEW_INHERITED", "parent-config")
+        database = tmp_path / "private.sqlite3"
+        environment = {"STUDYSEAT_DATABASE": str(database), "STUDYSEAT_BROWSER_CHANNEL": "review-channel"}
+        child = (
+            "import os,sys; "
+            "assert os.environ['REVIEW_INHERITED']=='parent-config'; "
+            "assert os.environ['STUDYSEAT_DATABASE']==sys.argv[1]; "
+            "assert os.environ['STUDYSEAT_BROWSER_CHANNEL']=='review-channel'; "
+            "assert os.environ['PYTHONIOENCODING']=='utf-8'; "
+            "print('中文验证日志')"
+        )
+>       verifier.run(
+            [sys.executable, "-c", child, str(database)],
+            "output.txt",
+            cwd=tmp_path,
+            env=environment,
+        )
+
+tests\test_delivery.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+command = ['C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependen...uments\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch0\\private.sqlite3']
+log = 'output.txt'
+cwd = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_captures_utf8_ch0')
+env = {'STUDYSEAT_BROWSER_CHANNEL': 'review-channel', 'STUDYSEAT_DATABASE': 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch0\\private.sqlite3'}
+
+    def run(command, log, cwd=ROOT, env=None):
+        result = subprocess.run(
+            command,
+            cwd=cwd,
+            env=env,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+        (EVIDENCE / log).write_text(result.stdout, encoding="utf-8")
+        print(f"{log}: exit {result.returncode}", flush=True)
+        if result.returncode:
+            print(result.stdout, flush=True)
+>           raise subprocess.CalledProcessError(result.returncode, command)
+E           subprocess.CalledProcessError: Command '['C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependencies\\python\\python.exe', '-c', "import os,sys; assert os.environ['REVIEW_INHERITED']=='parent-config'; assert os.environ['STUDYSEAT_DATABASE']==sys.argv[1]; assert os.environ['STUDYSEAT_BROWSER_CHANNEL']=='review-channel'; assert os.environ['PYTHONIOENCODING']=='utf-8'; print('中文验证日志')", 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch0\\private.sqlite3']' returned non-zero exit status 1.
+
+scripts\verify_phase2.py:45: CalledProcessError
+---------------------------- Captured stdout call -----------------------------
+output.txt: exit 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen os>", line 714, in __getitem__
+KeyError: 'REVIEW_INHERITED'
+
+_____ test_verifier_captures_utf8_child_logs[None-scripts.verify_phase3] ______
+
+tmp_path = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_captures_utf8_ch1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C4A8F8F230>
+verifier = <module 'scripts.verify_phase3' from 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\pr8-fixes\\alpha\\scripts\\verify_phase3.py'>
+inherited_encoding = None
+
+    @pytest.mark.parametrize("verifier", [verify_phase2, verify_phase3])
+    @pytest.mark.parametrize("inherited_encoding", [None, "cp936"])
+    def test_verifier_captures_utf8_child_logs(tmp_path, monkeypatch, verifier, inherited_encoding):
+        monkeypatch.setattr(verifier, "EVIDENCE", tmp_path)
+        if inherited_encoding:
+            monkeypatch.setenv("PYTHONIOENCODING", inherited_encoding)
+        else:
+            monkeypatch.delenv("PYTHONIOENCODING", raising=False)
+        monkeypatch.setenv("PYTHONUTF8", "0")
+        monkeypatch.setenv("REVIEW_INHERITED", "parent-config")
+        database = tmp_path / "private.sqlite3"
+        environment = {"STUDYSEAT_DATABASE": str(database), "STUDYSEAT_BROWSER_CHANNEL": "review-channel"}
+        child = (
+            "import os,sys; "
+            "assert os.environ['REVIEW_INHERITED']=='parent-config'; "
+            "assert os.environ['STUDYSEAT_DATABASE']==sys.argv[1]; "
+            "assert os.environ['STUDYSEAT_BROWSER_CHANNEL']=='review-channel'; "
+            "assert os.environ['PYTHONIOENCODING']=='utf-8'; "
+            "print('中文验证日志')"
+        )
+>       verifier.run(
+            [sys.executable, "-c", child, str(database)],
+            "output.txt",
+            cwd=tmp_path,
+            env=environment,
+        )
+
+tests\test_delivery.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+command = ['C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependen...uments\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch1\\private.sqlite3']
+log = 'output.txt'
+cwd = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_captures_utf8_ch1')
+env = {'STUDYSEAT_BROWSER_CHANNEL': 'review-channel', 'STUDYSEAT_DATABASE': 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch1\\private.sqlite3'}
+
+    def run(command, log, cwd=ROOT, env=None):
+        result = subprocess.run(
+            command,
+            cwd=cwd,
+            env=env,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+        (EVIDENCE / log).write_text(result.stdout, encoding="utf-8")
+        print(f"{log}: exit {result.returncode}", flush=True)
+        if result.returncode:
+            print(result.stdout, flush=True)
+>           raise subprocess.CalledProcessError(result.returncode, command)
+E           subprocess.CalledProcessError: Command '['C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependencies\\python\\python.exe', '-c', "import os,sys; assert os.environ['REVIEW_INHERITED']=='parent-config'; assert os.environ['STUDYSEAT_DATABASE']==sys.argv[1]; assert os.environ['STUDYSEAT_BROWSER_CHANNEL']=='review-channel'; assert os.environ['PYTHONIOENCODING']=='utf-8'; print('中文验证日志')", 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch1\\private.sqlite3']' returned non-zero exit status 1.
+
+scripts\verify_phase3.py:45: CalledProcessError
+---------------------------- Captured stdout call -----------------------------
+output.txt: exit 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen os>", line 714, in __getitem__
+KeyError: 'REVIEW_INHERITED'
+
+_____ test_verifier_captures_utf8_child_logs[cp936-scripts.verify_phase2] _____
+
+tmp_path = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_captures_utf8_ch2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C4A903ECF0>
+verifier = <module 'scripts.verify_phase2' from 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\pr8-fixes\\alpha\\scripts\\verify_phase2.py'>
+inherited_encoding = 'cp936'
+
+    @pytest.mark.parametrize("verifier", [verify_phase2, verify_phase3])
+    @pytest.mark.parametrize("inherited_encoding", [None, "cp936"])
+    def test_verifier_captures_utf8_child_logs(tmp_path, monkeypatch, verifier, inherited_encoding):
+        monkeypatch.setattr(verifier, "EVIDENCE", tmp_path)
+        if inherited_encoding:
+            monkeypatch.setenv("PYTHONIOENCODING", inherited_encoding)
+        else:
+            monkeypatch.delenv("PYTHONIOENCODING", raising=False)
+        monkeypatch.setenv("PYTHONUTF8", "0")
+        monkeypatch.setenv("REVIEW_INHERITED", "parent-config")
+        database = tmp_path / "private.sqlite3"
+        environment = {"STUDYSEAT_DATABASE": str(database), "STUDYSEAT_BROWSER_CHANNEL": "review-channel"}
+        child = (
+            "import os,sys; "
+            "assert os.environ['REVIEW_INHERITED']=='parent-config'; "
+            "assert os.environ['STUDYSEAT_DATABASE']==sys.argv[1]; "
+            "assert os.environ['STUDYSEAT_BROWSER_CHANNEL']=='review-channel'; "
+            "assert os.environ['PYTHONIOENCODING']=='utf-8'; "
+            "print('中文验证日志')"
+        )
+>       verifier.run(
+            [sys.executable, "-c", child, str(database)],
+            "output.txt",
+            cwd=tmp_path,
+            env=environment,
+        )
+
+tests\test_delivery.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+command = ['C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependen...uments\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch2\\private.sqlite3']
+log = 'output.txt'
+cwd = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_captures_utf8_ch2')
+env = {'STUDYSEAT_BROWSER_CHANNEL': 'review-channel', 'STUDYSEAT_DATABASE': 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch2\\private.sqlite3'}
+
+    def run(command, log, cwd=ROOT, env=None):
+        result = subprocess.run(
+            command,
+            cwd=cwd,
+            env=env,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+        (EVIDENCE / log).write_text(result.stdout, encoding="utf-8")
+        print(f"{log}: exit {result.returncode}", flush=True)
+        if result.returncode:
+            print(result.stdout, flush=True)
+>           raise subprocess.CalledProcessError(result.returncode, command)
+E           subprocess.CalledProcessError: Command '['C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependencies\\python\\python.exe', '-c', "import os,sys; assert os.environ['REVIEW_INHERITED']=='parent-config'; assert os.environ['STUDYSEAT_DATABASE']==sys.argv[1]; assert os.environ['STUDYSEAT_BROWSER_CHANNEL']=='review-channel'; assert os.environ['PYTHONIOENCODING']=='utf-8'; print('中文验证日志')", 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch2\\private.sqlite3']' returned non-zero exit status 1.
+
+scripts\verify_phase2.py:45: CalledProcessError
+---------------------------- Captured stdout call -----------------------------
+output.txt: exit 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen os>", line 714, in __getitem__
+KeyError: 'REVIEW_INHERITED'
+
+_____ test_verifier_captures_utf8_child_logs[cp936-scripts.verify_phase3] _____
+
+tmp_path = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_captures_utf8_ch3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C4A903D460>
+verifier = <module 'scripts.verify_phase3' from 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\pr8-fixes\\alpha\\scripts\\verify_phase3.py'>
+inherited_encoding = 'cp936'
+
+    @pytest.mark.parametrize("verifier", [verify_phase2, verify_phase3])
+    @pytest.mark.parametrize("inherited_encoding", [None, "cp936"])
+    def test_verifier_captures_utf8_child_logs(tmp_path, monkeypatch, verifier, inherited_encoding):
+        monkeypatch.setattr(verifier, "EVIDENCE", tmp_path)
+        if inherited_encoding:
+            monkeypatch.setenv("PYTHONIOENCODING", inherited_encoding)
+        else:
+            monkeypatch.delenv("PYTHONIOENCODING", raising=False)
+        monkeypatch.setenv("PYTHONUTF8", "0")
+        monkeypatch.setenv("REVIEW_INHERITED", "parent-config")
+        database = tmp_path / "private.sqlite3"
+        environment = {"STUDYSEAT_DATABASE": str(database), "STUDYSEAT_BROWSER_CHANNEL": "review-channel"}
+        child = (
+            "import os,sys; "
+            "assert os.environ['REVIEW_INHERITED']=='parent-config'; "
+            "assert os.environ['STUDYSEAT_DATABASE']==sys.argv[1]; "
+            "assert os.environ['STUDYSEAT_BROWSER_CHANNEL']=='review-channel'; "
+            "assert os.environ['PYTHONIOENCODING']=='utf-8'; "
+            "print('中文验证日志')"
+        )
+>       verifier.run(
+            [sys.executable, "-c", child, str(database)],
+            "output.txt",
+            cwd=tmp_path,
+            env=environment,
+        )
+
+tests\test_delivery.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+command = ['C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependen...uments\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch3\\private.sqlite3']
+log = 'output.txt'
+cwd = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_captures_utf8_ch3')
+env = {'STUDYSEAT_BROWSER_CHANNEL': 'review-channel', 'STUDYSEAT_DATABASE': 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch3\\private.sqlite3'}
+
+    def run(command, log, cwd=ROOT, env=None):
+        result = subprocess.run(
+            command,
+            cwd=cwd,
+            env=env,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+        (EVIDENCE / log).write_text(result.stdout, encoding="utf-8")
+        print(f"{log}: exit {result.returncode}", flush=True)
+        if result.returncode:
+            print(result.stdout, flush=True)
+>           raise subprocess.CalledProcessError(result.returncode, command)
+E           subprocess.CalledProcessError: Command '['C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependencies\\python\\python.exe', '-c', "import os,sys; assert os.environ['REVIEW_INHERITED']=='parent-config'; assert os.environ['STUDYSEAT_DATABASE']==sys.argv[1]; assert os.environ['STUDYSEAT_BROWSER_CHANNEL']=='review-channel'; assert os.environ['PYTHONIOENCODING']=='utf-8'; print('中文验证日志')", 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\tmp\\pytest-of-ROG\\pytest-10\\test_verifier_captures_utf8_ch3\\private.sqlite3']' returned non-zero exit status 1.
+
+scripts\verify_phase3.py:45: CalledProcessError
+---------------------------- Captured stdout call -----------------------------
+output.txt: exit 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen os>", line 714, in __getitem__
+KeyError: 'REVIEW_INHERITED'
+
+_ test_verifier_keeps_chinese_failure_log_and_exit_status[scripts.verify_phase2] _
+
+tmp_path = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_keeps_chinese_fa0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C4A903C1D0>
+verifier = <module 'scripts.verify_phase2' from 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\pr8-fixes\\alpha\\scripts\\verify_phase2.py'>
+
+    @pytest.mark.parametrize("verifier", [verify_phase2, verify_phase3])
+    def test_verifier_keeps_chinese_failure_log_and_exit_status(tmp_path, monkeypatch, verifier):
+        monkeypatch.setattr(verifier, "EVIDENCE", tmp_path)
+        monkeypatch.setenv("PYTHONIOENCODING", "cp936")
+        monkeypatch.setenv("PYTHONUTF8", "0")
+        with pytest.raises(subprocess.CalledProcessError) as failure:
+            verifier.run(
+                [sys.executable, "-c", "print('失败前中文日志',flush=True); raise SystemExit(23)"],
+                "failed.txt", cwd=tmp_path,
+            )
+        assert failure.value.returncode == 23
+>       assert (tmp_path / "failed.txt").read_text(encoding="utf-8").strip() == "失败前中文日志"
+E       AssertionError: assert 'ʧ��ǰ������־' == '失败前中文日志'
+E         
+E         - 失败前中文日志
+E         + ʧ��ǰ������־
+
+tests\test_delivery.py:90: AssertionError
+---------------------------- Captured stdout call -----------------------------
+failed.txt: exit 23
+ʧ��ǰ������־
+
+_ test_verifier_keeps_chinese_failure_log_and_exit_status[scripts.verify_phase3] _
+
+tmp_path = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-10/test_verifier_keeps_chinese_fa1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C4A903D430>
+verifier = <module 'scripts.verify_phase3' from 'C:\\Users\\ROG\\Documents\\Codex\\2026-11-27\\wan\\work\\pr8-fixes\\alpha\\scripts\\verify_phase3.py'>
+
+    @pytest.mark.parametrize("verifier", [verify_phase2, verify_phase3])
+    def test_verifier_keeps_chinese_failure_log_and_exit_status(tmp_path, monkeypatch, verifier):
+        monkeypatch.setattr(verifier, "EVIDENCE", tmp_path)
+        monkeypatch.setenv("PYTHONIOENCODING", "cp936")
+        monkeypatch.setenv("PYTHONUTF8", "0")
+        with pytest.raises(subprocess.CalledProcessError) as failure:
+            verifier.run(
+                [sys.executable, "-c", "print('失败前中文日志',flush=True); raise SystemExit(23)"],
+                "failed.txt", cwd=tmp_path,
+            )
+        assert failure.value.returncode == 23
+>       assert (tmp_path / "failed.txt").read_text(encoding="utf-8").strip() == "失败前中文日志"
+E       AssertionError: assert 'ʧ��ǰ������־' == '失败前中文日志'
+E         
+E         - 失败前中文日志
+E         + ʧ��ǰ������־
+
+tests\test_delivery.py:90: AssertionError
+---------------------------- Captured stdout call -----------------------------
+failed.txt: exit 23
+ʧ��ǰ������־
+
+=========================== short test summary info ===========================
+FAILED tests/test_delivery.py::test_verifier_captures_utf8_child_logs[None-scripts.verify_phase2]
+FAILED tests/test_delivery.py::test_verifier_captures_utf8_child_logs[None-scripts.verify_phase3]
+FAILED tests/test_delivery.py::test_verifier_captures_utf8_child_logs[cp936-scripts.verify_phase2]
+FAILED tests/test_delivery.py::test_verifier_captures_utf8_child_logs[cp936-scripts.verify_phase3]
+FAILED tests/test_delivery.py::test_verifier_keeps_chinese_failure_log_and_exit_status[scripts.verify_phase2]
+FAILED tests/test_delivery.py::test_verifier_keeps_chinese_failure_log_and_exit_status[scripts.verify_phase3]
+6 failed, 4 deselected in 0.36s

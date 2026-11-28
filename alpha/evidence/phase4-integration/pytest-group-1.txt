@@ -1,0 +1,3 @@
+............................................                             [100%]
+- generated xml file: C:\Users\ROG\Documents\Codex\2026-11-27\wan\work\merge-review\alpha\evidence\phase4-integration\pytest-group-1.xml -
+44 passed in 61.51s (0:01:01)

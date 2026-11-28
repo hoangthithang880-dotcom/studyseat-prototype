@@ -1,0 +1,77 @@
+SCENARIO A-empty-list-after-create
+SCENARIO B-D-cancel-new-first
+SCENARIO B-D-cancel-old-first
+SCENARIO C-old-error-503
+SCENARIO C-old-error-abort
+SCENARIO E-current-error-remains-visible-and-retryable
+SCENARIO F-superseded-initial-list-keeps-catalog
+{
+  "result": "passed",
+  "executed_at": "2026-11-27T15:16:31.506Z",
+  "browser": "158.0.4370.45",
+  "channel": "msedge",
+  "playwright": "1.62.1",
+  "scenarios": [
+    {
+      "name": "A-empty-list-after-create",
+      "result": "passed",
+      "proof": {
+        "reservation_id": "2bf29b27-a9a4-4f1f-8b1f-ab24fcfb6d9d",
+        "old_count": 0,
+        "server_status": "PENDING_CHECKIN"
+      }
+    },
+    {
+      "name": "B-D-cancel-new-first",
+      "result": "passed",
+      "proof": {
+        "order": "new-first",
+        "reservation_id": "4eb5d38d-70db-4fc7-b0ed-ae45b9a5aaf6",
+        "server_status": "CANCELLED"
+      }
+    },
+    {
+      "name": "B-D-cancel-old-first",
+      "result": "passed",
+      "proof": {
+        "order": "old-first",
+        "reservation_id": "cef07bd1-4473-4c58-b696-2994319eab0e",
+        "server_status": "CANCELLED"
+      }
+    },
+    {
+      "name": "C-old-error-503",
+      "result": "passed",
+      "proof": {
+        "failure_mode": "503",
+        "reservation_id": "af09f0fd-1382-4efa-a337-46038c33763d",
+        "server_status": "PENDING_CHECKIN"
+      }
+    },
+    {
+      "name": "C-old-error-abort",
+      "result": "passed",
+      "proof": {
+        "failure_mode": "abort",
+        "reservation_id": "b904895d-03bc-4c30-b99e-dda385426362",
+        "server_status": "PENDING_CHECKIN"
+      }
+    },
+    {
+      "name": "E-current-error-remains-visible-and-retryable",
+      "result": "passed",
+      "proof": {
+        "current_error_visible": true,
+        "retry_succeeded": true
+      }
+    },
+    {
+      "name": "F-superseded-initial-list-keeps-catalog",
+      "result": "passed",
+      "proof": {
+        "room_options": 4,
+        "catalog_enabled": true
+      }
+    }
+  ]
+}

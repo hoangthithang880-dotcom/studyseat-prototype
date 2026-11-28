@@ -12,6 +12,7 @@ SCRIPTS = ['preview.py', 'build-prototype.py', 'version-assets.cjs', 'prepare-gi
 DOCUMENTS = ['墨刀原型搭建与维护说明.md', '原型设计说明.md', '演示与提交说明.md', 'GitHub资料说明.md', '墨刀同步记录.md', 'prototype-release.json', 'prototype-browser-results.json', 'prototype-unit-results.txt']
 SCREENSHOTS = ['local-final-login.png', 'local-room.png', 'local-booking.png', 'local-admin-rules.png', 'local-admin-closure.png', 'local-admin-logs.png', 'local-attendance.png', 'local-profile.png', 'modao-entry.png', 'modao-room.png']
 ALPHA_ROOT_FILES = ['README.md', '.env.example', 'requirements.txt', 'requirements-dev.txt', 'pyproject.toml', 'start.ps1']
+ALPHA_DOCUMENT_FILES = ['docs/StudySeat-Alpha-Phase4-Blog.docx']
 ALPHA_DIRECTORIES = ['studyseat', 'docs', 'tests', 'scripts', 'evidence']
 ALPHA_SUFFIXES = {'.py', '.sql', '.html', '.js', '.css', '.md', '.cjs', '.json', '.xml', '.png', '.txt', '.csv'}
 OMIT_PARTS = {'.git', 'node_modules', '__pycache__', '.DS_Store', 'test-results', 'playwright-report', '.venv', 'instance', '.pytest_cache', '.ruff_cache'}
@@ -27,6 +28,8 @@ def selected_files(source):
     selected += [str(p.relative_to(source)) for p in sorted((source / 'tests').glob('*.test.cjs'))]
     selected += ['tests/browser.cjs', 'tests/fixtures/blank-frame.html', 'modao/StudySeat_定版原型.html']
     selected += ['alpha/' + name for name in ALPHA_ROOT_FILES]
+    selected += ['alpha/' + name for name in ALPHA_DOCUMENT_FILES
+                 if (source / 'alpha' / name).is_file() and not (source / 'alpha' / name).is_symlink()]
     for directory in ALPHA_DIRECTORIES:
         selected += [str(p.relative_to(source)) for p in sorted((source / 'alpha' / directory).rglob('*'))
                      if p.is_file() and p.suffix in ALPHA_SUFFIXES

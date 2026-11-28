@@ -1,0 +1,3 @@
+......                                                                   [100%]
+- generated xml file: C:\Users\ROG\Documents\Codex\2026-11-27\wan\work\pr8-fixes\alpha\evidence\phase4-review-fixes\encoding-focused.xml -
+6 passed, 4 deselected in 0.56s

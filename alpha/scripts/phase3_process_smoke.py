@@ -12,6 +12,7 @@ import tempfile
 import time
 import urllib.error
 import urllib.request
+from contextlib import closing
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -66,7 +67,7 @@ def main():
             text=True,
         )
         assert migrated.returncode == 0, migrated.stdout + migrated.stderr
-        with sqlite3.connect(database) as db:
+        with closing(sqlite3.connect(database)) as db, db:
             assert db.execute("PRAGMA user_version").fetchone()[0] == 3
             assert db.execute("SELECT COUNT(*) FROM reservations").fetchone()[0] == 1
             assert db.execute("SELECT action,details_json FROM audit_events").fetchone() == (
@@ -177,7 +178,7 @@ def main():
             second.wait(timeout=10)
         # The service is now stopped. Seed an explicitly past-due fixture and run
         # the independent CLI process; no browser or HTTP read triggers this.
-        with sqlite3.connect(database) as db:
+        with closing(sqlite3.connect(database)) as db, db:
             db.execute(
                 "INSERT INTO reservations(id,student_id,seat_id,start_at,end_at,status,rule_version_id,rule_snapshot_json,idempotency_key,created_at) VALUES ('worker-fixture','student02','activity-24:A02',?,?,'PENDING_CHECKIN',1,?,'worker',?)",
                 (
@@ -196,7 +197,7 @@ def main():
         )
         outputs = [a.communicate(timeout=15), b.communicate(timeout=15)]
         assert a.returncode == b.returncode == 0, outputs
-        with sqlite3.connect(database) as db:
+        with closing(sqlite3.connect(database)) as db, db:
             assert (
                 db.execute("SELECT status FROM reservations WHERE id='worker-fixture'").fetchone()[
                     0
@@ -242,7 +243,7 @@ def main():
             / "phase3-process-smoke.json"
         )
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
+        target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

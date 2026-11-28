@@ -1,0 +1,72 @@
+{
+  "target": "http://127.0.0.1:62240",
+  "checks": [
+    {
+      "name": "student dashboard",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "attendance actions visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "leave transition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "return transition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "pending actions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "admin panel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "in-use closure blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "apply disabled while blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "closure preview ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "closure applied",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "apply stays disabled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reopen",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no page errors",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": [],
+  "passed": 13
+}

@@ -1,0 +1,65 @@
+{
+  "review_baseline": "71cabb929c98566db4f074c6dc8c6f70336c6969",
+  "code_commit": "969c62b32c73cecfb9340e03cd7b3c98fae67f22",
+  "backend": {
+    "tests": 181,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "browser": [
+    {
+      "suite": "browser",
+      "checks": 11,
+      "browser": "158.0.4370.45",
+      "channel": "msedge"
+    },
+    {
+      "suite": "reservations-browser",
+      "checks": 6,
+      "browser": "158.0.4370.45",
+      "channel": "msedge"
+    },
+    {
+      "suite": "account-switch",
+      "checks": 6,
+      "browser": "158.0.4370.45",
+      "channel": "msedge"
+    },
+    {
+      "suite": "initialization-browser",
+      "checks": 6,
+      "browser": "158.0.4370.45",
+      "channel": "msedge"
+    },
+    {
+      "suite": "reservation-list-browser",
+      "checks": 7,
+      "browser": "158.0.4370.45",
+      "channel": "msedge"
+    },
+    {
+      "suite": "phase3-browser",
+      "checks": 12,
+      "browser": "158.0.4370.45",
+      "channel": "msedge"
+    },
+    {
+      "suite": "phase3-review-browser",
+      "checks": 7,
+      "browser": "158.0.4370.45",
+      "channel": "msedge"
+    }
+  ],
+  "browser_checks": 55,
+  "npm": {
+    "tests": 70,
+    "pass": 70,
+    "fail": 0,
+    "skipped": 0
+  },
+  "performance_report": "performance.json",
+  "historical_evidence_unchanged": true,
+  "formal_acceptance": false,
+  "merged": false
+}

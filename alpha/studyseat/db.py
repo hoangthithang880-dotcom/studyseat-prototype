@@ -1,4 +1,5 @@
 import sqlite3
+import time
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
@@ -60,7 +61,17 @@ def write_transaction():
 
 def initialize():
     connection = get_db()
-    connection.execute("PRAGMA journal_mode = WAL")
+    # Concurrent DELETE-to-WAL transitions can return BUSY immediately, even
+    # with busy_timeout configured. Retry only contention, within a fixed budget.
+    deadline = time.monotonic() + 5
+    while True:
+        try:
+            connection.execute("PRAGMA journal_mode = WAL")
+            break
+        except sqlite3.OperationalError as error:
+            if not is_busy(error) or time.monotonic() >= deadline:
+                raise
+            time.sleep(0.02)
     version = connection.execute("PRAGMA user_version").fetchone()[0]
     if version not in (0, 1, 2, 3):
         raise RuntimeError("Unsupported database schema version")

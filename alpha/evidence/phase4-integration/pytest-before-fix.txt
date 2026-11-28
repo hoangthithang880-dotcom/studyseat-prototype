@@ -1,0 +1,63 @@
+........................................................................ [ 41%]
+.............F.......................................................... [ 82%]
+..............................                                           [100%]
+================================== FAILURES ===================================
+___________ test_concurrent_initializers_recheck_schema_under_lock ____________
+
+tmp_path = WindowsPath('C:/Users/ROG/Documents/Codex/2026-11-27/wan/work/tmp/pytest-of-ROG/pytest-4/test_concurrent_initializers_r0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000298DCF93560>
+
+    def test_concurrent_initializers_recheck_schema_under_lock(tmp_path, monkeypatch):
+        filename = str(tmp_path / "concurrent-initialize.sqlite3")
+        raw = sqlite3.connect(filename)
+        raw.executescript((Path(__file__).parents[1] / "studyseat/schema.sql").read_text())
+        raw.execute("INSERT INTO schema_versions VALUES (1,'old')")
+        raw.execute("PRAGMA user_version=1")
+        raw.commit()
+        raw.close()
+        app = create_app({"TESTING": True, "SECRET_KEY": "migration-secret-" * 3, "DATABASE": filename})
+        barrier = threading.Barrier(2)
+        original = Path.read_text
+    
+        def synchronize_schema_read(path, *args, **kwargs):
+            content = original(path, *args, **kwargs)
+            if path.name == "schema.sql":
+                barrier.wait(timeout=10)
+            return content
+    
+        monkeypatch.setattr(Path, "read_text", synchronize_schema_read)
+    
+        def upgrade(_):
+            with app.app_context():
+                initialize()
+                return get_db().execute("PRAGMA user_version").fetchone()[0]
+    
+        with ThreadPoolExecutor(max_workers=2) as executor:
+>           assert list(executor.map(upgrade, range(2))) == [3, 3]
+
+tests\test_phase3.py:757: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\concurrent\futures\_base.py:619: in result_iterator
+    yield _result_or_cancel(fs.pop())
+C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\concurrent\futures\_base.py:317: in _result_or_cancel
+    return fut.result(timeout)
+C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\concurrent\futures\_base.py:456: in result
+    return self.__get_result()
+C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\concurrent\futures\_base.py:401: in __get_result
+    raise self._exception
+C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\dependencies\python\Lib\concurrent\futures\thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+tests\test_phase3.py:753: in upgrade
+    initialize()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def initialize():
+        connection = get_db()
+>       connection.execute("PRAGMA journal_mode = WAL")
+E       sqlite3.OperationalError: database is locked
+
+studyseat\db.py:63: OperationalError
+- generated xml file: C:\Users\ROG\Documents\Codex\2026-11-27\wan\work\merge-review\alpha\evidence\phase4-integration\pytest.xml -
+=========================== short test summary info ===========================
+FAILED tests/test_phase3.py::test_concurrent_initializers_recheck_schema_under_lock
+1 failed, 173 passed in 455.92s (0:07:35)

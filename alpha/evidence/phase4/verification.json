@@ -1,0 +1,21 @@
+{
+  "result": "passed",
+  "executed_at": "2026-11-27T11:46:30.978697+00:00",
+  "baseline": "60f40e1089d6fd1da6125c19d897331019c9b775",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "sqlite": "3.53.1",
+  "packages": {
+    "Flask": "3.1.3",
+    "pytest": "8.3.5",
+    "ruff": "0.17.6"
+  },
+  "scope": "Alpha backend, syntax, restart, six browser suites, HTTP load; historical prototype excluded",
+  "backend": {
+    "unique_tests": 114,
+    "method": "initial full run 113; four delivery tests rechecked after UTF-8 collector fix; consolidated JUnit replaces earlier three delivery results",
+    "initial": "pytest-initial113.xml",
+    "targeted": "delivery-recheck.xml"
+  },
+  "browser_note": "Six suites passed before the UTF-8-only Python subprocess collector fix; browser code and app unchanged."
+}

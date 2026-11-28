@@ -1,0 +1,15 @@
+{
+  "result": "passed",
+  "executed_at": "2026-11-27T12:21:29.211Z",
+  "browser": "158.0.4370.45",
+  "channel": "msedge",
+  "checks": [
+    "real POST receipt delayed while new rule draft is edited",
+    "draft remains 45 and database remains 30 until explicit rule save",
+    "unsaved-exit confirmation remains active",
+    "draft saves as 45 via real admin API",
+    "no page errors",
+    "two real student sessions: first delayed leave rejected with 409; later cycle/deadline/audits unchanged; refresh recovers",
+    "two real student sessions: first delayed return rejected with 409; later cycle/deadline/audits unchanged; refresh recovers"
+  ]
+}
